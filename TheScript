@@ -1,0 +1,213 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local GUI = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local CBRING = Instance.new("TextButton")
+local Rocket = Instance.new("TextButton")
+local OFF = Instance.new("TextButton")
+local UnRocket = Instance.new("TextButton")
+local GetGear = Instance.new("TextButton")
+local TP = Instance.new("TextButton")
+local Name = Instance.new("TextBox")
+local ToPlr = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+GUI.Name = "GUI"
+GUI.Parent = ScreenGui
+GUI.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
+GUI.Position = UDim2.new(0.0335276946, 0, 0.75175643, 0)
+GUI.Size = UDim2.new(0, 282, 0, 160)
+
+TextLabel.Parent = GUI
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.14293468, 0, -0.00401049852, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSansLight
+TextLabel.Text = "LBB Gui"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 23.000
+
+CBRING.Name = "CBRING"
+CBRING.Parent = GUI
+CBRING.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CBRING.Position = UDim2.new(-5.40167093e-08, 0, 0.806249976, 0)
+CBRING.Size = UDim2.new(0, 32, 0, 31)
+CBRING.Style = Enum.ButtonStyle.RobloxRoundButton
+CBRING.Font = Enum.Font.SourceSansLight
+CBRING.Text = "On"
+CBRING.TextColor3 = Color3.fromRGB(0, 0, 0)
+CBRING.TextSize = 14.000
+CBRING.MouseButton1Down:connect(function()
+	_G.Cbring = true
+
+	while _G.Cbring == true do
+		wait()
+		for i, v in pairs(game.Players:GetChildren()) do
+			if v ~= game.Players.LocalPlayer then
+				spawn(function()
+					local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+					if Handle then
+						for i,c in pairs(v.Character:GetChildren()) do
+							if c:IsA("BasePart") then
+								c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1, (game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+							end
+						end
+					end
+				end)
+			end
+		end
+	end
+end)
+
+Rocket.Name = "Rocket"
+Rocket.Parent = GUI
+Rocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Rocket.Position = UDim2.new(0.0496453047, 0, 0.199999928, 0)
+Rocket.Size = UDim2.new(0, 86, 0, 45)
+Rocket.Style = Enum.ButtonStyle.RobloxRoundButton
+Rocket.Font = Enum.Font.SourceSansLight
+Rocket.Text = "Rocket"
+Rocket.TextColor3 = Color3.fromRGB(0, 0, 0)
+Rocket.TextSize = 14.000
+Rocket.MouseButton1Down:connect(function()
+	_G.Activate = true
+	local gearname1 = "RocketJumper"
+
+	wait()
+	spawn(function()
+		repeat 
+			game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+			game:GetService("RunService").RenderStepped:wait()
+		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1)
+	end)
+
+	while _G.Activate do
+		wait(0.1)
+		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1) then
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1).Parent = game.Players.LocalPlayer.Character
+		end
+		spawn(function()
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1040.6811523438, 205.67813110352, 92.01229095459),Vector3.new(-1038.3994140625, 283.61309814453, 90.832092285156))
+		end)
+	end
+end)
+
+OFF.Name = "OFF"
+OFF.Parent = GUI
+OFF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+OFF.Position = UDim2.new(0.886524856, 0, 0.806249917, 0)
+OFF.Size = UDim2.new(0, 32, 0, 31)
+OFF.Style = Enum.ButtonStyle.RobloxRoundButton
+OFF.Font = Enum.Font.SourceSansLight
+OFF.Text = "Off"
+OFF.TextColor3 = Color3.fromRGB(0, 0, 0)
+OFF.TextSize = 14.000
+OFF.MouseButton1Down:connect(function()
+	_G.Cbring = false
+end)
+
+UnRocket.Name = "UnRocket"
+UnRocket.Parent = GUI
+UnRocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnRocket.Size = UDim2.new(0, 64, 0, 26)
+UnRocket.Style = Enum.ButtonStyle.RobloxRoundButton
+UnRocket.Font = Enum.Font.SourceSansLight
+UnRocket.Text = "UnRocket"
+UnRocket.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnRocket.TextSize = 14.000
+UnRocket.MouseButton1Down:connect(function()
+	_G.Activate = false
+end)
+
+GetGear.Name = "GetGear"
+GetGear.Parent = GUI
+GetGear.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GetGear.Position = UDim2.new(0.773049593, 0, -1.49011612e-08, 0)
+GetGear.Size = UDim2.new(0, 64, 0, 26)
+GetGear.Style = Enum.ButtonStyle.RobloxRoundButton
+GetGear.Font = Enum.Font.SourceSansLight
+GetGear.Text = "GetGear"
+GetGear.TextColor3 = Color3.fromRGB(0, 0, 0)
+GetGear.TextSize = 14.000
+GetGear.MouseButton1Down:connect(function()
+	_G.OpenBlocks = true
+
+	while _G.OpenBlocks == true do
+		wait()
+		game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+		game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
+		game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
+		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+		game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+	end
+end)
+
+TP.Name = "TP"
+TP.Parent = GUI
+TP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TP.Position = UDim2.new(0.638297856, 0, 0.202239603, 0)
+TP.Size = UDim2.new(0, 86, 0, 45)
+TP.Style = Enum.ButtonStyle.RobloxRoundButton
+TP.Font = Enum.Font.SourceSansLight
+TP.Text = "TP"
+TP.TextColor3 = Color3.fromRGB(0, 0, 0)
+TP.TextSize = 14.000
+TP.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
+end)
+
+Name.Name = "Name"
+Name.Parent = GUI
+Name.BackgroundColor3 = Color3.fromRGB(217, 217, 217)
+Name.Position = UDim2.new(0.0106382966, 0, 0.481249988, 0)
+Name.Size = UDim2.new(0, 107, 0, 15)
+Name.Font = Enum.Font.SourceSans
+Name.PlaceholderText = "Input Name"
+Name.Text = ""
+Name.TextColor3 = Color3.fromRGB(0, 0, 0)
+Name.TextSize = 14.000
+
+ToPlr.Name = "ToPlr"
+ToPlr.Parent = GUI
+ToPlr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ToPlr.Position = UDim2.new(0.0921986103, 0, 0.574999988, 0)
+ToPlr.Size = UDim2.new(0, 60, 0, 35)
+ToPlr.Style = Enum.ButtonStyle.RobloxRoundButton
+ToPlr.Font = Enum.Font.SourceSans
+ToPlr.Text = "ToPlr"
+ToPlr.TextColor3 = Color3.fromRGB(0, 0, 0)
+ToPlr.TextSize = 14.000
+ToPlr.MouseButton1Down:connect(function()
+	local PlayerName = Name.Text
+	local plr1 = game.Players.LocalPlayer.Character
+	local plr2 = game.Workspace:FindFirstChild(PlayerName)
+	plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(0,0,0)
+end)
+
+-- Scripts:
+
+local function LKZXB_fake_script() -- ScreenGui.Script 
+	local script = Instance.new('Script', ScreenGui)
+
+	frame = script.Parent.GUI
+	frame.Draggable = true
+	frame.Active = true
+	frame.Selectable = true
+end
+coroutine.wrap(LKZXB_fake_script)()
