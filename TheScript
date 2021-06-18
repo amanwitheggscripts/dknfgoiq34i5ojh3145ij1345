@@ -16,12 +16,17 @@ local TP = Instance.new("TextButton")
 local Name = Instance.new("TextBox")
 local ToPlr = Instance.new("TextButton")
 local Page1 = Instance.new("TextLabel")
+local TextLabel = Instance.new("TextLabel")
 local Page2Frame = Instance.new("Frame")
 local Regen = Instance.new("TextButton")
-local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
 local GodMode = Instance.new("TextButton")
-local Next = Instance.new("TextButton")
-local Prev = Instance.new("TextButton")
+local Next1 = Instance.new("TextButton")
+local Prev1 = Instance.new("TextButton")
+local Next2 = Instance.new("TextButton")
+local Prev2 = Instance.new("TextButton")
+local Page3Frame = Instance.new("Frame")
+local ComingSoon = Instance.new("TextLabel")
 
 --Properties:
 
@@ -43,17 +48,18 @@ Title.Name = "Title"
 Title.Parent = Page1Frame
 Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1.000
-Title.Position = UDim2.new(0.14293468, 0, -0.00401049852, 0)
+Title.Position = UDim2.new(0.14293468, 0, -0.0101454677, 0)
 Title.Size = UDim2.new(0, 200, 0, 50)
 Title.Font = Enum.Font.SourceSansLight
 Title.Text = "LBB Gui"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 23.000
+Title.TextSize = 30.000
 
 CBRING.Name = "CBRING"
 CBRING.Parent = Page1Frame
 CBRING.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-CBRING.Position = UDim2.new(-5.40167093e-08, 0, 0.806249976, 0)
+CBRING.LayoutOrder = 2
+CBRING.Position = UDim2.new(-5.40167093e-08, 0, 0.793980062, 0)
 CBRING.Size = UDim2.new(0, 32, 0, 31)
 CBRING.Style = Enum.ButtonStyle.RobloxRoundButton
 CBRING.Font = Enum.Font.SourceSansLight
@@ -81,11 +87,15 @@ CBRING.MouseButton1Down:connect(function()
 		end
 	end
 end)
+CBRING.MouseButton1Down:connect(function()
+	OFF.Visible = true
+	CBRING.Visible = false
+end)
 
 Rocket.Name = "Rocket"
 Rocket.Parent = Page1Frame
 Rocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Rocket.Position = UDim2.new(0.0496453047, 0, 0.199999928, 0)
+Rocket.Position = UDim2.new(-0.00354618579, 0, -0.0147240013, 0)
 Rocket.Size = UDim2.new(0, 86, 0, 45)
 Rocket.Style = Enum.ButtonStyle.RobloxRoundButton
 Rocket.Font = Enum.Font.SourceSansLight
@@ -122,39 +132,51 @@ Rocket.MouseButton1Down:connect(function()
 		end)
 	end
 end)
+Rocket.MouseButton1Down:connect(function()
+	UnRocket.Visible = true
+	Rocket.Visible = false
+end)
 
 OFF.Name = "OFF"
 OFF.Parent = Page1Frame
 OFF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-OFF.Position = UDim2.new(0.886524856, 0, 0.806249917, 0)
+OFF.LayoutOrder = 1
+OFF.Position = UDim2.new(-0.00709216297, 0, 0.793979943, 0)
 OFF.Size = UDim2.new(0, 32, 0, 31)
 OFF.Style = Enum.ButtonStyle.RobloxRoundButton
 OFF.Font = Enum.Font.SourceSansLight
 OFF.Text = "Off"
 OFF.TextColor3 = Color3.fromRGB(0, 0, 0)
 OFF.TextSize = 14.000
+OFF.Visible = false
 OFF.MouseButton1Down:connect(function()
+	OFF.Visible = false
+	CBRING.Visible = true
 	_G.Cbring = false
 end)
 
 UnRocket.Name = "UnRocket"
 UnRocket.Parent = Page1Frame
 UnRocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnRocket.Size = UDim2.new(0, 64, 0, 26)
+UnRocket.Position = UDim2.new(-6.14672899e-08, 0, -0.0147240702, 0)
+UnRocket.Size = UDim2.new(0, 85, 0, 44)
+UnRocket.Visible = false
 UnRocket.Style = Enum.ButtonStyle.RobloxRoundButton
 UnRocket.Font = Enum.Font.SourceSansLight
 UnRocket.Text = "UnRocket"
 UnRocket.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnRocket.TextSize = 14.000
 UnRocket.MouseButton1Down:connect(function()
+	UnRocket.Visible = false
+	Rocket.Visible = true
 	_G.Activate = false
 end)
 
 GetGear.Name = "GetGear"
 GetGear.Parent = Page1Frame
 GetGear.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-GetGear.Position = UDim2.new(0.773049593, 0, -1.49011612e-08, 0)
-GetGear.Size = UDim2.new(0, 64, 0, 26)
+GetGear.Position = UDim2.new(0.773049653, 0, 0, 0)
+GetGear.Size = UDim2.new(0, 64, 0, 42)
 GetGear.Style = Enum.ButtonStyle.RobloxRoundButton
 GetGear.Font = Enum.Font.SourceSansLight
 GetGear.Text = "GetGear"
@@ -176,11 +198,11 @@ end)
 TP.Name = "TP"
 TP.Parent = Page1Frame
 TP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TP.Position = UDim2.new(0.638297856, 0, 0.202239603, 0)
-TP.Size = UDim2.new(0, 86, 0, 45)
+TP.Position = UDim2.new(0.705673754, 0, 0.265928298, 0)
+TP.Size = UDim2.new(0, 81, 0, 53)
 TP.Style = Enum.ButtonStyle.RobloxRoundButton
 TP.Font = Enum.Font.SourceSansLight
-TP.Text = "TP"
+TP.Text = "ToMid"
 TP.TextColor3 = Color3.fromRGB(0, 0, 0)
 TP.TextSize = 14.000
 TP.MouseButton1Down:connect(function()
@@ -190,7 +212,7 @@ end)
 Name.Name = "Name"
 Name.Parent = Page1Frame
 Name.BackgroundColor3 = Color3.fromRGB(217, 217, 217)
-Name.Position = UDim2.new(0.0106382966, 0, 0.481249988, 0)
+Name.Position = UDim2.new(0.599290788, 0, 0.898427904, 0)
 Name.Size = UDim2.new(0, 107, 0, 15)
 Name.Font = Enum.Font.SourceSans
 Name.PlaceholderText = "Input Name"
@@ -201,10 +223,10 @@ Name.TextSize = 14.000
 ToPlr.Name = "ToPlr"
 ToPlr.Parent = Page1Frame
 ToPlr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ToPlr.Position = UDim2.new(0.0921986103, 0, 0.574999988, 0)
-ToPlr.Size = UDim2.new(0, 60, 0, 35)
+ToPlr.Position = UDim2.new(-0.00354604423, 0, 0.259793341, 0)
+ToPlr.Size = UDim2.new(0, 88, 0, 54)
 ToPlr.Style = Enum.ButtonStyle.RobloxRoundButton
-ToPlr.Font = Enum.Font.SourceSans
+ToPlr.Font = Enum.Font.SourceSansLight
 ToPlr.Text = "ToPlr"
 ToPlr.TextColor3 = Color3.fromRGB(0, 0, 0)
 ToPlr.TextSize = 14.000
@@ -212,7 +234,7 @@ ToPlr.MouseButton1Down:connect(function()
 	local PlayerName = Name.Text
 	local plr1 = game.Players.LocalPlayer.Character
 	local plr2 = game.Workspace:FindFirstChild(PlayerName)
-	plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(0,0,0)
+	plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(1,0,1)
 end)
 
 Page1.Name = "Page 1"
@@ -225,6 +247,16 @@ Page1.Font = Enum.Font.SourceSansItalic
 Page1.Text = "Page 1"
 Page1.TextColor3 = Color3.fromRGB(255, 255, 255)
 Page1.TextSize = 14.000
+
+TextLabel.Parent = Page1Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(-1.67638063e-08, 0, 0.699386477, 0)
+TextLabel.Size = UDim2.new(0, 114, 0, 17)
+TextLabel.Font = Enum.Font.SourceSansLight
+TextLabel.Text = "Kill all players button"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
 
 Page2Frame.Name = "Page2Frame"
 Page2Frame.Parent = MainFrame
@@ -270,15 +302,15 @@ Regen.MouseButton1Down:connect(function()
 	end)
 end)
 
-TextLabel.Parent = Page2Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0.273000002, 0, 0.801999986, 0)
-TextLabel.Size = UDim2.new(0, 128, 0, 37)
-TextLabel.Font = Enum.Font.SourceSansItalic
-TextLabel.Text = "Page 2 "
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 14.000
+TextLabel_2.Parent = Page2Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0.273000002, 0, 0.801999986, 0)
+TextLabel_2.Size = UDim2.new(0, 128, 0, 37)
+TextLabel_2.Font = Enum.Font.SourceSansItalic
+TextLabel_2.Text = "Page 2 "
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 14.000
 
 GodMode.Name = "GodMode"
 GodMode.Parent = Page2Frame
@@ -312,39 +344,105 @@ GodMode.MouseButton1Down:connect(function()
 	until hum.Health ~= 0
 end)
 
-Next.Name = "Next"
-Next.Parent = MainFrame
-Next.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Next.Position = UDim2.new(0.909356713, 0, 0.364685416, 0)
-Next.Size = UDim2.new(0, 31, 0, 52)
-Next.Style = Enum.ButtonStyle.RobloxRoundButton
-Next.Font = Enum.Font.SourceSansLight
-Next.Text = "Next"
-Next.TextColor3 = Color3.fromRGB(0, 0, 0)
-Next.TextSize = 14.000
-Next.MouseButton1Down:connect(function()
+Next1.Name = "Next1"
+Next1.Parent = MainFrame
+Next1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Next1.Position = UDim2.new(0.909356713, 0, 0.364685416, 0)
+Next1.Size = UDim2.new(0, 31, 0, 52)
+Next1.Style = Enum.ButtonStyle.RobloxRoundButton
+Next1.Font = Enum.Font.SourceSansLight
+Next1.Text = "Next"
+Next1.TextColor3 = Color3.fromRGB(0, 0, 0)
+Next1.TextSize = 14.000
+Next1.MouseButton1Down:connect(function()
 	Page2Frame.Visible = true
 	Page1Frame.Visible = false
+	Prev1.Visible = true
+	Next1.Visible = false
+	Next2.Visible = true
 end)
 
-Prev.Name = "Prev"
-Prev.Parent = MainFrame
-Prev.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Prev.Position = UDim2.new(-0.00584803894, 0, 0.340145528, 0)
-Prev.Size = UDim2.new(0, 31, 0, 52)
-Prev.Style = Enum.ButtonStyle.RobloxRoundButton
-Prev.Font = Enum.Font.SourceSansLight
-Prev.Text = "Prev"
-Prev.TextColor3 = Color3.fromRGB(0, 0, 0)
-Prev.TextSize = 14.000
-Prev.MouseButton1Down:connect(function()
-	Page1Frame.Visible = true
+Prev1.Name = "Prev1"
+Prev1.Parent = MainFrame
+Prev1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Prev1.Position = UDim2.new(-0.00584803894, 0, 0.340145528, 0)
+Prev1.Size = UDim2.new(0, 31, 0, 52)
+Prev1.Visible = false
+Prev1.Style = Enum.ButtonStyle.RobloxRoundButton
+Prev1.Font = Enum.Font.SourceSansLight
+Prev1.Text = "Prev"
+Prev1.TextColor3 = Color3.fromRGB(0, 0, 0)
+Prev1.TextSize = 14.000
+Prev1.MouseButton1Down:connect(function()
 	Page2Frame.Visible = false
+	Page1Frame.Visible = true
+	Next1.Visible = true
+	Prev1.Visible = false
+	Next2.Visible = false
 end)
+
+Next2.Name = "Next2"
+Next2.Parent = MainFrame
+Next2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Next2.Position = UDim2.new(0.908999979, 0, 0.36500001, 0)
+Next2.Size = UDim2.new(0, 31, 0, 52)
+Next2.Visible = false
+Next2.Style = Enum.ButtonStyle.RobloxRoundButton
+Next2.Font = Enum.Font.SourceSansLight
+Next2.Text = "Next"
+Next2.TextColor3 = Color3.fromRGB(0, 0, 0)
+Next2.TextSize = 14.000
+Next2.MouseButton1Down:connect(function()
+	Page3Frame.Visible = true
+	Page2Frame.Visible = false
+	Prev2.Visible = true
+	Next1.Visible = false
+	Next2.Visible = false
+	Prev1.Visible = false
+end)
+
+Prev2.Name = "Prev2"
+Prev2.Parent = MainFrame
+Prev2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Prev2.Position = UDim2.new(-0.00600000005, 0, 0.340000004, 0)
+Prev2.Size = UDim2.new(0, 31, 0, 52)
+Prev2.Visible = false
+Prev2.Style = Enum.ButtonStyle.RobloxRoundButton
+Prev2.Font = Enum.Font.SourceSansLight
+Prev2.Text = "Prev"
+Prev2.TextColor3 = Color3.fromRGB(0, 0, 0)
+Prev2.TextSize = 14.000
+Prev2.MouseButton1Down:connect(function()
+	Page3Frame.Visible = false
+	Page2Frame.Visible = true
+	Next2.Visible = true
+	Prev2.Visible = false
+	Prev1.Visible = true
+end)
+
+Page3Frame.Name = "Page3Frame"
+Page3Frame.Parent = MainFrame
+Page3Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
+Page3Frame.Position = UDim2.new(0.0860000029, 0, 0, 0)
+Page3Frame.Size = UDim2.new(0, 282, 0, 163)
+Page3Frame.Visible = false
+
+ComingSoon.Name = "ComingSoon"
+ComingSoon.Parent = Page3Frame
+ComingSoon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ComingSoon.BackgroundTransparency = 1.000
+ComingSoon.Position = UDim2.new(0.145390064, 0, 0.343558282, 0)
+ComingSoon.Size = UDim2.new(0, 200, 0, 50)
+ComingSoon.Font = Enum.Font.SourceSansLight
+ComingSoon.Text = "COMING SOON"
+ComingSoon.TextColor3 = Color3.fromRGB(255, 255, 255)
+ComingSoon.TextScaled = true
+ComingSoon.TextSize = 14.000
+ComingSoon.TextWrapped = true
 
 -- Scripts:
 
-local function NYSN_fake_script() -- ScreenGui.Script 
+local function GQMIKSU_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
 	frame = script.Parent.MainFrame
@@ -352,4 +450,4 @@ local function NYSN_fake_script() -- ScreenGui.Script
 	frame.Active = true
 	frame.Selectable = true
 end
-coroutine.wrap(NYSN_fake_script)()
+coroutine.wrap(GQMIKSU_fake_script)()
