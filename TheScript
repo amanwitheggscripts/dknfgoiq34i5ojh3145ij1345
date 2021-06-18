@@ -343,7 +343,7 @@ GodMode.MouseButton1Down:connect(function()
 			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
 			game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
 		end
-	until hum.Health == 0
+	until hum.Health ~= 0
 end)
 
 Next1.Name = "Next1"
