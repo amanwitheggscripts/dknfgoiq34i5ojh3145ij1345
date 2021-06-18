@@ -17,6 +17,8 @@ local Name = Instance.new("TextBox")
 local ToPlr = Instance.new("TextButton")
 local Page1 = Instance.new("TextLabel")
 local TextLabel = Instance.new("TextLabel")
+local RocketTarget = Instance.new("TextButton")
+local UnRocketTarget = Instance.new("TextButton")
 local Page2Frame = Instance.new("Frame")
 local Regen = Instance.new("TextButton")
 local TextLabel_2 = Instance.new("TextLabel")
@@ -258,6 +260,64 @@ TextLabel.Text = "Kill all players button"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 14.000
 
+RocketTarget.Name = "RocketTarget"
+RocketTarget.Parent = Page1Frame
+RocketTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RocketTarget.Position = UDim2.new(0.620567322, 0, 0.653028965, 0)
+RocketTarget.Size = UDim2.new(0, 95, 0, 31)
+RocketTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+RocketTarget.Font = Enum.Font.SourceSansLight
+RocketTarget.Text = "RocketTargetOn"
+RocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+RocketTarget.TextSize = 14.000
+RocketTarget.MouseButton1Down:connect(function()
+	local Target = Name.Text
+	_G.RocketTarget = true
+	local gearname7 = "RocketJumper"
+	
+	wait()
+	while _G.RocketTarget do
+		wait(0.1)
+		print "4"
+		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7) then
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7).Parent = game.Players.LocalPlayer.Character
+			print "1"
+		end
+print "2"
+	spawn(function()
+		while _G.RocketTarget do
+			print "3"
+			wait(0.1)
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(Target).Head.Position)
+		end
+		end)
+		end
+end)
+
+RocketTarget.MouseButton1Down:connect(function()
+	RocketTarget.Visible = false
+	UnRocketTarget.Visible = true
+end)
+
+UnRocketTarget.Name = "UnRocketTarget"
+UnRocketTarget.Parent = Page1Frame
+UnRocketTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnRocketTarget.Position = UDim2.new(0.620999992, 0, 0.652999997, 0)
+UnRocketTarget.Size = UDim2.new(0, 95, 0, 31)
+UnRocketTarget.Visible = false
+UnRocketTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+UnRocketTarget.Font = Enum.Font.SourceSans
+UnRocketTarget.Text = "RocketTargetOff"
+UnRocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnRocketTarget.TextSize = 14.000
+UnRocketTarget.MouseButton1Down:connect(function()
+	_G.RocketTarget = false
+end)
+UnRocketTarget.MouseButton1Down:connect(function()
+	RocketTarget.Visible = true
+	UnRocketTarget.Visible = false
+end)
+
 Page2Frame.Name = "Page2Frame"
 Page2Frame.Parent = MainFrame
 Page2Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
@@ -331,15 +391,15 @@ GodMode.MouseButton1Down:connect(function()
 		game:GetService("RunService").RenderStepped:wait()
 		game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
 	until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4)
-		
-		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
-			game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
-			wait(0.5)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
-			game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
-		end
+
+	if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
+		game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
+		game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
+		wait(0.5)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
+		game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
+		game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
+	end
 end)
 
 Next1.Name = "Next1"
@@ -440,7 +500,7 @@ ComingSoon.TextWrapped = true
 
 -- Scripts:
 
-local function GQMIKSU_fake_script() -- ScreenGui.Script 
+local function XRDLNXP_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
 	frame = script.Parent.MainFrame
@@ -448,4 +508,4 @@ local function GQMIKSU_fake_script() -- ScreenGui.Script
 	frame.Active = true
 	frame.Selectable = true
 end
-coroutine.wrap(GQMIKSU_fake_script)()
+coroutine.wrap(XRDLNXP_fake_script)()
