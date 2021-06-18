@@ -288,7 +288,7 @@ print "2"
 		while _G.RocketTarget do
 			print "3"
 			wait(0.1)
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(Target).Head.Position)
+			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Target).Head.Position)
 		end
 		end)
 		end
