@@ -35,7 +35,7 @@ local ComingSoon = Instance.new("TextLabel")
 
 --Properties:
 
-ScreenGui.Parent = game.Workspace
+ScreenGui.Parent = game.Players.LocalPLayer:WaitForChild("PlayerGui")
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
