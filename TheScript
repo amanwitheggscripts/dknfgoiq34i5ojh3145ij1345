@@ -291,7 +291,7 @@
 			spawn(function()
 				while _G.RocketTarget do
 					print "3"
-					wait(0.5)
+					wait(0.3)
 					game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Target).Head.Position)
 				end
 			end)
