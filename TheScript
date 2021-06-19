@@ -23,6 +23,9 @@ local Page2Frame = Instance.new("Frame")
 local Regen = Instance.new("TextButton")
 local TextLabel_2 = Instance.new("TextLabel")
 local GodMode = Instance.new("TextButton")
+local AntiAFK = Instance.new("TextButton")
+local Anchor = Instance.new("TextButton")
+local UnAnchor = Instance.new("TextButton")
 local Next1 = Instance.new("TextButton")
 local Prev1 = Instance.new("TextButton")
 local Next2 = Instance.new("TextButton")
@@ -32,7 +35,7 @@ local ComingSoon = Instance.new("TextLabel")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = game.Workspace
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
@@ -45,6 +48,7 @@ Page1Frame.Parent = MainFrame
 Page1Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
 Page1Frame.Position = UDim2.new(0.0861592889, 0, 0, 0)
 Page1Frame.Size = UDim2.new(0, 282, 0, 163)
+Page1Frame.Visible = false
 
 Title.Name = "Title"
 Title.Parent = Page1Frame
@@ -145,12 +149,12 @@ OFF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 OFF.LayoutOrder = 1
 OFF.Position = UDim2.new(-0.00709216297, 0, 0.793979943, 0)
 OFF.Size = UDim2.new(0, 32, 0, 31)
+OFF.Visible = false
 OFF.Style = Enum.ButtonStyle.RobloxRoundButton
 OFF.Font = Enum.Font.SourceSansLight
 OFF.Text = "Off"
 OFF.TextColor3 = Color3.fromRGB(0, 0, 0)
 OFF.TextSize = 14.000
-OFF.Visible = false
 OFF.MouseButton1Down:connect(function()
 	OFF.Visible = false
 	CBRING.Visible = true
@@ -274,7 +278,7 @@ RocketTarget.MouseButton1Down:connect(function()
 	local Target = Name.Text
 	_G.RocketTarget = true
 	local gearname7 = "RocketJumper"
-	
+
 	wait()
 	while _G.RocketTarget do
 		wait(0.3)
@@ -283,15 +287,15 @@ RocketTarget.MouseButton1Down:connect(function()
 			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7).Parent = game.Players.LocalPlayer.Character
 			print "1"
 		end
-print "2"
-	spawn(function()
-		while _G.RocketTarget do
-			print "3"
-			wait(0.3)
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Target).Head.Position)
-		end
+		print "2"
+		spawn(function()
+			while _G.RocketTarget do
+				print "3"
+				wait(0.3)
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Target).Head.Position)
+			end
 		end)
-		end
+	end
 end)
 
 RocketTarget.MouseButton1Down:connect(function()
@@ -323,7 +327,6 @@ Page2Frame.Parent = MainFrame
 Page2Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
 Page2Frame.Position = UDim2.new(0.0861592889, 0, 0, 0)
 Page2Frame.Size = UDim2.new(0, 282, 0, 163)
-Page2Frame.Visible = false
 
 Regen.Name = "Regen"
 Regen.Parent = Page2Frame
@@ -336,30 +339,25 @@ Regen.Text = "Regen"
 Regen.TextColor3 = Color3.fromRGB(0, 0, 0)
 Regen.TextSize = 14.000
 Regen.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.CharacterAdded:Connect(function(v)
 		local gearname2 = "TigerSkin"    
-
-		repeat
-			game:GetService("RunService").RenderStepped:wait()
-			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+	repeat
+		game:GetService("RunService").RenderStepped:wait()
+		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
 		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname2)
-
 		wait()
-
-		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
-		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-		mouse1click()
-		wait()
-		hum:UnequipTools()
-		while game.RunService.RenderStepped:wait() do
-			if hum and hum.Health <= 99 and hum.Health ~= 0 then
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("TigerSkin") then
-					hum:EquipTool(game.Players.LocalPlayer.Backpack.TigerSkin)
-					hum:UnequipTools()
-				end
+	game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
+	local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+	mouse1click()
+	wait()
+	hum:UnequipTools()
+	while game.RunService.RenderStepped:wait() do
+		if hum and hum.Health <= 99 and hum.Health ~= 0 then
+			if game.Players.LocalPlayer.Backpack:FindFirstChild("TigerSkin") then
+				hum:EquipTool(game.Players.LocalPlayer.Backpack.TigerSkin)
+				hum:UnequipTools()
 			end
 		end
-	end)
+	end
 end)
 
 TextLabel_2.Parent = Page2Frame
@@ -400,6 +398,62 @@ GodMode.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
 		game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
 	end
+end)
+
+AntiAFK.Name = "Anti-AFK"
+AntiAFK.Parent = Page2Frame
+AntiAFK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AntiAFK.Size = UDim2.new(0, 58, 0, 53)
+AntiAFK.Style = Enum.ButtonStyle.RobloxRoundButton
+AntiAFK.Font = Enum.Font.SourceSans
+AntiAFK.Text = "AntiAFK"
+AntiAFK.TextColor3 = Color3.fromRGB(0, 0, 0)
+AntiAFK.TextSize = 14.000
+AntiAFK.MouseButton1Down:connect(function()
+	local vu = game:GetService("VirtualUser")
+	game:GetService("Players").LocalPlayer.Idled:connect(function()
+		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		wait(1)
+		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	end)
+end)
+
+Anchor.Name = "Anchor"
+Anchor.Parent = Page2Frame
+Anchor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Anchor.Position = UDim2.new(0.787234068, 0, 0, 0)
+Anchor.Size = UDim2.new(0, 58, 0, 53)
+Anchor.Style = Enum.ButtonStyle.RobloxRoundButton
+Anchor.Font = Enum.Font.SourceSans
+Anchor.Text = "Anchor"
+Anchor.TextColor3 = Color3.fromRGB(0, 0, 0)
+Anchor.TextSize = 14.000
+Anchor.MouseButton1Down:connect(function()
+	_G.Anchor = true
+	game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = _G.Anchor
+end)
+Anchor.MouseButton1Down:connect(function()
+	Anchor.Visible = false
+	UnAnchor.Visible = true
+end)
+
+UnAnchor.Name = "UnAnchor"
+UnAnchor.Parent = Page2Frame
+UnAnchor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnAnchor.Position = UDim2.new(0.787234068, 0, 0, 0)
+UnAnchor.Size = UDim2.new(0, 58, 0, 53)
+UnAnchor.Visible = false
+UnAnchor.Style = Enum.ButtonStyle.RobloxRoundButton
+UnAnchor.Font = Enum.Font.SourceSans
+UnAnchor.Text = "UnAnchor"
+UnAnchor.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnAnchor.TextSize = 14.000
+UnAnchor.MouseButton1Down:connect(function()
+	_G.Anchor = false
+end)
+UnAnchor.MouseButton1Down:connect(function()
+	Anchor.Visible = true
+	UnAnchor.Visible = false
 end)
 
 Next1.Name = "Next1"
@@ -500,7 +554,7 @@ ComingSoon.TextWrapped = true
 
 -- Scripts:
 
-local function XRDLNXP_fake_script() -- ScreenGui.Script 
+local function ALYARRE_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
 	frame = script.Parent.MainFrame
@@ -508,4 +562,4 @@ local function XRDLNXP_fake_script() -- ScreenGui.Script
 	frame.Active = true
 	frame.Selectable = true
 end
-coroutine.wrap(XRDLNXP_fake_script)()
+coroutine.wrap(ALYARRE_fake_script)()
