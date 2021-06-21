@@ -253,7 +253,7 @@ ToPlr.MouseButton1Down:connect(function()
 	local PlayerName = Name.Text
 	local plr1 = game.Players.LocalPlayer.Character
 	local plr2 = game.Workspace:FindFirstChild(PlayerName)
-	plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(1,0,1)
+	plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
 end)
 
 Page1.Name = "Page 1"
