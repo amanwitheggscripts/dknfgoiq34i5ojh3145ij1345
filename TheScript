@@ -1,21 +1,6 @@
 -- Gui to Lua
 -- Version: 3.2
 
-game.StarterGui:SetCore("ChatMakeSystemMessage", {
-	Text = "Thank you for using my Gui\nNew Features added to Page 3!!";
-	Color = Color3.fromRGB(106,6,3); --Makes the message red, you can adjust this one
-	Font = Enum.Font.SourceSansBold; --Font that you like (to use arial do Enum.Font.Arial, etc...)
-	FontSize = Enum.FontSize.Size96;
-})
-
-local Block = Instance.new("Part", workspace)
-Block.Name = "PlatformBlock"
-Block.Position = Vector3.new(300000, 300000, 300000)
-Block.Size = Vector3.new(100, 3, 100)
-Block.BrickColor = BrickColor.Random()
-Block.CanCollide = true
-Block.Anchored = true
-
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -35,6 +20,8 @@ local Page1 = Instance.new("TextLabel")
 local TextLabel = Instance.new("TextLabel")
 local RocketTarget = Instance.new("TextButton")
 local UnRocketTarget = Instance.new("TextButton")
+local KillTarget = Instance.new("TextButton")
+local UnKillTarget = Instance.new("TextButton")
 local Page2Frame = Instance.new("Frame")
 local Regen = Instance.new("TextButton")
 local Page2 = Instance.new("TextLabel")
@@ -57,6 +44,8 @@ local Page3 = Instance.new("TextLabel")
 local InfiniteJump = Instance.new("TextButton")
 local Invis = Instance.new("TextButton")
 local TextLabel_2 = Instance.new("TextLabel")
+local AirWalk = Instance.new("TextButton")
+local UnAirWalk = Instance.new("TextButton")
 
 --Properties:
 
@@ -105,9 +94,11 @@ CBRING.TextColor3 = Color3.fromRGB(0, 0, 0)
 CBRING.TextSize = 14.000
 CBRING.MouseButton1Down:connect(function()
 	_G.Cbring = true
+	
+	game.Players.LocalPlayer.Backpack:FindFirstChild("BoneSword").Parent = game.Players.LocalPlayer.Character
 
 	while _G.Cbring == true do
-		wait()
+	    wait()
 		for i, v in pairs(game.Players:GetChildren()) do
 			if v ~= game.Players.LocalPlayer then
 				spawn(function()
@@ -190,6 +181,8 @@ OFF.MouseButton1Down:connect(function()
 	OFF.Visible = false
 	CBRING.Visible = true
 	_G.Cbring = false
+	local hum = game.Players.LocalPlayer.Character.Humanoid
+	hum:UnequipTools()
 end)
 
 UnRocket.Name = "UnRocket"
@@ -256,6 +249,14 @@ Name.PlaceholderText = "Input Name"
 Name.Text = ""
 Name.TextColor3 = Color3.fromRGB(0, 0, 0)
 Name.TextSize = 14.000
+Name:GetPropertyChangedSignal("Text"):Connect(function()
+	for i = 1, #game.Players:GetPlayers() do
+		if string.lower(string.sub(game.Players:GetPlayers()[i].Name, 1, string.len(Name.Text))) == string.lower(Name.Text) then
+			Target = game.Players:GetPlayers()[i].Name
+			break
+		end
+	end
+end)
 
 ToPlr.Name = "ToPlr"
 ToPlr.Parent = Page1Frame
@@ -268,7 +269,7 @@ ToPlr.Text = "ToPlr"
 ToPlr.TextColor3 = Color3.fromRGB(0, 0, 0)
 ToPlr.TextSize = 14.000
 ToPlr.MouseButton1Down:connect(function()
-	local PlayerName = Name.Text
+	local PlayerName = Target
 	local plr1 = game.Players.LocalPlayer.Character
 	local plr2 = game.Workspace:FindFirstChild(PlayerName)
 	plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
@@ -306,7 +307,7 @@ RocketTarget.Text = "RocketTargetOn"
 RocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
 RocketTarget.TextSize = 14.000
 RocketTarget.MouseButton1Down:connect(function()
-	local Target = Name.Text
+	local Player = Target
 	_G.RocketTarget = true
 	local gearname7 = "RocketJumper"
 
@@ -323,7 +324,7 @@ RocketTarget.MouseButton1Down:connect(function()
 			while _G.RocketTarget do
 				print "3"
 				wait(0.3)
-				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Target).Head.Position)
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).Head.Position)
 			end
 		end)
 	end
@@ -351,6 +352,61 @@ end)
 UnRocketTarget.MouseButton1Down:connect(function()
 	RocketTarget.Visible = true
 	UnRocketTarget.Visible = false
+end)
+
+KillTarget.Name = "KillTarget"
+KillTarget.Parent = Page1Frame
+KillTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KillTarget.Position = UDim2.new(0.329787254, 0, 0.343558252, 0)
+KillTarget.Size = UDim2.new(0, 95, 0, 40)
+KillTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+KillTarget.Font = Enum.Font.SourceSansLight
+KillTarget.Text = "KillTarget"
+KillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+KillTarget.TextSize = 14.000
+KillTarget.MouseButton1Down:connect(function()
+	_G.KillTarget = true
+
+	while _G.KillTarget == true do
+		wait()
+		for i, v in pairs(game.Players:GetChildren()) do
+			if v ~= game.Players.LocalPlayer and v.Name == Target then
+				spawn(function()
+					local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+					if Handle then
+						for i,c in pairs(v.Character:GetChildren()) do
+							if c:IsA("BasePart") then
+								c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+							end
+						end
+					end
+				end)
+			end
+		end
+	end
+end)
+KillTarget.MouseButton1Down:connect(function()
+	KillTarget.Visible = false
+	UnKillTarget.Visible = true
+end)
+
+UnKillTarget.Name = "UnKillTarget"
+UnKillTarget.Parent = Page1Frame
+UnKillTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnKillTarget.Position = UDim2.new(0.329787254, 0, 0.343558252, 0)
+UnKillTarget.Size = UDim2.new(0, 95, 0, 40)
+UnKillTarget.Visible = false
+UnKillTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+UnKillTarget.Font = Enum.Font.SourceSansLight
+UnKillTarget.Text = "UnKillTarget"
+UnKillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnKillTarget.TextSize = 14.000
+UnKillTarget.MouseButton1Down:connect(function()
+	_G.KillTarget = false
+end)
+UnKillTarget.MouseButton1Down:connect(function()
+	UnKillTarget.Visible = false
+	KillTarget.Visible = true
 end)
 
 Page2Frame.Name = "Page2Frame"
@@ -647,6 +703,7 @@ Page3Frame.Parent = MainFrame
 Page3Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
 Page3Frame.Position = UDim2.new(0.0860000029, 0, 0, 0)
 Page3Frame.Size = UDim2.new(0, 282, 0, 163)
+Page3Frame.Visible = false
 
 Page3.Name = "Page 3"
 Page3.Parent = Page3Frame
@@ -658,7 +715,6 @@ Page3.Font = Enum.Font.SourceSansItalic
 Page3.Text = "Page 3"
 Page3.TextColor3 = Color3.fromRGB(255, 255, 255)
 Page3.TextSize = 14.000
-Page3Frame.Visible = false
 
 InfiniteJump.Name = "InfiniteJump"
 InfiniteJump.Parent = Page3Frame
@@ -715,14 +771,96 @@ TextLabel_2.TextScaled = true
 TextLabel_2.TextSize = 14.000
 TextLabel_2.TextWrapped = true
 
+AirWalk.Name = "AirWalk"
+AirWalk.Parent = Page3Frame
+AirWalk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AirWalk.Position = UDim2.new(0.202127695, 0, 0, 0)
+AirWalk.Size = UDim2.new(0, 57, 0, 57)
+AirWalk.Style = Enum.ButtonStyle.RobloxRoundButton
+AirWalk.Font = Enum.Font.SourceSansLight
+AirWalk.Text = "AirWalk"
+AirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+AirWalk.TextSize = 14.000
+AirWalk.MouseButton1Down:connect(function()
+	mouse = game.Players.LocalPlayer:GetMouse()
+	_G.AirWalk = true
+
+
+	local WalkPart = Instance.new("Part", workspace)
+	WalkPart.Size = Vector3.new(7, 2, 3)
+	WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+	WalkPart.Transparency = 1
+	WalkPart.Anchored = true
+	WalkPart.Name = "Airwalk"
+
+
+	mouse.KeyDown:Connect(function(key)
+		if key == "2" then
+			WalkPart.Size = Vector3.new(4, -0.5, 3)
+		end
+	end)
+
+	mouse.KeyUp:Connect(function(key)
+		if key == "2" then
+			WalkPart.Size = Vector3.new(7, 2, 3)
+		end
+	end)
+
+	repeat
+		WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+		wait()
+	until _G.AirWalk == false
+	WalkPart:Destroy()
+end)
+AirWalk.MouseButton1Down:connect(function()
+	AirWalk.Visible = false
+	UnAirWalk.Visible = true
+end)
+
+UnAirWalk.Name = "UnAirWalk"
+UnAirWalk.Parent = Page3Frame
+UnAirWalk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnAirWalk.Position = UDim2.new(0.202127695, 0, 0, 0)
+UnAirWalk.Size = UDim2.new(0, 57, 0, 57)
+UnAirWalk.Visible = false
+UnAirWalk.Style = Enum.ButtonStyle.RobloxRoundButton
+UnAirWalk.Font = Enum.Font.SourceSansLight
+UnAirWalk.Text = "UnAirWalk"
+UnAirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnAirWalk.TextSize = 14.000
+UnAirWalk.MouseButton1Down:connect(function()
+	_G.AirWalk = false
+end)
+UnAirWalk.MouseButton1Down:connect(function()
+	UnAirWalk.Visible = false
+	AirWalk.Visible = true
+end)
+
 -- Scripts:
 
-local function WJWPIWE_fake_script() -- ScreenGui.Script 
+local function OGJXP_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
 	frame = script.Parent.DragFrame
 	frame.Draggable = true
 	frame.Active = true
 	frame.Selectable = true
+	
+	game.StarterGui:SetCore("ChatMakeSystemMessage", {
+		Text = "Thank you for using my Gui\nNew Features added to Page 3!!";
+		Color = Color3.fromRGB(106,6,3);
+		Font = Enum.Font.SourceSansBold;
+		FontSize = Enum.FontSize.Size96;
+	})
+	
+	local Block = Instance.new("Part", workspace)
+	Block.Name = "PlatformBlock"
+	Block.Position = Vector3.new(300000, 300000, 300000)
+	Block.Size = Vector3.new(100, 3, 100)
+	Block.BrickColor = BrickColor.Random()
+	Block.CanCollide = true
+	Block.Anchored = true
+	
+	
 end
-coroutine.wrap(WJWPIWE_fake_script)()
+coroutine.wrap(OGJXP_fake_script)()
