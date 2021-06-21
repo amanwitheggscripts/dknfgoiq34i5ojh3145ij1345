@@ -847,7 +847,7 @@ local function OGJXP_fake_script() -- ScreenGui.Script
 	frame.Selectable = true
 	
 	game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "Thank you for using my Gui\nNew Features added to Page 3!!";
+		Text = "Thank you for using my Gui\nAdded Kill single Target and AirWalk\nQuality of Life Changes\n Credits:\nAnonTheEggpert#9353 and Cielle";
 		Color = Color3.fromRGB(106,6,3);
 		Font = Enum.Font.SourceSansBold;
 		FontSize = Enum.FontSize.Size96;
