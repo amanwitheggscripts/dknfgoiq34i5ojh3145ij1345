@@ -1,6 +1,13 @@
 -- Gui to Lua
 -- Version: 3.2
 
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+	Text = "Thank you for using my Gui\nNew Features added to Page 3!!";
+	Color = Color3.fromRGB(106,6,3); --Makes the message red, you can adjust this one
+	Font = Enum.Font.SourceSansBold; --Font that you like (to use arial do Enum.Font.Arial, etc...)
+	FontSize = Enum.FontSize.Size96;
+})
+
 local Block = Instance.new("Part", workspace)
 Block.Name = "PlatformBlock"
 Block.Position = Vector3.new(300000, 300000, 300000)
@@ -12,6 +19,7 @@ Block.Anchored = true
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
+local DragFrame = Instance.new("Frame")
 local MainFrame = Instance.new("Frame")
 local Page1Frame = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
@@ -45,16 +53,25 @@ local Prev1 = Instance.new("TextButton")
 local Next2 = Instance.new("TextButton")
 local Prev2 = Instance.new("TextButton")
 local Page3Frame = Instance.new("Frame")
-local ComingSoon = Instance.new("TextLabel")
+local Page3 = Instance.new("TextLabel")
+local InfiniteJump = Instance.new("TextButton")
+local Invis = Instance.new("TextButton")
 
 --Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
+DragFrame.Name = "DragFrame"
+DragFrame.Parent = ScreenGui
+DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DragFrame.BackgroundTransparency = 1.000
+DragFrame.Position = UDim2.new(0.0364431441, 0, 0.687144518, 0)
+DragFrame.Size = UDim2.new(0, 377, 0, 212)
+
 MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
+MainFrame.Parent = DragFrame
 MainFrame.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
-MainFrame.Position = UDim2.new(0.0123906704, 0, 0.747072577, 0)
+MainFrame.Position = UDim2.new(0.0473273918, 0, 0.113333359, 0)
 MainFrame.Size = UDim2.new(0, 341, 0, 163)
 
 Page1Frame.Name = "Page1Frame"
@@ -629,29 +646,70 @@ Page3Frame.Parent = MainFrame
 Page3Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
 Page3Frame.Position = UDim2.new(0.0860000029, 0, 0, 0)
 Page3Frame.Size = UDim2.new(0, 282, 0, 163)
+
+Page3.Name = "Page 3"
+Page3.Parent = Page3Frame
+Page3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Page3.BackgroundTransparency = 1.000
+Page3.Position = UDim2.new(0.273049712, 0, 0.801993728, 0)
+Page3.Size = UDim2.new(0, 128, 0, 37)
+Page3.Font = Enum.Font.SourceSansItalic
+Page3.Text = "Page 3"
+Page3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Page3.TextSize = 14.000
 Page3Frame.Visible = false
 
-ComingSoon.Name = "ComingSoon"
-ComingSoon.Parent = Page3Frame
-ComingSoon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ComingSoon.BackgroundTransparency = 1.000
-ComingSoon.Position = UDim2.new(0.145390064, 0, 0.343558282, 0)
-ComingSoon.Size = UDim2.new(0, 200, 0, 50)
-ComingSoon.Font = Enum.Font.SourceSansLight
-ComingSoon.Text = "COMING SOON"
-ComingSoon.TextColor3 = Color3.fromRGB(255, 255, 255)
-ComingSoon.TextScaled = true
-ComingSoon.TextSize = 14.000
-ComingSoon.TextWrapped = true
+InfiniteJump.Name = "InfiniteJump"
+InfiniteJump.Parent = Page3Frame
+InfiniteJump.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+InfiniteJump.Size = UDim2.new(0, 57, 0, 57)
+InfiniteJump.Style = Enum.ButtonStyle.RobloxRoundButton
+InfiniteJump.Font = Enum.Font.SourceSansLight
+InfiniteJump.Text = "InfJump"
+InfiniteJump.TextColor3 = Color3.fromRGB(0, 0, 0)
+InfiniteJump.TextSize = 14.000
+InfiniteJump.MouseButton1Down:connect(function()
+	local function Jump()
+		_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+	end
+
+	game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+		if input.UserInputType == Enum.UserInputType.Keyboard then
+			if input.KeyCode == Enum.KeyCode.Space then
+				Jump()
+
+			end
+		end
+	end)
+end)
+
+Invis.Name = "Invis"
+Invis.Parent = Page3Frame
+Invis.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Invis.Position = UDim2.new(0.797872365, 0, 0, 0)
+Invis.Size = UDim2.new(0, 57, 0, 57)
+Invis.Style = Enum.ButtonStyle.RobloxRoundButton
+Invis.Font = Enum.Font.SourceSansLight
+Invis.Text = "Invis"
+Invis.TextColor3 = Color3.fromRGB(0, 0, 0)
+Invis.TextSize = 14.000
+Invis.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
+	local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+	wait(0.25)
+	mouse1click()
+	wait(8.03)
+	hum:UnequipTools()
+end)
 
 -- Scripts:
 
-local function TYVOP_fake_script() -- ScreenGui.Script 
+local function WJWPIWE_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
-	frame = script.Parent.MainFrame
+	frame = script.Parent.DragFrame
 	frame.Draggable = true
 	frame.Active = true
 	frame.Selectable = true
 end
-coroutine.wrap(TYVOP_fake_script)()
+coroutine.wrap(WJWPIWE_fake_script)()
