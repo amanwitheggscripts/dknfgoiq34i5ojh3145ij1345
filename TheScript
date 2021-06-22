@@ -862,7 +862,7 @@ ClickTP.MouseButton1Down:connect(function()
 	    wait()
 		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
 			if input.UserInputType == Enum.UserInputType.Keyboard then
-				if input.KeyCode == Enum.KeyCode.T then
+				if input.KeyCode == Enum.KeyCode.U then
 					if game.Players.LocalPlayer:GetMouse().Target then 
 						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
 					end 
@@ -918,7 +918,7 @@ T.BackgroundTransparency = 1.000
 T.Position = UDim2.new(0.439716309, 0, 0.361963183, 0)
 T.Size = UDim2.new(0, 33, 0, 27)
 T.Font = Enum.Font.SourceSansLight
-T.Text = "Press '\' to TP"
+T.Text = "Press 'U' to TP"
 T.TextColor3 = Color3.fromRGB(255, 255, 255)
 T.TextScaled = true
 T.TextSize = 14.000
