@@ -43,9 +43,15 @@ local Page3Frame = Instance.new("Frame")
 local Page3 = Instance.new("TextLabel")
 local InfiniteJump = Instance.new("TextButton")
 local Invis = Instance.new("TextButton")
-local TextLabel_2 = Instance.new("TextLabel")
+local Requires = Instance.new("TextLabel")
 local AirWalk = Instance.new("TextButton")
 local UnAirWalk = Instance.new("TextButton")
+local ClickTP = Instance.new("TextButton")
+local Crash = Instance.new("TextButton")
+local Patience = Instance.new("TextLabel")
+local T = Instance.new("TextLabel")
+local Control = Instance.new("TextLabel")
+local Untoggleable = Instance.new("TextLabel")
 
 --Properties:
 
@@ -94,11 +100,11 @@ CBRING.TextColor3 = Color3.fromRGB(0, 0, 0)
 CBRING.TextSize = 14.000
 CBRING.MouseButton1Down:connect(function()
 	_G.Cbring = true
-	
+
 	game.Players.LocalPlayer.Backpack:FindFirstChild("BoneSword").Parent = game.Players.LocalPlayer.Character
 
 	while _G.Cbring == true do
-	    wait()
+		wait()
 		for i, v in pairs(game.Players:GetChildren()) do
 			if v ~= game.Players.LocalPlayer then
 				spawn(function()
@@ -307,29 +313,29 @@ RocketTarget.Text = "RocketTargetOn"
 RocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
 RocketTarget.TextSize = 14.000
 RocketTarget.MouseButton1Down:connect(function()
-    if Target ~= "Zanonner" then
-	local Player = Target
-	_G.RocketTarget = true
-	local gearname7 = "RocketJumper"
+	if Target ~= "Zanonner" and Target ~= "Fallen_Vin" and Target ~= "Butter_2453" then
+		local Player = Target
+		_G.RocketTarget = true
+		local gearname7 = "RocketJumper"
 
-	wait()
-	while _G.RocketTarget do
-		wait(0.5)
-		print "4"
-		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7) then
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7).Parent = game.Players.LocalPlayer.Character
-			print "1"
-		end
-		print "2"
-		spawn(function()
-			while _G.RocketTarget do
-				print "3"
-				wait(0.3)
-				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).Head.Position)
+		wait()
+		while _G.RocketTarget do
+			wait(0.5)
+			print "4"
+			if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7) then
+				game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7).Parent = game.Players.LocalPlayer.Character
+				print "1"
 			end
-		end)
+			print "2"
+			spawn(function()
+				while _G.RocketTarget do
+					print "3"
+					wait(0.3)
+					game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).Head.Position)
+				end
+			end)
+		end
 	end
-end
 end)
 
 RocketTarget.MouseButton1Down:connect(function()
@@ -368,24 +374,24 @@ KillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
 KillTarget.TextSize = 14.000
 KillTarget.MouseButton1Down:connect(function()
 	_G.KillTarget = true
-if Target ~= "Zanonner" then
-	while _G.KillTarget == true do
-		wait()
-		for i, v in pairs(game.Players:GetChildren()) do
-			if v ~= game.Players.LocalPlayer and v.Name == Target then
-				spawn(function()
-					local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
-					if Handle then
-						for i,c in pairs(v.Character:GetChildren()) do
-							if c:IsA("BasePart") then
-								c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+	if Target ~= "Zanonner" and Target ~= "Fallen_Vin" and Target ~= "Butter_2453" then
+		while _G.KillTarget == true do
+			wait()
+			for i, v in pairs(game.Players:GetChildren()) do
+				if v ~= game.Players.LocalPlayer and v.Name == Target then
+					spawn(function()
+						local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+						if Handle then
+							for i,c in pairs(v.Character:GetChildren()) do
+								if c:IsA("BasePart") then
+									c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+								end
 							end
 						end
-					end
-				end)
+					end)
+				end
 			end
 		end
-	end
 	end
 end)
 KillTarget.MouseButton1Down:connect(function()
@@ -756,23 +762,24 @@ Invis.TextSize = 14.000
 Invis.MouseButton1Down:connect(function()
 	game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
 	local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-	wait(0.25)
+	wait(0.24)
 	mouse1click()
 	wait(8.03)
 	hum:UnequipTools()
 end)
 
-TextLabel_2.Parent = Page3Frame
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 1.000
-TextLabel_2.Position = UDim2.new(0.762411475, 0, 0.349693239, 0)
-TextLabel_2.Size = UDim2.new(0, 75, 0, 22)
-TextLabel_2.Font = Enum.Font.SourceSansLight
-TextLabel_2.Text = "Requires Invis Cape"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextScaled = true
-TextLabel_2.TextSize = 14.000
-TextLabel_2.TextWrapped = true
+Requires.Name = "Requires"
+Requires.Parent = Page3Frame
+Requires.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Requires.BackgroundTransparency = 1.000
+Requires.Position = UDim2.new(0.762411475, 0, 0.349693239, 0)
+Requires.Size = UDim2.new(0, 75, 0, 22)
+Requires.Font = Enum.Font.SourceSansLight
+Requires.Text = "Requires Invis Cape"
+Requires.TextColor3 = Color3.fromRGB(255, 255, 255)
+Requires.TextScaled = true
+Requires.TextSize = 14.000
+Requires.TextWrapped = true
 
 AirWalk.Name = "AirWalk"
 AirWalk.Parent = Page3Frame
@@ -839,9 +846,113 @@ UnAirWalk.MouseButton1Down:connect(function()
 	AirWalk.Visible = true
 end)
 
+ClickTP.Name = "ClickTP"
+ClickTP.Parent = Page3Frame
+ClickTP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ClickTP.Position = UDim2.new(0.40425536, 0, 0, 0)
+ClickTP.Size = UDim2.new(0, 57, 0, 57)
+ClickTP.Style = Enum.ButtonStyle.RobloxRoundButton
+ClickTP.Font = Enum.Font.SourceSansLight
+ClickTP.Text = "ClickTP"
+ClickTP.TextColor3 = Color3.fromRGB(0, 0, 0)
+ClickTP.TextSize = 14.000
+ClickTP.MouseButton1Down:connect(function()
+	_G.ClickTp = true
+	while _G.ClickTp do
+	    wait()
+		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+			if input.UserInputType == Enum.UserInputType.Keyboard then
+				if input.KeyCode == Enum.KeyCode.T then
+					if game.Players.LocalPlayer:GetMouse().Target then 
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
+					end 
+				end 
+			end
+		end)
+	end
+end)
+
+Crash.Name = "Crash"
+Crash.Parent = Page3Frame
+Crash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Crash.Position = UDim2.new(0.602836907, 0, 0, 0)
+Crash.Size = UDim2.new(0, 57, 0, 57)
+Crash.Style = Enum.ButtonStyle.RobloxRoundButton
+Crash.Font = Enum.Font.SourceSansLight
+Crash.Text = "Crash"
+Crash.TextColor3 = Color3.fromRGB(0, 0, 0)
+Crash.TextSize = 14.000
+Crash.MouseButton1Down:connect(function()
+	local hum = game.Players.LocalPlayer.Character.Humanoid
+
+	repeat
+		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+		game:GetService("RunService").RenderStepped:wait()
+	until game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow")
+
+	for i = 1, 5000 do
+		game:GetService("RunService").RenderStepped:wait()
+		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+		hum:UnequipTools()
+	end
+	game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+end)
+
+Patience.Name = "Patience"
+Patience.Parent = Page3Frame
+Patience.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Patience.BackgroundTransparency = 1.000
+Patience.Position = UDim2.new(0.613475204, 0, 0.346280515, 0)
+Patience.Size = UDim2.new(0, 51, 0, 34)
+Patience.Font = Enum.Font.SourceSansLight
+Patience.Text = "This Script takes a while be patient"
+Patience.TextColor3 = Color3.fromRGB(255, 255, 255)
+Patience.TextScaled = true
+Patience.TextSize = 14.000
+Patience.TextWrapped = true
+
+T.Name = "T"
+T.Parent = Page3Frame
+T.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+T.BackgroundTransparency = 1.000
+T.Position = UDim2.new(0.439716309, 0, 0.361963183, 0)
+T.Size = UDim2.new(0, 33, 0, 27)
+T.Font = Enum.Font.SourceSansLight
+T.Text = "Press 't' to TP"
+T.TextColor3 = Color3.fromRGB(255, 255, 255)
+T.TextScaled = true
+T.TextSize = 14.000
+T.TextWrapped = true
+
+Control.Name = "Control"
+Control.Parent = Page3Frame
+Control.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Control.BackgroundTransparency = 1.000
+Control.Position = UDim2.new(0.202127665, 0, 0.361963212, 0)
+Control.Size = UDim2.new(0, 57, 0, 20)
+Control.Font = Enum.Font.SourceSansLight
+Control.Text = "Press Ctrl to go down"
+Control.TextColor3 = Color3.fromRGB(255, 255, 255)
+Control.TextScaled = true
+Control.TextSize = 14.000
+Control.TextWrapped = true
+
+Untoggleable.Name = "Untoggleable"
+Untoggleable.Parent = Page3Frame
+Untoggleable.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Untoggleable.BackgroundTransparency = 1.000
+Untoggleable.Position = UDim2.new(0.0212765969, 0, 0.346280515, 0)
+Untoggleable.Size = UDim2.new(0, 45, 0, 30)
+Untoggleable.Font = Enum.Font.SourceSansLight
+Untoggleable.Text = "This is not untoggleable"
+Untoggleable.TextColor3 = Color3.fromRGB(255, 255, 255)
+Untoggleable.TextScaled = true
+Untoggleable.TextSize = 14.000
+Untoggleable.TextWrapped = true
+
 -- Scripts:
 
-local function OGJXP_fake_script() -- ScreenGui.Script 
+local function PBQDS_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
 	frame = script.Parent.DragFrame
@@ -850,7 +961,7 @@ local function OGJXP_fake_script() -- ScreenGui.Script
 	frame.Selectable = true
 	
 	game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "Thank you for using my Gui\nAdded Kill single Target and AirWalk\nQuality of Life Changes\n Credits:\nAnonTheEggpert#9353 and Cielle";
+		Text = "Thank you for using my Gui\nAdded:\nCrash Button and ClickTp\n Credits:\nAnonTheEggpert#9353 and Cielle";
 		Color = Color3.fromRGB(252,143,223);
 		Font = Enum.Font.SourceSansBold;
 		FontSize = Enum.FontSize.Size96;
@@ -866,4 +977,4 @@ local function OGJXP_fake_script() -- ScreenGui.Script
 	
 	
 end
-coroutine.wrap(OGJXP_fake_script)()
+coroutine.wrap(PBQDS_fake_script)()
