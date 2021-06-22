@@ -762,7 +762,7 @@ Invis.TextSize = 14.000
 Invis.MouseButton1Down:connect(function()
 	game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
 	local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-	wait(0.24)
+	wait(0.23)
 	mouse1click()
 	wait(8.03)
 	hum:UnequipTools()
@@ -918,7 +918,7 @@ T.BackgroundTransparency = 1.000
 T.Position = UDim2.new(0.439716309, 0, 0.361963183, 0)
 T.Size = UDim2.new(0, 33, 0, 27)
 T.Font = Enum.Font.SourceSansLight
-T.Text = "Press 't' to TP"
+T.Text = "Press '\' to TP"
 T.TextColor3 = Color3.fromRGB(255, 255, 255)
 T.TextScaled = true
 T.TextSize = 14.000
