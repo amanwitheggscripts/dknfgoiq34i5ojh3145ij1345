@@ -52,6 +52,9 @@ local Patience = Instance.new("TextLabel")
 local T = Instance.new("TextLabel")
 local Control = Instance.new("TextLabel")
 local Untoggleable = Instance.new("TextLabel")
+local UnClickTP = Instance.new("TextButton")
+local ToVoid = Instance.new("TextButton")
+local Reset = Instance.new("TextLabel")
 
 --Properties:
 
@@ -98,33 +101,6 @@ CBRING.Font = Enum.Font.SourceSansLight
 CBRING.Text = "On"
 CBRING.TextColor3 = Color3.fromRGB(0, 0, 0)
 CBRING.TextSize = 14.000
-CBRING.MouseButton1Down:connect(function()
-	_G.Cbring = true
-
-	game.Players.LocalPlayer.Backpack:FindFirstChild("BoneSword").Parent = game.Players.LocalPlayer.Character
-
-	while _G.Cbring == true do
-		wait()
-		for i, v in pairs(game.Players:GetChildren()) do
-			if v ~= game.Players.LocalPlayer then
-				spawn(function()
-					local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
-					if Handle then
-						for i,c in pairs(v.Character:GetChildren()) do
-							if c:IsA("BasePart") then
-								c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1, (game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
-							end
-						end
-					end
-				end)
-			end
-		end
-	end
-end)
-CBRING.MouseButton1Down:connect(function()
-	OFF.Visible = true
-	CBRING.Visible = false
-end)
 
 Rocket.Name = "Rocket"
 Rocket.Parent = Page1Frame
@@ -136,40 +112,6 @@ Rocket.Font = Enum.Font.SourceSansLight
 Rocket.Text = "Rocket"
 Rocket.TextColor3 = Color3.fromRGB(0, 0, 0)
 Rocket.TextSize = 14.000
-Rocket.MouseButton1Down:connect(function()
-	_G.Activate = true
-	local gearname1 = "RocketJumper"
-
-	wait()
-	spawn(function()
-		repeat 
-			game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
-			game:GetService("RunService").RenderStepped:wait()
-		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1)
-	end)
-
-	while _G.Activate do
-		wait(0.1)
-		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1) then
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1).Parent = game.Players.LocalPlayer.Character
-		end
-		spawn(function()
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
-			game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1040.6811523438, 205.67813110352, 92.01229095459),Vector3.new(-1038.3994140625, 283.61309814453, 90.832092285156))
-		end)
-	end
-end)
-Rocket.MouseButton1Down:connect(function()
-	UnRocket.Visible = true
-	Rocket.Visible = false
-end)
 
 OFF.Name = "OFF"
 OFF.Parent = Page1Frame
@@ -183,13 +125,6 @@ OFF.Font = Enum.Font.SourceSansLight
 OFF.Text = "Off"
 OFF.TextColor3 = Color3.fromRGB(0, 0, 0)
 OFF.TextSize = 14.000
-OFF.MouseButton1Down:connect(function()
-	OFF.Visible = false
-	CBRING.Visible = true
-	_G.Cbring = false
-	local hum = game.Players.LocalPlayer.Character.Humanoid
-	hum:UnequipTools()
-end)
 
 UnRocket.Name = "UnRocket"
 UnRocket.Parent = Page1Frame
@@ -202,11 +137,6 @@ UnRocket.Font = Enum.Font.SourceSansLight
 UnRocket.Text = "UnRocket"
 UnRocket.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnRocket.TextSize = 14.000
-UnRocket.MouseButton1Down:connect(function()
-	UnRocket.Visible = false
-	Rocket.Visible = true
-	_G.Activate = false
-end)
 
 GetGear.Name = "GetGear"
 GetGear.Parent = Page1Frame
@@ -218,18 +148,6 @@ GetGear.Font = Enum.Font.SourceSansLight
 GetGear.Text = "GetGear"
 GetGear.TextColor3 = Color3.fromRGB(0, 0, 0)
 GetGear.TextSize = 14.000
-GetGear.MouseButton1Down:connect(function()
-	_G.OpenBlocks = true
-
-	while _G.OpenBlocks == true do
-		wait()
-		game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
-		game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
-		game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
-		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
-		game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
-	end
-end)
 
 TP.Name = "TP"
 TP.Parent = Page1Frame
@@ -241,9 +159,6 @@ TP.Font = Enum.Font.SourceSansLight
 TP.Text = "ToMid"
 TP.TextColor3 = Color3.fromRGB(0, 0, 0)
 TP.TextSize = 14.000
-TP.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
-end)
 
 Name.Name = "Name"
 Name.Parent = Page1Frame
@@ -255,14 +170,6 @@ Name.PlaceholderText = "Input Name"
 Name.Text = ""
 Name.TextColor3 = Color3.fromRGB(0, 0, 0)
 Name.TextSize = 14.000
-Name:GetPropertyChangedSignal("Text"):Connect(function()
-	for i = 1, #game.Players:GetPlayers() do
-		if string.lower(string.sub(game.Players:GetPlayers()[i].Name, 1, string.len(Name.Text))) == string.lower(Name.Text) then
-			Target = game.Players:GetPlayers()[i].Name
-			break
-		end
-	end
-end)
 
 ToPlr.Name = "ToPlr"
 ToPlr.Parent = Page1Frame
@@ -274,12 +181,6 @@ ToPlr.Font = Enum.Font.SourceSansLight
 ToPlr.Text = "ToPlr"
 ToPlr.TextColor3 = Color3.fromRGB(0, 0, 0)
 ToPlr.TextSize = 14.000
-ToPlr.MouseButton1Down:connect(function()
-	local PlayerName = Target
-	local plr1 = game.Players.LocalPlayer.Character
-	local plr2 = game.Workspace:FindFirstChild(PlayerName)
-	plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
-end)
 
 Page1.Name = "Page 1"
 Page1.Parent = Page1Frame
@@ -312,36 +213,6 @@ RocketTarget.Font = Enum.Font.SourceSansLight
 RocketTarget.Text = "RocketTargetOn"
 RocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
 RocketTarget.TextSize = 14.000
-RocketTarget.MouseButton1Down:connect(function()
-	if Target ~= "Zanonner" and Target ~= "Fallen_Vin" and Target ~= "Butter_2453" then
-		local Player = Target
-		_G.RocketTarget = true
-		local gearname7 = "RocketJumper"
-
-		wait()
-		while _G.RocketTarget do
-			wait(0.5)
-			print "4"
-			if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7) then
-				game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7).Parent = game.Players.LocalPlayer.Character
-				print "1"
-			end
-			print "2"
-			spawn(function()
-				while _G.RocketTarget do
-					print "3"
-					wait(0.3)
-					game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).Head.Position)
-				end
-			end)
-		end
-	end
-end)
-
-RocketTarget.MouseButton1Down:connect(function()
-	RocketTarget.Visible = false
-	UnRocketTarget.Visible = true
-end)
 
 UnRocketTarget.Name = "UnRocketTarget"
 UnRocketTarget.Parent = Page1Frame
@@ -354,13 +225,6 @@ UnRocketTarget.Font = Enum.Font.SourceSans
 UnRocketTarget.Text = "RocketTargetOff"
 UnRocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnRocketTarget.TextSize = 14.000
-UnRocketTarget.MouseButton1Down:connect(function()
-	_G.RocketTarget = false
-end)
-UnRocketTarget.MouseButton1Down:connect(function()
-	RocketTarget.Visible = true
-	UnRocketTarget.Visible = false
-end)
 
 KillTarget.Name = "KillTarget"
 KillTarget.Parent = Page1Frame
@@ -372,32 +236,6 @@ KillTarget.Font = Enum.Font.SourceSansLight
 KillTarget.Text = "KillTarget"
 KillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
 KillTarget.TextSize = 14.000
-KillTarget.MouseButton1Down:connect(function()
-	_G.KillTarget = true
-	if Target ~= "Zanonner" and Target ~= "Fallen_Vin" and Target ~= "Butter_2453" then
-		while _G.KillTarget == true do
-			wait()
-			for i, v in pairs(game.Players:GetChildren()) do
-				if v ~= game.Players.LocalPlayer and v.Name == Target then
-					spawn(function()
-						local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
-						if Handle then
-							for i,c in pairs(v.Character:GetChildren()) do
-								if c:IsA("BasePart") then
-									c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
-								end
-							end
-						end
-					end)
-				end
-			end
-		end
-	end
-end)
-KillTarget.MouseButton1Down:connect(function()
-	KillTarget.Visible = false
-	UnKillTarget.Visible = true
-end)
 
 UnKillTarget.Name = "UnKillTarget"
 UnKillTarget.Parent = Page1Frame
@@ -410,13 +248,6 @@ UnKillTarget.Font = Enum.Font.SourceSansLight
 UnKillTarget.Text = "UnKillTarget"
 UnKillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnKillTarget.TextSize = 14.000
-UnKillTarget.MouseButton1Down:connect(function()
-	_G.KillTarget = false
-end)
-UnKillTarget.MouseButton1Down:connect(function()
-	UnKillTarget.Visible = false
-	KillTarget.Visible = true
-end)
 
 Page2Frame.Name = "Page2Frame"
 Page2Frame.Parent = MainFrame
@@ -435,27 +266,6 @@ Regen.Font = Enum.Font.SourceSansLight
 Regen.Text = "Regen"
 Regen.TextColor3 = Color3.fromRGB(0, 0, 0)
 Regen.TextSize = 14.000
-Regen.MouseButton1Down:connect(function()
-	local gearname2 = "TigerSkin"    
-	repeat
-		game:GetService("RunService").RenderStepped:wait()
-		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
-	until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname2)
-	wait()
-	game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
-	local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-	mouse1click()
-	wait()
-	hum:UnequipTools()
-	while game.RunService.RenderStepped:wait() do
-		if hum and hum.Health <= 99 and hum.Health ~= 0 then
-			if game.Players.LocalPlayer.Backpack:FindFirstChild("TigerSkin") then
-				hum:EquipTool(game.Players.LocalPlayer.Backpack.TigerSkin)
-				hum:UnequipTools()
-			end
-		end
-	end
-end)
 
 Page2.Name = "Page2"
 Page2.Parent = Page2Frame
@@ -478,25 +288,6 @@ GodMode.Font = Enum.Font.SourceSansLight
 GodMode.Text = "GodMode"
 GodMode.TextColor3 = Color3.fromRGB(0, 0, 0)
 GodMode.TextSize = 14.000
-GodMode.MouseButton1Down:connect(function()
-	local gearname3 = "LockonLauncher"
-	local gearname4 = "ChartreusePeriastron"
-	local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-
-	repeat
-		game:GetService("RunService").RenderStepped:wait()
-		game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
-	until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4)
-
-	if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
-		game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
-		game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
-		wait(0.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
-		game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
-		game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
-	end
-end)
 
 AntiAFK.Name = "Anti-AFK"
 AntiAFK.Parent = Page2Frame
@@ -507,14 +298,6 @@ AntiAFK.Font = Enum.Font.SourceSans
 AntiAFK.Text = "AntiAFK"
 AntiAFK.TextColor3 = Color3.fromRGB(0, 0, 0)
 AntiAFK.TextSize = 14.000
-AntiAFK.MouseButton1Down:connect(function()
-	local vu = game:GetService("VirtualUser")
-	game:GetService("Players").LocalPlayer.Idled:connect(function()
-		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-		wait(1)
-		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	end)
-end)
 
 Anchor.Name = "Anchor"
 Anchor.Parent = Page2Frame
@@ -526,13 +309,6 @@ Anchor.Font = Enum.Font.SourceSans
 Anchor.Text = "Anchor"
 Anchor.TextColor3 = Color3.fromRGB(0, 0, 0)
 Anchor.TextSize = 14.000
-Anchor.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-end)
-Anchor.MouseButton1Down:connect(function()
-	Anchor.Visible = false
-	UnAnchor.Visible = true
-end)
 
 UnAnchor.Name = "UnAnchor"
 UnAnchor.Parent = Page2Frame
@@ -545,13 +321,6 @@ UnAnchor.Font = Enum.Font.SourceSans
 UnAnchor.Text = "UnAnchor"
 UnAnchor.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnAnchor.TextSize = 14.000
-UnAnchor.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-end)
-UnAnchor.MouseButton1Down:connect(function()
-	Anchor.Visible = true
-	UnAnchor.Visible = false
-end)
 
 Speed.Name = "Speed"
 Speed.Parent = Page2Frame
@@ -563,9 +332,6 @@ Speed.Font = Enum.Font.SourceSansLight
 Speed.Text = "WalkSpeed"
 Speed.TextColor3 = Color3.fromRGB(0, 0, 0)
 Speed.TextSize = 14.000
-Speed.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed.Text
-end)
 
 Jump.Name = "Jump"
 Jump.Parent = Page2Frame
@@ -577,9 +343,6 @@ Jump.Font = Enum.Font.SourceSansLight
 Jump.Text = "JumpHeight"
 Jump.TextColor3 = Color3.fromRGB(0, 0, 0)
 Jump.TextSize = 14.000
-Jump.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.Character.Humanoid.JumpPower = JumpHeight.Text
-end)
 
 Info.Name = "Info"
 Info.Parent = Page2Frame
@@ -627,9 +390,6 @@ SafeSpot.Font = Enum.Font.SourceSans
 SafeSpot.Text = "SafeSpot"
 SafeSpot.TextColor3 = Color3.fromRGB(0, 0, 0)
 SafeSpot.TextSize = 14.000
-SafeSpot.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
-end)
 
 Next1.Name = "Next1"
 Next1.Parent = MainFrame
@@ -641,13 +401,6 @@ Next1.Font = Enum.Font.SourceSansLight
 Next1.Text = "Next"
 Next1.TextColor3 = Color3.fromRGB(0, 0, 0)
 Next1.TextSize = 14.000
-Next1.MouseButton1Down:connect(function()
-	Page2Frame.Visible = true
-	Page1Frame.Visible = false
-	Prev1.Visible = true
-	Next1.Visible = false
-	Next2.Visible = true
-end)
 
 Prev1.Name = "Prev1"
 Prev1.Parent = MainFrame
@@ -660,13 +413,6 @@ Prev1.Font = Enum.Font.SourceSansLight
 Prev1.Text = "Prev"
 Prev1.TextColor3 = Color3.fromRGB(0, 0, 0)
 Prev1.TextSize = 14.000
-Prev1.MouseButton1Down:connect(function()
-	Page2Frame.Visible = false
-	Page1Frame.Visible = true
-	Next1.Visible = true
-	Prev1.Visible = false
-	Next2.Visible = false
-end)
 
 Next2.Name = "Next2"
 Next2.Parent = MainFrame
@@ -679,14 +425,6 @@ Next2.Font = Enum.Font.SourceSansLight
 Next2.Text = "Next"
 Next2.TextColor3 = Color3.fromRGB(0, 0, 0)
 Next2.TextSize = 14.000
-Next2.MouseButton1Down:connect(function()
-	Page3Frame.Visible = true
-	Page2Frame.Visible = false
-	Prev2.Visible = true
-	Next1.Visible = false
-	Next2.Visible = false
-	Prev1.Visible = false
-end)
 
 Prev2.Name = "Prev2"
 Prev2.Parent = MainFrame
@@ -699,13 +437,6 @@ Prev2.Font = Enum.Font.SourceSansLight
 Prev2.Text = "Prev"
 Prev2.TextColor3 = Color3.fromRGB(0, 0, 0)
 Prev2.TextSize = 14.000
-Prev2.MouseButton1Down:connect(function()
-	Page3Frame.Visible = false
-	Page2Frame.Visible = true
-	Next2.Visible = true
-	Prev2.Visible = false
-	Prev1.Visible = true
-end)
 
 Page3Frame.Name = "Page3Frame"
 Page3Frame.Parent = MainFrame
@@ -734,20 +465,6 @@ InfiniteJump.Font = Enum.Font.SourceSansLight
 InfiniteJump.Text = "InfJump"
 InfiniteJump.TextColor3 = Color3.fromRGB(0, 0, 0)
 InfiniteJump.TextSize = 14.000
-InfiniteJump.MouseButton1Down:connect(function()
-	local function Jump()
-		_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-	end
-
-	game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-		if input.UserInputType == Enum.UserInputType.Keyboard then
-			if input.KeyCode == Enum.KeyCode.Space then
-				Jump()
-
-			end
-		end
-	end)
-end)
 
 Invis.Name = "Invis"
 Invis.Parent = Page3Frame
@@ -759,14 +476,6 @@ Invis.Font = Enum.Font.SourceSansLight
 Invis.Text = "Invis"
 Invis.TextColor3 = Color3.fromRGB(0, 0, 0)
 Invis.TextSize = 14.000
-Invis.MouseButton1Down:connect(function()
-	game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
-	local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-	wait(0.23)
-	mouse1click()
-	wait(8.03)
-	hum:UnequipTools()
-end)
 
 Requires.Name = "Requires"
 Requires.Parent = Page3Frame
@@ -791,41 +500,6 @@ AirWalk.Font = Enum.Font.SourceSansLight
 AirWalk.Text = "AirWalk"
 AirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
 AirWalk.TextSize = 14.000
-AirWalk.MouseButton1Down:connect(function()
-	mouse = game.Players.LocalPlayer:GetMouse()
-	_G.AirWalk = true
-
-
-	local WalkPart = Instance.new("Part", workspace)
-	WalkPart.Size = Vector3.new(7, 2, 3)
-	WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
-	WalkPart.Transparency = 1
-	WalkPart.Anchored = true
-	WalkPart.Name = "Airwalk"
-
-
-	mouse.KeyDown:Connect(function(key)
-		if key == "2" then
-			WalkPart.Size = Vector3.new(4, -0.5, 3)
-		end
-	end)
-
-	mouse.KeyUp:Connect(function(key)
-		if key == "2" then
-			WalkPart.Size = Vector3.new(7, 2, 3)
-		end
-	end)
-
-	repeat
-		WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
-		wait()
-	until _G.AirWalk == false
-	WalkPart:Destroy()
-end)
-AirWalk.MouseButton1Down:connect(function()
-	AirWalk.Visible = false
-	UnAirWalk.Visible = true
-end)
 
 UnAirWalk.Name = "UnAirWalk"
 UnAirWalk.Parent = Page3Frame
@@ -838,13 +512,6 @@ UnAirWalk.Font = Enum.Font.SourceSansLight
 UnAirWalk.Text = "UnAirWalk"
 UnAirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnAirWalk.TextSize = 14.000
-UnAirWalk.MouseButton1Down:connect(function()
-	_G.AirWalk = false
-end)
-UnAirWalk.MouseButton1Down:connect(function()
-	UnAirWalk.Visible = false
-	AirWalk.Visible = true
-end)
 
 ClickTP.Name = "ClickTP"
 ClickTP.Parent = Page3Frame
@@ -856,21 +523,6 @@ ClickTP.Font = Enum.Font.SourceSansLight
 ClickTP.Text = "ClickTP"
 ClickTP.TextColor3 = Color3.fromRGB(0, 0, 0)
 ClickTP.TextSize = 14.000
-ClickTP.MouseButton1Down:connect(function()
-	_G.ClickTp = true
-	while _G.ClickTp do
-	    wait()
-		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-			if input.UserInputType == Enum.UserInputType.Keyboard then
-				if input.KeyCode == Enum.KeyCode.U then
-					if game.Players.LocalPlayer:GetMouse().Target then 
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
-					end 
-				end 
-			end
-		end)
-	end
-end)
 
 Crash.Name = "Crash"
 Crash.Parent = Page3Frame
@@ -882,43 +534,6 @@ Crash.Font = Enum.Font.SourceSansLight
 Crash.Text = "Crash"
 Crash.TextColor3 = Color3.fromRGB(0, 0, 0)
 Crash.TextSize = 14.000
-Crash.MouseButton1Down:connect(function()
-	local hum = game.Players.LocalPlayer.Character.Humanoid
-	local Timer = 50
-	local Crash = 0
-
-	repeat
-		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
-		game:GetService("RunService").RenderStepped:wait()
-	until game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow")
-	
-		game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "The Server will crash in 1 minute and 30 Seconds";
-		Color = Color3.fromRGB(94,176,0);
-		Font = Enum.Font.SourceSansBold;
-		FontSize = Enum.FontSize.Size96;
-	})
-
-	for i = 1, 5020 do
-		game:GetService("RunService").RenderStepped:wait()
-		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
-		hum:UnequipTools()
-	end
-	game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
-	
-    while Timer > Crash  do
-    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("In " .. (Timer) .. " Seconds this server will crash", "All")
-    Timer = Timer - 5
-    wait(5)
-    end
-    wait(3)
-    	game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "Server Crashed";
-		Color = Color3.fromRGB(176,0,0);
-		Font = Enum.Font.SourceSansBold;
-		FontSize = Enum.FontSize.Size96;
-	})
-end)
 
 Patience.Name = "Patience"
 Patience.Parent = Page3Frame
@@ -940,7 +555,7 @@ T.BackgroundTransparency = 1.000
 T.Position = UDim2.new(0.439716309, 0, 0.361963183, 0)
 T.Size = UDim2.new(0, 33, 0, 27)
 T.Font = Enum.Font.SourceSansLight
-T.Text = "Press 'U' to TP"
+T.Text = "Press 't' to TP"
 T.TextColor3 = Color3.fromRGB(255, 255, 255)
 T.TextScaled = true
 T.TextSize = 14.000
@@ -972,9 +587,45 @@ Untoggleable.TextScaled = true
 Untoggleable.TextSize = 14.000
 Untoggleable.TextWrapped = true
 
+UnClickTP.Name = "UnClickTP"
+UnClickTP.Parent = Page3Frame
+UnClickTP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnClickTP.Position = UDim2.new(0.40425536, 0, 0, 0)
+UnClickTP.Size = UDim2.new(0, 57, 0, 57)
+UnClickTP.Visible = false
+UnClickTP.Style = Enum.ButtonStyle.RobloxRoundButton
+UnClickTP.Font = Enum.Font.SourceSansLight
+UnClickTP.Text = "UnClickTP"
+UnClickTP.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnClickTP.TextSize = 14.000
+
+ToVoid.Name = "ToVoid"
+ToVoid.Parent = Page3Frame
+ToVoid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ToVoid.Position = UDim2.new(0, 0, 0.527607381, 0)
+ToVoid.Size = UDim2.new(0, 57, 0, 57)
+ToVoid.Style = Enum.ButtonStyle.RobloxRoundButton
+ToVoid.Font = Enum.Font.SourceSansLight
+ToVoid.Text = "ToVoid"
+ToVoid.TextColor3 = Color3.fromRGB(0, 0, 0)
+ToVoid.TextSize = 14.000
+
+Reset.Name = "Reset"
+Reset.Parent = Page3Frame
+Reset.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Reset.BackgroundTransparency = 1.000
+Reset.Position = UDim2.new(0.0212766007, 0, 0.824808121, 0)
+Reset.Size = UDim2.new(0, 46, 0, 29)
+Reset.Font = Enum.Font.SourceSansLight
+Reset.Text = "Reset to go back to map"
+Reset.TextColor3 = Color3.fromRGB(255, 255, 255)
+Reset.TextScaled = true
+Reset.TextSize = 14.000
+Reset.TextWrapped = true
+
 -- Scripts:
 
-local function PBQDS_fake_script() -- ScreenGui.Script 
+local function JEFFGR_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
 	frame = script.Parent.DragFrame
@@ -982,13 +633,15 @@ local function PBQDS_fake_script() -- ScreenGui.Script
 	frame.Active = true
 	frame.Selectable = true
 	
+	--startmessage
 	game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "Thank you for using my Gui\nAdded:\nCrash Button and ClickTp\n Credits:\nAnonTheEggpert#9353 and Cielle";
+		Text = "Thank you for using my Gui\nAdded:\nCrash Button, ToVoid, and ClickTp\n Credits:\nAnonTheEggpert#9353 and Cielle";
 		Color = Color3.fromRGB(252,143,223);
 		Font = Enum.Font.SourceSansBold;
 		FontSize = Enum.FontSize.Size96;
 	})
 	
+	--block
 	local Block = Instance.new("Part", workspace)
 	Block.Name = "PlatformBlock"
 	Block.Position = Vector3.new(300000, 300000, 300000)
@@ -997,6 +650,460 @@ local function PBQDS_fake_script() -- ScreenGui.Script
 	Block.CanCollide = true
 	Block.Anchored = true
 	
+	--cbring
+	CBRING.MouseButton1Down:connect(function()
+		_G.Cbring = true
 	
+		game.Players.LocalPlayer.Backpack:FindFirstChild("BoneSword").Parent = game.Players.LocalPlayer.Character
+	
+		while _G.Cbring == true do
+			wait()
+			for i, v in pairs(game.Players:GetChildren()) do
+				if v ~= game.Players.LocalPlayer then
+					spawn(function()
+						local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+						if Handle then
+							for i,c in pairs(v.Character:GetChildren()) do
+								if c:IsA("BasePart") then
+									c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1, (game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+								end
+							end
+						end
+					end)
+				end
+			end
+		end
+	end)
+	CBRING.MouseButton1Down:connect(function()
+		OFF.Visible = true
+		CBRING.Visible = false
+	end)
+	
+	--rocket
+	Rocket.MouseButton1Down:connect(function()
+		_G.Activate = true
+		local gearname1 = "RocketJumper"
+	
+		wait()
+		spawn(function()
+			repeat 
+				game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+				game:GetService("RunService").RenderStepped:wait()
+			until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1)
+		end)
+	
+		while _G.Activate do
+			wait(0.1)
+			if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1) then
+				game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1).Parent = game.Players.LocalPlayer.Character
+			end
+			spawn(function()
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
+				game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1040.6811523438, 205.67813110352, 92.01229095459),Vector3.new(-1038.3994140625, 283.61309814453, 90.832092285156))
+			end)
+		end
+	end)
+	Rocket.MouseButton1Down:connect(function()
+		UnRocket.Visible = true
+		Rocket.Visible = false
+	end)
+	
+	--uncbring
+	OFF.MouseButton1Down:connect(function()
+		OFF.Visible = false
+		CBRING.Visible = true
+		_G.Cbring = false
+		local hum = game.Players.LocalPlayer.Character.Humanoid
+		hum:UnequipTools()
+	end)
+	
+	--unrocket
+	UnRocket.MouseButton1Down:connect(function()
+		UnRocket.Visible = false
+		Rocket.Visible = true
+		_G.Activate = false
+	end)
+	
+	--getgear
+	GetGear.MouseButton1Down:connect(function()
+		_G.OpenBlocks = true
+	
+		while _G.OpenBlocks == true do
+			wait()
+			game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+			game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
+			game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
+			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+			game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+		end
+	end)
+	
+	--TPtomid
+	TP.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
+	end)
+	
+	--name
+	Name:GetPropertyChangedSignal("Text"):Connect(function()
+		for i = 1, #game.Players:GetPlayers() do
+			if string.lower(string.sub(game.Players:GetPlayers()[i].Name, 1, string.len(Name.Text))) == string.lower(Name.Text) then
+				Target = game.Players:GetPlayers()[i].Name
+				break
+			end
+		end
+	end)
+	
+	--toplr
+	ToPlr.MouseButton1Down:connect(function()
+		local PlayerName = Target
+		local plr1 = game.Players.LocalPlayer.Character
+		local plr2 = game.Workspace:FindFirstChild(PlayerName)
+		plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
+	end)
+	
+	--rockettarget
+	RocketTarget.MouseButton1Down:connect(function()
+		if Target ~= "Zanonner" and Target ~= "Fallen_Vin" and Target ~= "Butter_2453" then
+			local Player = Target
+			_G.RocketTarget = true
+			local gearname7 = "RocketJumper"
+	
+			wait()
+			while _G.RocketTarget do
+				wait(0.5)
+				print "4"
+				if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7) then
+					game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7).Parent = game.Players.LocalPlayer.Character
+					print "1"
+				end
+				print "2"
+				spawn(function()
+					while _G.RocketTarget do
+						print "3"
+						wait(0.3)
+						game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).Head.Position)
+					end
+				end)
+			end
+		end
+	end)
+	
+	RocketTarget.MouseButton1Down:connect(function()
+		RocketTarget.Visible = false
+		UnRocketTarget.Visible = true
+	end)
+	
+	--unrockettarget
+	UnRocketTarget.MouseButton1Down:connect(function()
+		_G.RocketTarget = false
+	end)
+	UnRocketTarget.MouseButton1Down:connect(function()
+		RocketTarget.Visible = true
+		UnRocketTarget.Visible = false
+	end)
+	
+	--killtarget
+	KillTarget.MouseButton1Down:connect(function()
+		_G.KillTarget = true
+		if Target ~= "Zanonner" and Target ~= "Fallen_Vin" and Target ~= "Butter_2453" then
+			while _G.KillTarget == true do
+				wait()
+				for i, v in pairs(game.Players:GetChildren()) do
+					if v ~= game.Players.LocalPlayer and v.Name == Target then
+						spawn(function()
+							local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+							if Handle then
+								for i,c in pairs(v.Character:GetChildren()) do
+									if c:IsA("BasePart") then
+										c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+									end
+								end
+							end
+						end)
+					end
+				end
+			end
+		end
+	end)
+	KillTarget.MouseButton1Down:connect(function()
+		KillTarget.Visible = false
+		UnKillTarget.Visible = true
+	end)
+	
+	--unkilltarget
+	UnKillTarget.MouseButton1Down:connect(function()
+		_G.KillTarget = false
+	end)
+	UnKillTarget.MouseButton1Down:connect(function()
+		UnKillTarget.Visible = false
+		KillTarget.Visible = true
+	end)
+	
+	--regen
+	Regen.MouseButton1Down:connect(function()
+		local gearname2 = "TigerSkin"    
+		repeat
+			game:GetService("RunService").RenderStepped:wait()
+			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname2)
+		wait()
+		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
+		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+		mouse1click()
+		wait()
+		hum:UnequipTools()
+		while game.RunService.RenderStepped:wait() do
+			if hum and hum.Health <= 99 and hum.Health ~= 0 then
+				if game.Players.LocalPlayer.Backpack:FindFirstChild("TigerSkin") then
+					hum:EquipTool(game.Players.LocalPlayer.Backpack.TigerSkin)
+					hum:UnequipTools()
+				end
+			end
+		end
+	end)
+	
+	--godmode
+	GodMode.MouseButton1Down:connect(function()
+		local gearname3 = "LockonLauncher"
+		local gearname4 = "ChartreusePeriastron"
+		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+	
+		repeat
+			game:GetService("RunService").RenderStepped:wait()
+			game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4)
+	
+		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
+			game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
+			wait(0.5)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
+			game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
+		end
+	end)
+	
+	--antiafk
+	AntiAFK.MouseButton1Down:connect(function()
+		local vu = game:GetService("VirtualUser")
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+			vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			wait(1)
+			vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		end)
+	end)
+	
+	--anchor
+	Anchor.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+	end)
+	Anchor.MouseButton1Down:connect(function()
+		Anchor.Visible = false
+		UnAnchor.Visible = true
+	end)
+	
+	--unanchor
+	UnAnchor.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+	end)
+	UnAnchor.MouseButton1Down:connect(function()
+		Anchor.Visible = true
+		UnAnchor.Visible = false
+	end)
+	
+	--speed
+	Speed.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed.Text
+	end)
+	
+	--jump
+	Jump.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = JumpHeight.Text
+	end)
+	
+	--safespot
+	SafeSpot.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
+	end)
+	
+	--next1
+	Next1.MouseButton1Down:connect(function()
+		Page2Frame.Visible = true
+		Page1Frame.Visible = false
+		Prev1.Visible = true
+		Next1.Visible = false
+		Next2.Visible = true
+	end)
+	
+	--prev1
+	Prev1.MouseButton1Down:connect(function()
+		Page2Frame.Visible = false
+		Page1Frame.Visible = true
+		Next1.Visible = true
+		Prev1.Visible = false
+		Next2.Visible = false
+	end)
+	
+	--next2
+	Next2.MouseButton1Down:connect(function()
+		Page3Frame.Visible = true
+		Page2Frame.Visible = false
+		Prev2.Visible = true
+		Next1.Visible = false
+		Next2.Visible = false
+		Prev1.Visible = false
+	end)
+	
+	--prev2
+	Prev2.MouseButton1Down:connect(function()
+		Page3Frame.Visible = false
+		Page2Frame.Visible = true
+		Next2.Visible = true
+		Prev2.Visible = false
+		Prev1.Visible = true
+	end)
+	
+	--infjump
+	InfiniteJump.MouseButton1Down:connect(function()
+		local function Jump()
+			_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+		end
+	
+		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+			if input.UserInputType == Enum.UserInputType.Keyboard then
+				if input.KeyCode == Enum.KeyCode.Space then
+					Jump()
+	
+				end
+			end
+		end)
+	end)
+	
+	--invis
+	Invis.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
+		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+		wait(0.23)
+		mouse1click()
+		wait(8.03)
+		hum:UnequipTools()
+	end)
+	
+	--airwalk
+	AirWalk.MouseButton1Down:connect(function()
+		mouse = game.Players.LocalPlayer:GetMouse()
+		_G.AirWalk = true
+	
+	
+		local WalkPart = Instance.new("Part", workspace)
+		WalkPart.Size = Vector3.new(7, 2, 3)
+		WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+		WalkPart.Transparency = 1
+		WalkPart.Anchored = true
+		WalkPart.Name = "Airwalk"
+	
+	
+		mouse.KeyDown:Connect(function(key)
+			if key == "2" then
+				WalkPart.Size = Vector3.new(4, -0.5, 3)
+			end
+		end)
+	
+		mouse.KeyUp:Connect(function(key)
+			if key == "2" then
+				WalkPart.Size = Vector3.new(7, 2, 3)
+			end
+		end)
+	
+		repeat
+			WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+			wait()
+		until _G.AirWalk == false
+		WalkPart:Destroy()
+	end)
+	AirWalk.MouseButton1Down:connect(function()
+		AirWalk.Visible = false
+		UnAirWalk.Visible = true
+	end)
+	
+	--unairwalk
+	UnAirWalk.MouseButton1Down:connect(function()
+		_G.AirWalk = false
+	end)
+	UnAirWalk.MouseButton1Down:connect(function()
+		UnAirWalk.Visible = false
+		AirWalk.Visible = true
+	end)
+	
+	--Clicktp
+	ClickTP.MouseButton1Down:connect(function()
+		_G.ClickTp = true
+		while _G.ClickTp do
+			wait()
+			game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+				if input.UserInputType == Enum.UserInputType.Keyboard then
+					if input.KeyCode == Enum.KeyCode.U then
+						if game.Players.LocalPlayer:GetMouse().Target then 
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
+						end 
+					end 
+				end
+			end)
+		end
+	end)
+	
+	--Crash
+	Crash.MouseButton1Down:connect(function()
+		local hum = game.Players.LocalPlayer.Character.Humanoid
+		local Timer = 50
+		local Crash = 0
+	
+		repeat
+			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+			game:GetService("RunService").RenderStepped:wait()
+		until game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow")
+	
+		game.StarterGui:SetCore("ChatMakeSystemMessage", {
+			Text = "The Server will crash in 1 minute and 30 Seconds";
+			Color = Color3.fromRGB(94,176,0);
+			Font = Enum.Font.SourceSansBold;
+			FontSize = Enum.FontSize.Size96;
+		})
+	
+		for i = 1, 5020 do
+			game:GetService("RunService").RenderStepped:wait()
+			game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+			hum:UnequipTools()
+		end
+		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+	
+		while Timer > Crash  do
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("In " .. (Timer) .. " Seconds this server will crash", "All")
+			Timer = Timer - 5
+			wait(5)
+		end
+		wait(3)
+		game.StarterGui:SetCore("ChatMakeSystemMessage", {
+			Text = "Server Crashed";
+			Color = Color3.fromRGB(176,0,0);
+			Font = Enum.Font.SourceSansBold;
+			FontSize = Enum.FontSize.Size96;
+		})
+	end)
+	
+	--antirocketspot
+	ToVoid.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
+		wait()
+		game.Players.LocalPlayer.Character.Torso.Anchored = true
+	end)
 end
-coroutine.wrap(PBQDS_fake_script)()
+
+coroutine.wrap(JEFFGR_fake_script)()
