@@ -52,9 +52,9 @@ local Patience = Instance.new("TextLabel")
 local T = Instance.new("TextLabel")
 local Control = Instance.new("TextLabel")
 local Untoggleable = Instance.new("TextLabel")
-local UnClickTP = Instance.new("TextButton")
 local ToVoid = Instance.new("TextButton")
 local Reset = Instance.new("TextLabel")
+local UnToVoid = Instance.new("TextButton")
 
 --Properties:
 
@@ -587,18 +587,6 @@ Untoggleable.TextScaled = true
 Untoggleable.TextSize = 14.000
 Untoggleable.TextWrapped = true
 
-UnClickTP.Name = "UnClickTP"
-UnClickTP.Parent = Page3Frame
-UnClickTP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnClickTP.Position = UDim2.new(0.40425536, 0, 0, 0)
-UnClickTP.Size = UDim2.new(0, 57, 0, 57)
-UnClickTP.Visible = false
-UnClickTP.Style = Enum.ButtonStyle.RobloxRoundButton
-UnClickTP.Font = Enum.Font.SourceSansLight
-UnClickTP.Text = "UnClickTP"
-UnClickTP.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnClickTP.TextSize = 14.000
-
 ToVoid.Name = "ToVoid"
 ToVoid.Parent = Page3Frame
 ToVoid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -623,9 +611,21 @@ Reset.TextScaled = true
 Reset.TextSize = 14.000
 Reset.TextWrapped = true
 
+UnToVoid.Name = "UnToVoid"
+UnToVoid.Parent = Page3Frame
+UnToVoid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnToVoid.Position = UDim2.new(0, 0, 0.527607381, 0)
+UnToVoid.Size = UDim2.new(0, 57, 0, 57)
+UnToVoid.Visible = false
+UnToVoid.Style = Enum.ButtonStyle.RobloxRoundButton
+UnToVoid.Font = Enum.Font.SourceSansLight
+UnToVoid.Text = "UnToVoid"
+UnToVoid.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnToVoid.TextSize = 14.000
+
 -- Scripts:
 
-local function JEFFGR_fake_script() -- ScreenGui.Script 
+local function NCPPZFP_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
 	frame = script.Parent.DragFrame
@@ -653,9 +653,7 @@ local function JEFFGR_fake_script() -- ScreenGui.Script
 	--cbring
 	CBRING.MouseButton1Down:connect(function()
 		_G.Cbring = true
-	
-		game.Players.LocalPlayer.Backpack:FindFirstChild("BoneSword").Parent = game.Players.LocalPlayer.Character
-	
+		
 		while _G.Cbring == true do
 			wait()
 			for i, v in pairs(game.Players:GetChildren()) do
@@ -693,7 +691,7 @@ local function JEFFGR_fake_script() -- ScreenGui.Script
 		end)
 	
 		while _G.Activate do
-			wait(0.1)
+			wait()
 			if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1) then
 				game.Players.LocalPlayer.Backpack:FindFirstChild(gearname1).Parent = game.Players.LocalPlayer.Character
 			end
@@ -720,8 +718,6 @@ local function JEFFGR_fake_script() -- ScreenGui.Script
 		OFF.Visible = false
 		CBRING.Visible = true
 		_G.Cbring = false
-		local hum = game.Players.LocalPlayer.Character.Humanoid
-		hum:UnequipTools()
 	end)
 	
 	--unrocket
@@ -786,14 +782,13 @@ local function JEFFGR_fake_script() -- ScreenGui.Script
 				print "2"
 				spawn(function()
 					while _G.RocketTarget do
-						print "3"
-						wait(0.3)
-						game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).Head.Position)
-					end
-				end)
+						    wait(0.1)
+						    game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).HumanoidRootPart.Position)
+					    end
+				    end)
+				end
 			end
-		end
-	end)
+		end)
 	
 	RocketTarget.MouseButton1Down:connect(function()
 		RocketTarget.Visible = false
@@ -1098,12 +1093,25 @@ local function JEFFGR_fake_script() -- ScreenGui.Script
 		})
 	end)
 	
-	--antirocketspot
+	--ToVoid
 	ToVoid.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.Torso.Anchored = false
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
-		wait()
-		game.Players.LocalPlayer.Character.Torso.Anchored = true
+		wait(0.1)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+	end)
+	ToVoid.MouseButton1Down:connect(function()
+		ToVoid.Visible = false
+		UnToVoid.Visible = true
+	end)
+	
+	--untovoid
+	UnToVoid.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+	end)
+	UnToVoid.MouseButton1Down:connect(function()
+		UnToVoid.Visible = false
+		ToVoid.Visible = true
 	end)
 end
-
-coroutine.wrap(JEFFGR_fake_script)()
+coroutine.wrap(NCPPZFP_fake_script)()
