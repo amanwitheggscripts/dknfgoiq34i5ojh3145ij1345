@@ -635,7 +635,7 @@ local function NCPPZFP_fake_script() -- ScreenGui.Script
 	
 	--startmessage
 	game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "Thank you for using my Gui\nAdded:\nCrash Button, ToVoid, and ClickTp\n Credits:\nAnonTheEggpert#9353 and Cielle";
+		Text = "Thank you for using my Gui\nAdded:\nImprovements To rockettarget\n Credits:\nAnonTheEggpert#9353 and Cielle";
 		Color = Color3.fromRGB(252,143,223);
 		Font = Enum.Font.SourceSansBold;
 		FontSize = Enum.FontSize.Size96;
@@ -767,28 +767,19 @@ local function NCPPZFP_fake_script() -- ScreenGui.Script
 	--rockettarget
 	RocketTarget.MouseButton1Down:connect(function()
 		if Target ~= "Zanonner" and Target ~= "Fallen_Vin" and Target ~= "Butter_2453" then
-			local Player = Target
 			_G.RocketTarget = true
-			local gearname7 = "RocketJumper"
 	
 			wait()
 			while _G.RocketTarget do
-				wait(0.5)
-				print "4"
-				if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7) then
-					game.Players.LocalPlayer.Backpack:FindFirstChild(gearname7).Parent = game.Players.LocalPlayer.Character
-					print "1"
+			    if game.Players:FindFirstChild(Target) then
+			    game.RunService.RenderStepped:wait()
+			    if game.Players:FindFirstChild(Target).Character.Humanoid.Health >= 1 then
+				    game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Target).Head.Position)
 				end
-				print "2"
-				spawn(function()
-					while _G.RocketTarget do
-						    wait(0.1)
-						    game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(Player).HumanoidRootPart.Position)
-					    end
-				    end)
-				end
-			end
-		end)
+		    end
+		end
+    end
+end)
 	
 	RocketTarget.MouseButton1Down:connect(function()
 		RocketTarget.Visible = false
@@ -1039,6 +1030,12 @@ local function NCPPZFP_fake_script() -- ScreenGui.Script
 	
 	--Clicktp
 	ClickTP.MouseButton1Down:connect(function()
+		game.StarterGui:SetCore("ChatMakeSystemMessage", {
+		Text = "Press 'U' to TP";
+		Color = Color3.fromRGB(3,185,146);
+		Font = Enum.Font.SourceSansBold;
+		FontSize = Enum.FontSize.Size96;
+	})
 		_G.ClickTp = true
 		while _G.ClickTp do
 			wait()
@@ -1098,7 +1095,7 @@ local function NCPPZFP_fake_script() -- ScreenGui.Script
 		game.Players.LocalPlayer.Character.Torso.Anchored = false
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
 		wait(0.1)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+		game.Players.LocalPlayer.Character.Torso.Anchored = true
 	end)
 	ToVoid.MouseButton1Down:connect(function()
 		ToVoid.Visible = false
@@ -1107,7 +1104,7 @@ local function NCPPZFP_fake_script() -- ScreenGui.Script
 	
 	--untovoid
 	UnToVoid.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+		game.Players.LocalPlayer.Character.Torso.Anchored = false
 	end)
 	UnToVoid.MouseButton1Down:connect(function()
 		UnToVoid.Visible = false
