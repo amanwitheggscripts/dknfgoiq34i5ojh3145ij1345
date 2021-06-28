@@ -719,7 +719,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	--startmessage
 	game.StarterGui:SetCore("ChatMakeSystemMessage", {
 		Text = "Thank you for using my Gui\nAdded:\nInsert/Remove Target Buttons, Joins, Hitlist(not customizeable) And DeleteMe\n Credits:\nAnonTheEggpert#9353 and Cielle";
-		Color = Color3.fromRGB(0,143,223);
+		Color = Color3.fromRGB(255,143,223);
 		Font = Enum.Font.SourceSansBold;
 		FontSize = Enum.FontSize.Size96;
 	})
