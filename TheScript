@@ -684,13 +684,13 @@ CharacterRemove.Font = Enum.Font.SourceSansLight
 CharacterRemove.Text = "DeleteMe"
 CharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
 CharacterRemove.TextSize = 14.000
+CharacterRemove.Visible = false
 
 UnCharacterRemove.Name = "UnCharacterRemove"
 UnCharacterRemove.Parent = Page3Frame
 UnCharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 UnCharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
 UnCharacterRemove.Size = UDim2.new(0, 57, 0, 57)
-UnCharacterRemove.Visible = false
 UnCharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
 UnCharacterRemove.Font = Enum.Font.SourceSansLight
 UnCharacterRemove.Text = "Reset"
@@ -701,6 +701,8 @@ UnCharacterRemove.TextSize = 14.000
 
 local function ZYMEQHH_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
+	
+	game.Players.LocalPlayer.Character:Remove()
 	
 	--previoustable
 	local previous = {}
@@ -1308,6 +1310,6 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	end)
 	
 	--Hitlist
-	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791}
+	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791"}
 end
 coroutine.wrap(ZYMEQHH_fake_script)()
