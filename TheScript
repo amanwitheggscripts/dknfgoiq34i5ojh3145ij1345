@@ -734,7 +734,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	Block.Anchored = true
 	
 	--cbring
-	CBRING.MouseButton1Down:connect(function()
+	--[[CBRING.MouseButton1Down:connect(function()
 		_G.Cbring = true
 	
 		while _G.Cbring == true do
@@ -754,7 +754,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 				end
 			end
 		end
-	end)
+	end)]]--
 	CBRING.MouseButton1Down:connect(function()
 		OFF.Visible = true
 		CBRING.Visible = false
@@ -877,7 +877,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	end)
 	
 	--killtarget
-	KillTarget.MouseButton1Down:connect(function()
+	--[[KillTarget.MouseButton1Down:connect(function()
 		_G.KillTarget = true
 		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin"then
 			while _G.KillTarget == true do
@@ -898,7 +898,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 				end
 			end
 		end
-	end)
+	end)]]--
 	KillTarget.MouseButton1Down:connect(function()
 		KillTarget.Visible = false
 		UnKillTarget.Visible = true
