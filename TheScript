@@ -59,6 +59,8 @@ local Reset = Instance.new("TextLabel")
 local UnToVoid = Instance.new("TextButton")
 local KillHits = Instance.new("TextButton")
 local UnKillHits = Instance.new("TextButton")
+local CharacterRemove = Instance.new("TextButton")
+local UnCharacterRemove = Instance.new("TextButton")
 
 --Properties:
 
@@ -672,15 +674,36 @@ UnKillHits.Text = "UnKillHits"
 UnKillHits.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnKillHits.TextSize = 14.000
 
+CharacterRemove.Name = "CharacterRemove"
+CharacterRemove.Parent = Page3Frame
+CharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
+CharacterRemove.Size = UDim2.new(0, 57, 0, 57)
+CharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
+CharacterRemove.Font = Enum.Font.SourceSansLight
+CharacterRemove.Text = "DeleteMe"
+CharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
+CharacterRemove.TextSize = 14.000
+
+UnCharacterRemove.Name = "UnCharacterRemove"
+UnCharacterRemove.Parent = Page3Frame
+UnCharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnCharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
+UnCharacterRemove.Size = UDim2.new(0, 57, 0, 57)
+UnCharacterRemove.Visible = false
+UnCharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
+UnCharacterRemove.Font = Enum.Font.SourceSansLight
+UnCharacterRemove.Text = "Reset"
+UnCharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnCharacterRemove.TextSize = 14.000
+
 -- Scripts:
 
-local function WIJTW_fake_script() -- ScreenGui.Script 
+local function ZYMEQHH_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
-
-	--chgear
-    --[[game:GetService("ReplicatedStorage").Remotes.ToggleAsset:InvokeServer(169602103)
-    game:GetService("ReplicatedStorage").Remotes.ToggleAsset:InvokeServer(68539623)
-    game:GetService("ReplicatedStorage").Remotes.ToggleAsset:InvokeServer(95951291)]]--
+	
+	--previoustable
+	local previous = {}
 	
 	--targetsTable
 	local Targets = {}
@@ -693,7 +716,7 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 	
 	--startmessage
 	game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "Thank you for using my Gui\nAdded:\nInsert/Remove Target Buttons, Joins, and Hitlist(not customizeable)\n Credits:\nAnonTheEggpert#9353 and Cielle";
+		Text = "Thank you for using my Gui\nAdded:\nInsert/Remove Target Buttons, Joins, Hitlist(not customizeable) And DeleteMe\n Credits:\nAnonTheEggpert#9353 and Cielle";
 		Color = Color3.fromRGB(252,143,223);
 		Font = Enum.Font.SourceSansBold;
 		FontSize = Enum.FontSize.Size96;
@@ -713,7 +736,7 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 		_G.Cbring = true
 	
 		while _G.Cbring == true do
-            game:GetService("RunService").RenderStepped:wait()
+			game:GetService("RunService").RenderStepped:wait()
 			for i, v in pairs(game.Players:GetChildren()) do
 				if v ~= game.Players.LocalPlayer then
 					spawn(function()
@@ -739,22 +762,22 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 	Rocket.MouseButton1Down:connect(function()
 		_G.Activate = true
 	
-			repeat 
-				game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
-				game:GetService("RunService").RenderStepped:wait()
-			until game.Players.LocalPlayer.Backpack:FindFirstChild("RocketJumper")
+		repeat 
+			game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+			game:GetService("RunService").RenderStepped:wait()
+		until game.Players.LocalPlayer.Backpack:FindFirstChild("RocketJumper")
 	
 		while _G.Activate do
 			game:GetService("RunService").RenderStepped:wait()
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
-				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1040.6811523438, 205.67813110352, 92.01229095459),Vector3.new(-1038.3994140625, 283.61309814453, 90.832092285156))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1040.6811523438, 205.67813110352, 92.01229095459),Vector3.new(-1038.3994140625, 283.61309814453, 90.832092285156))
 		end
 	end)
 	Rocket.MouseButton1Down:connect(function()
@@ -818,16 +841,16 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" then
 			_G.RocketTarget = true
 	
-	    while _G.RocketTarget do
-    	game:GetService("RunService").RenderStepped:wait()
-			for i,v in pairs(game.Players:GetChildren()) do
-				if table.find(Targets, v.Name) then
+			while _G.RocketTarget do
+				game:GetService("RunService").RenderStepped:wait()
+				for i,v in pairs(game.Players:GetChildren()) do
+					if table.find(Targets, v.Name) then
 						if game.Players:FindFirstChild(v.Name) then
-						pcall(function()
-						if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-							game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(v.Name).Torso.Position)
-						end
-                        end)
+							pcall(function()
+								if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
+									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(v.Name).Torso.Position)
+								end
+							end)
 						end
 					end
 				end
@@ -835,7 +858,7 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 		end
 	end)
 	
-
+	
 	
 	RocketTarget.MouseButton1Down:connect(function()
 		RocketTarget.Visible = false
@@ -856,7 +879,7 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 		_G.KillTarget = true
 		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin"then
 			while _G.KillTarget == true do
-			    game:GetService("RunService").RenderStepped:wait()
+				game:GetService("RunService").RenderStepped:wait()
 				for i,v in pairs(game.Players:GetChildren()) do
 					if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer then
 						spawn(function()
@@ -1162,8 +1185,8 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 	LockTarget.MouseButton1Down:connect(function()
 		table.insert(Targets, Target)
 		for i, val in pairs(Targets) do
-        print(val)
-        end
+			print(val)
+		end
 	end)
 	
 	--RemoveTarget
@@ -1171,8 +1194,8 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 		local thingy = table.find(Targets, Target)
 		table.remove(Targets, thingy)
 		for i, val in pairs(Targets) do
-        print(val)
-        end
+			print(val)
+		end
 	end)
 	
 	--printjoins 
@@ -1198,23 +1221,23 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 	
 	--KillHits
 	KillHits.MouseButton1Down:connect(function()
-    _G.KillHits = true
-    
-    game.Players.PlayerAdded:Connect(function(hit)
-        while _G.KillHits do
-        game:GetService("RunService").RenderStepped:wait()
-            if table.find(Hitlist, hit.Name) then
-                    if game.Players:FindFirstChild(hit.Name) then
-                        pcall(function()
-                        if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
-                            game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(hit.Name).Head.Position)
-                        end
-                    end)
-                end
-            end
-        end
-    end)
-    end)
+		_G.KillHits = true
+	
+		game.Players.PlayerAdded:Connect(function(hit)
+			while _G.KillHits do
+				game:GetService("RunService").RenderStepped:wait()
+				if table.find(Hitlist, hit.Name) then
+					if game.Players:FindFirstChild(hit.Name) then
+						pcall(function()
+							if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
+								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(hit.Name).Head.Position)
+							end
+						end)
+					end
+				end
+			end
+		end)
+	end)
 	KillHits.MouseButton1Down:connect(function()
 		KillHits.Visible = false
 		UnKillHits.Visible = true
@@ -1228,10 +1251,73 @@ local function WIJTW_fake_script() -- ScreenGui.Script
 		UnKillHits.Visible = false
 		KillHits.Visible = true
 	end)
-        
-    --anticrash
+	
+	--anticrash
+	local CrashGear = {"DragonCompanion", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
+	for i,v in pairs(game.Players:GetChildren()) do
+		for i,gear in pairs(CrashGear) do
+			if v.Backpack:FindFirstChild(gear) then
+				print "2"
+				game.StarterGui:SetCore("ChatMakeSystemMessage", {
+					Text = v.Name .. " Has A Crash Gear";
+					Color = Color3.fromRGB(0,0,0);
+					Font = Enum.Font.SourceSansBold;
+					FontSize = Enum.FontSize.Size96;
+				})
+				while true do
+					game:GetService("RunService").RenderStepped:wait()
+					pcall(function()
+						for i,v in pairs(game.Players:GetChildren()) do
+							for i,gear in pairs(CrashGear) do
+								if v.Backpack:FindFirstChild(gear) then
+									if game.Players:FindFirstChild(v.Name) then
+										if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
+											game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(v.Name).Torso.Position)
+										end
+									end
+								end
+							end
+						end
+					end)
+				end
+			end
+		end
+	end
+	
+	--Characterremove
+	CharacterRemove.MouseButton1Down:connect(function()
+        local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		table.insert(previous, Position)
+		game.Players.LocalPlayer.Character:Remove()
+	end)
+	CharacterRemove.MouseButton1Down:connect(function()
+		UnCharacterRemove.Visible = true
+		CharacterRemove.Visible = false
+	end)
+	
+	--UnCharacterremove
+	UnCharacterRemove.MouseButton1Down:connect(function()
+		game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
+		wait(0.5)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(previous[1])
+		table.remove(previous, 1)
+	end)
+	UnCharacterRemove.MouseButton1Down:connect(function()
+		UnCharacterRemove.Visible = false
+		CharacterRemove.Visible = true
+	end)
+	
+	--removebasewalls
+	    while true do 
+        wait()
+        for i, v in pairs(workspace:GetDescendants()) do
+                if v.Name == "ForceField" then
+                    v:Destroy()
+                end
+        end
+    end
 	
 	--Hitlist
-	 Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav"}
+	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav"}
 end
-coroutine.wrap(WIJTW_fake_script)()
+coroutine.wrap(ZYMEQHH_fake_script)()
