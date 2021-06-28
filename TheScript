@@ -1307,16 +1307,6 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 		CharacterRemove.Visible = true
 	end)
 	
-	--removebasewalls
-	    while true do 
-        wait()
-        for i, v in pairs(workspace:GetDescendants()) do
-                if v.Name == "ForceField" then
-                    v:Destroy()
-                end
-        end
-    end
-	
 	--Hitlist
 	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav"}
 end
