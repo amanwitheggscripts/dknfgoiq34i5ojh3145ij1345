@@ -1255,6 +1255,8 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	end)
 	
 	--anticrash
+	AntiCrash.MouseButton1Down:connect(function()
+	_G.AntiCrash = true
 	local CrashGear = {"DragonCompanion", "SillyGuitar", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
 	for i,v in pairs(game.Players:GetChildren()) do
 		for i,gear in pairs(CrashGear) do
@@ -1266,7 +1268,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 					Font = Enum.Font.SourceSansBold;
 					FontSize = Enum.FontSize.Size96;
 				})
-				while true do
+				while _G.AntiCrash do
 					game:GetService("RunService").RenderStepped:wait()
 					pcall(function()
 						for i,v in pairs(game.Players:GetChildren()) do
@@ -1285,6 +1287,20 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 			end
 		end
 	end
+	end)
+	AntiCrash.MouseButton1Down:connect(function()
+	    AntiCrash.Visible = false
+	    UnAntiCrash.Visible = true
+	end)
+	
+	--unanticrash
+	UnAntiCrash.MouseButton1Down:connect(function()
+	    _G.AntiCrash = false
+	end)
+	UnAntiCrash.MouseButton1Down:connect(function()
+	    UnAntiCrash.Visible = false
+	    AntiCrash.Visible = true
+	end)
 	
 	--Characterremove
 	CharacterRemove.MouseButton1Down:connect(function()
