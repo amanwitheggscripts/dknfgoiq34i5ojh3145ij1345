@@ -1255,7 +1255,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	end)
 	
 	--anticrash
-	local CrashGear = {"DragonCompanion", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
+	local CrashGear = {"DragonCompanion", "SillyGuitar", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
 	for i,v in pairs(game.Players:GetChildren()) do
 		for i,gear in pairs(CrashGear) do
 			if v.Backpack:FindFirstChild(gear) then
