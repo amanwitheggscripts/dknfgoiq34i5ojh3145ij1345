@@ -754,7 +754,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 				end
 			end
 		end
-	end)]]--
+	end)
 	CBRING.MouseButton1Down:connect(function()
 		OFF.Visible = true
 		CBRING.Visible = false
@@ -818,7 +818,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	--TPtomid
 	TP.MouseButton1Down:connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
-	end)
+	end)]]--
 	
 	--name
 	Name:GetPropertyChangedSignal("Text"):Connect(function()
@@ -831,12 +831,12 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	end)
 	
 	--toplr
-	ToPlr.MouseButton1Down:connect(function()
+	--[[ToPlr.MouseButton1Down:connect(function()
 		local PlayerName = Target
 		local plr1 = game.Players.LocalPlayer.Character
 		local plr2 = game.Workspace:FindFirstChild(PlayerName)
 		plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
-	end)
+	end)]]--
 	
 	--rockettarget
 	RocketTarget.MouseButton1Down:connect(function()
@@ -898,7 +898,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 				end
 			end
 		end
-	end)]]--
+	end)
 	KillTarget.MouseButton1Down:connect(function()
 		KillTarget.Visible = false
 		UnKillTarget.Visible = true
@@ -955,7 +955,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
 			game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
 		end
-	end)
+	end)]]--
 	
 	--antiafk
 	AntiAFK.MouseButton1Down:connect(function()
@@ -1038,7 +1038,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	end)
 	
 	--infjump
-	InfiniteJump.MouseButton1Down:connect(function()
+	--[[InfiniteJump.MouseButton1Down:connect(function()
 		local function Jump()
 			_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
 		end
@@ -1160,7 +1160,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 			Font = Enum.Font.SourceSansBold;
 			FontSize = Enum.FontSize.Size96;
 		})
-	end)
+	end)]]--
 	
 	--ToVoid
 	ToVoid.MouseButton1Down:connect(function()
@@ -1222,7 +1222,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	end)
 	
 	--KillHits
-	KillHits.MouseButton1Down:connect(function()
+	--[[KillHits.MouseButton1Down:connect(function()
 		_G.KillHits = true
 	
 		game.Players.PlayerAdded:Connect(function(hit)
@@ -1252,7 +1252,7 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	UnKillHits.MouseButton1Down:connect(function()
 		UnKillHits.Visible = false
 		KillHits.Visible = true
-	end)
+	end)]]--
 	
 	--anticrash
 	local CrashGear = {"DragonCompanion", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
