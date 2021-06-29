@@ -1154,11 +1154,15 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 		local hum = game.Players.LocalPlayer.Character.Humanoid
 		local Timer = 50
 		local Crash = 0
+		local cam = workspace.CurrentCamera
 	
 		repeat
 			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
 			game:GetService("RunService").RenderStepped:wait()
 		until game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow")
+		
+		cam.CameraType = Enum.CameraType.Fixed
+		cam.Focus = CFrame.new(Vector3.new(0, 0, 0))
 	
 		game.StarterGui:SetCore("ChatMakeSystemMessage", {
 			Text = "The Server will crash in 1 minute and 30 Seconds";
