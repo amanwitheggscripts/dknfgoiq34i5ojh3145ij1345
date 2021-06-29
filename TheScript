@@ -61,6 +61,8 @@ local KillHits = Instance.new("TextButton")
 local UnKillHits = Instance.new("TextButton")
 local CharacterRemove = Instance.new("TextButton")
 local UnCharacterRemove = Instance.new("TextButton")
+local AntiCrash = Instance.new("TextButton")
+local UnAntiCrash = Instance.new("TextButton")
 
 --Properties:
 
@@ -684,26 +686,49 @@ CharacterRemove.Font = Enum.Font.SourceSansLight
 CharacterRemove.Text = "DeleteMe"
 CharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
 CharacterRemove.TextSize = 14.000
-CharacterRemove.Visible = false
 
 UnCharacterRemove.Name = "UnCharacterRemove"
 UnCharacterRemove.Parent = Page3Frame
 UnCharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 UnCharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
 UnCharacterRemove.Size = UDim2.new(0, 57, 0, 57)
+UnCharacterRemove.Visible = false
 UnCharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
 UnCharacterRemove.Font = Enum.Font.SourceSansLight
 UnCharacterRemove.Text = "Reset"
 UnCharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
 UnCharacterRemove.TextSize = 14.000
 
+AntiCrash.Name = "AntiCrash"
+AntiCrash.Parent = Page3Frame
+AntiCrash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AntiCrash.Position = UDim2.new(0.602836847, 0, 0.527607381, 0)
+AntiCrash.Size = UDim2.new(0, 57, 0, 57)
+AntiCrash.Style = Enum.ButtonStyle.RobloxRoundButton
+AntiCrash.Font = Enum.Font.SourceSansLight
+AntiCrash.Text = "AntiCrash"
+AntiCrash.TextColor3 = Color3.fromRGB(0, 0, 0)
+AntiCrash.TextSize = 14.000
+
+UnAntiCrash.Name = "UnAntiCrash"
+UnAntiCrash.Parent = Page3Frame
+UnAntiCrash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+UnAntiCrash.Position = UDim2.new(0.602836847, 0, 0.527607381, 0)
+UnAntiCrash.Size = UDim2.new(0, 57, 0, 57)
+UnAntiCrash.Visible = false
+UnAntiCrash.Style = Enum.ButtonStyle.RobloxRoundButton
+UnAntiCrash.Font = Enum.Font.SourceSansLight
+UnAntiCrash.Text = "UnAntiCrash"
+UnAntiCrash.TextColor3 = Color3.fromRGB(0, 0, 0)
+UnAntiCrash.TextSize = 14.000
+
 -- Scripts:
 
-local function ZYMEQHH_fake_script() -- ScreenGui.Script 
+local function OLDDHQW_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
+
 	
-	game.Players.LocalPlayer.Character:Remove()
-	
+
 	--previoustable
 	local previous = {}
 	
@@ -770,12 +795,13 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 		until game.Players.LocalPlayer.Backpack:FindFirstChild("RocketJumper")
 	
 		while _G.Activate do
-			game:GetService("RunService").RenderStepped:wait()
+			wait()
 			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
 			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
 			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
 			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))game:GetService("Players").LocalPlayer.Character.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))
+			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
 			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
 			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
 			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
@@ -1256,55 +1282,55 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	
 	--anticrash
 	AntiCrash.MouseButton1Down:connect(function()
-	_G.AntiCrash = true
-	local CrashGear = {"DragonCompanion", "SillyGuitar", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
-	for i,v in pairs(game.Players:GetChildren()) do
-		for i,gear in pairs(CrashGear) do
-			if v.Backpack:FindFirstChild(gear) then
-				print "2"
-				game.StarterGui:SetCore("ChatMakeSystemMessage", {
-					Text = v.Name .. " Has A Crash Gear";
-					Color = Color3.fromRGB(0,0,0);
-					Font = Enum.Font.SourceSansBold;
-					FontSize = Enum.FontSize.Size96;
-				})
-				while _G.AntiCrash do
-					game:GetService("RunService").RenderStepped:wait()
-					pcall(function()
-						for i,v in pairs(game.Players:GetChildren()) do
-							for i,gear in pairs(CrashGear) do
-								if v.Backpack:FindFirstChild(gear) then
-									if game.Players:FindFirstChild(v.Name) then
-										if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-											game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(v.Name).Torso.Position)
+		_G.AntiCrash = true
+		local CrashGear = {"DragonCompanion", "SillyGuitar", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
+		for i,v in pairs(game.Players:GetChildren()) do
+			for i,gear in pairs(CrashGear) do
+				if v.Backpack:FindFirstChild(gear) then
+					print "2"
+					game.StarterGui:SetCore("ChatMakeSystemMessage", {
+						Text = v.Name .. " Has A Crash Gear";
+						Color = Color3.fromRGB(0,0,0);
+						Font = Enum.Font.SourceSansBold;
+						FontSize = Enum.FontSize.Size96;
+					})
+					while _G.AntiCrash do
+						game:GetService("RunService").RenderStepped:wait()
+						pcall(function()
+							for i,v in pairs(game.Players:GetChildren()) do
+								for i,gear in pairs(CrashGear) do
+									if v.Backpack:FindFirstChild(gear) then
+										if game.Players:FindFirstChild(v.Name) then
+											if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
+												game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(v.Name).Torso.Position)
+											end
 										end
 									end
 								end
 							end
-						end
-					end)
+						end)
+					end
 				end
 			end
 		end
-	end
 	end)
 	AntiCrash.MouseButton1Down:connect(function()
-	    AntiCrash.Visible = false
-	    UnAntiCrash.Visible = true
+		AntiCrash.Visible = false
+		UnAntiCrash.Visible = true
 	end)
 	
 	--unanticrash
 	UnAntiCrash.MouseButton1Down:connect(function()
-	    _G.AntiCrash = false
+		_G.AntiCrash = false
 	end)
 	UnAntiCrash.MouseButton1Down:connect(function()
-	    UnAntiCrash.Visible = false
-	    AntiCrash.Visible = true
+		UnAntiCrash.Visible = false
+		AntiCrash.Visible = true
 	end)
 	
 	--Characterremove
 	CharacterRemove.MouseButton1Down:connect(function()
-        local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 		table.insert(previous, Position)
 		game.Players.LocalPlayer.Character:Remove()
 	end)
@@ -1328,4 +1354,4 @@ local function ZYMEQHH_fake_script() -- ScreenGui.Script
 	--Hitlist
 	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791"}
 end
-coroutine.wrap(ZYMEQHH_fake_script)()
+coroutine.wrap(OLDDHQW_fake_script)()
