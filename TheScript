@@ -866,7 +866,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--rockettarget
 	RocketTarget.MouseButton1Down:connect(function()
-		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" then
+		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
 			_G.RocketTarget = true
 	
 			while _G.RocketTarget do
@@ -1254,21 +1254,37 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	--KillHits
 	KillHits.MouseButton1Down:connect(function()
 		_G.KillHits = true
-	
 		game.Players.PlayerAdded:Connect(function(hit)
-			while _G.KillHits do
+	        while _G.KillHits do
 				game:GetService("RunService").RenderStepped:wait()
 				if table.find(Hitlist, hit.Name) then
 					if game.Players:FindFirstChild(hit.Name) then
+					    spawn(function()
 						pcall(function()
 							if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
 								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(hit.Name).Head.Position)
 							end
 						end)
+						end)
 					end
 				end
 			end
 		end)
+		
+			while _G.KillHits do
+				game:GetService("RunService").RenderStepped:wait()
+				for i,hit in pairs(game.Players:GetChildren()) do
+				if table.find(Hitlist, hit.Name) then
+				    spawn(function()
+						pcall(function()
+							if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
+								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(hit.Name).Head.Position)
+							end
+						end)
+				    end)
+				end
+				end
+			end
 	end)
 	KillHits.MouseButton1Down:connect(function()
 		KillHits.Visible = false
@@ -1333,11 +1349,16 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	end)
 	
 	--Characterremove
-	CharacterRemove.MouseButton1Down:connect(function()
-		local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-		table.insert(previous, Position)
-		game.Players.LocalPlayer.Character:Remove()
+    CharacterRemove.MouseButton1Down:connect(function()
+	   local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+	   table.insert(previous, Position)
+	   _G.RemoveMe = true
+	   while _G.RemoveMe == true do
+	        game:GetService("RunService").RenderStepped:wait()
+    		game.Players.LocalPlayer.Character:Remove()
+    	end
 	end)
+	
 	CharacterRemove.MouseButton1Down:connect(function()
 		UnCharacterRemove.Visible = true
 		CharacterRemove.Visible = false
@@ -1345,6 +1366,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--UnCharacterremove
 	UnCharacterRemove.MouseButton1Down:connect(function()
+	    _G.RemoveMe = false
 		game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
 		wait(0.5)
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(previous[1])
@@ -1356,6 +1378,6 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	end)
 	
 	--Hitlist
-	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791"}
+	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D"}
 end
 coroutine.wrap(OLDDHQW_fake_script)()
