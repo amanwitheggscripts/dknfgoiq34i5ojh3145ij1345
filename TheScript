@@ -876,7 +876,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 						if game.Players:FindFirstChild(v.Name) then
 							pcall(function()
 								if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(v.Name).Torso.Position)
+									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(v.Name).Head.Position)
 								end
 							end)
 						end
@@ -905,7 +905,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	--killtarget
 	KillTarget.MouseButton1Down:connect(function()
 		_G.KillTarget = true
-		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin"then
+		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
 			while _G.KillTarget == true do
 				game:GetService("RunService").RenderStepped:wait()
 				for i,v in pairs(game.Players:GetChildren()) do
@@ -1305,34 +1305,36 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 		_G.AntiCrash = true
 		local CrashGear = {"DragonCompanion", "SillyGuitar", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
 		for i,v in pairs(game.Players:GetChildren()) do
-			for i,gear in pairs(CrashGear) do
-				if v.Backpack:FindFirstChild(gear) then
-					print "2"
-					game.StarterGui:SetCore("ChatMakeSystemMessage", {
-						Text = v.Name .. " Has A Crash Gear";
-						Color = Color3.fromRGB(0,0,0);
-						Font = Enum.Font.SourceSansBold;
-						FontSize = Enum.FontSize.Size96;
-					})
-					while _G.AntiCrash do
-						game:GetService("RunService").RenderStepped:wait()
-						pcall(function()
-							for i,v in pairs(game.Players:GetChildren()) do
-								for i,gear in pairs(CrashGear) do
-									if v.Backpack:FindFirstChild(gear) then
-										if game.Players:FindFirstChild(v.Name) then
-											if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-												game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),workspace:FindFirstChild(v.Name).Torso.Position)
-											end
-										end
-									end
-								end
-							end
-						end)
-					end
-				end
-			end
-		end
+	        for i,gear in pairs(CrashGear) do
+		        if v.Backpack:FindFirstChild(gear) then
+		            game.StarterGui:SetCore("ChatMakeSystemMessage", {
+		            Text = v.Name .. " Has A Crash Gear";
+		            Color = Color3.fromRGB(0,0,0);
+		            Font = Enum.Font.SourceSansBold;
+		            FontSize = Enum.FontSize.Size96;
+	            	})
+		            while _G.AntiCrash do
+                        game:GetService("RunService").RenderStepped:wait()
+		                for i,v in pairs(game.Players:GetChildren()) do
+                			for i,gear in pairs(CrashGear) do
+				                if v.Backpack:FindFirstChild(gear) then
+					                print "2"
+						            pcall(function()
+							            if v.Backpack:FindFirstChild(gear) then
+								            if game.Players:FindFirstChild(v.Name) then
+									            if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
+										            game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(v.Name).Head.Position)
+									            end
+								            end
+							            end
+						            end)
+					            end
+				            end
+			            end
+		            end
+		        end
+	        end
+	    end
 	end)
 	AntiCrash.MouseButton1Down:connect(function()
 		AntiCrash.Visible = false
@@ -1377,7 +1379,21 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 		CharacterRemove.Visible = true
 	end)
 	
+	--removerockets
+	while 1 == 1 do
+    game:GetService("RunService").RenderStepped:wait()
+    spawn(function()
+        game.Workspace.Rocket:Destroy()
+        print "RocketRemoved"
+        spawn(function()
+            game.Workspace.Explosion:Destroy()
+            print "ExplosionRemoved"
+        end)
+    end)
+    end
+	
 	--Hitlist
-	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D"}
+	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", ""}
+	
 end
 coroutine.wrap(OLDDHQW_fake_script)()
