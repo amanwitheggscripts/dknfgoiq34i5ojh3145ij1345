@@ -876,7 +876,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 						if game.Players:FindFirstChild(v.Name) then
 							pcall(function()
 								if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(v.Name).Head.Position)
+									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
 								end
 							end)
 						end
@@ -1013,12 +1013,18 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--speed
 	Speed.MouseButton1Down:connect(function()
+		while true do
+		game.RunService.RenderStepped:wait()
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed.Text
+		end
 	end)
 	
 	--jump
 	Jump.MouseButton1Down:connect(function()
+		while true do
+		game.RunService.RenderStepped:wait()
 		game.Players.LocalPlayer.Character.Humanoid.JumpPower = JumpHeight.Text
+		end
 	end)
 	
 	--safespot
@@ -1262,7 +1268,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 					    spawn(function()
 						pcall(function()
 							if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
-								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(hit.Name).Head.Position)
+								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),game.Players:FindFirstChild(hit.Name).Character.Head.Position)
 							end
 						end)
 						end)
@@ -1323,7 +1329,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 							            if v.Backpack:FindFirstChild(gear) then
 								            if game.Players:FindFirstChild(v.Name) then
 									            if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-										            game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(v.Name).Head.Position)
+										            game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
 									            end
 								            end
 							            end
