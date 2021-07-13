@@ -727,7 +727,8 @@ UnAntiCrash.TextSize = 14.000
 local function OLDDHQW_fake_script() -- ScreenGui.Script 
 	local script = Instance.new('Script', ScreenGui)
 
-	
+	--Hitlist
+	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", ""}
 
 	--previoustable
 	local previous = {}
@@ -1397,9 +1398,6 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
         end)
     end)
     end
-	
-	--Hitlist
-	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", ""}
 	
 end
 coroutine.wrap(OLDDHQW_fake_script)()
