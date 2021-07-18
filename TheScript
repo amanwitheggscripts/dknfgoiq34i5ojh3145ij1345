@@ -1162,7 +1162,13 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 		local Timer = 50
 		local Crash = 0
 		local cam = workspace.CurrentCamera
-	
+		
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9e6,9e6,-9e6)
+		wait()
+		game.Players.LocalPlayer.Character.Torso.Anchored = true
+		game.CoreGui.RobloxGui:Remove()
+		game.Players.LocalPlayer.PlayerGui.ScreenGui:Remove()
+		
 		repeat
 			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
 			game:GetService("RunService").RenderStepped:wait()
