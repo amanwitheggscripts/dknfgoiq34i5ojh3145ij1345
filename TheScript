@@ -3,7 +3,7 @@
 
 -- Instances:
 
-local ScreenGui = Instance.new("ScreenGui")
+local LBBGui = Instance.new("ScreenGui")
 local DragFrame = Instance.new("Frame")
 local MainFrame = Instance.new("Frame")
 local Page1Frame = Instance.new("Frame")
@@ -66,10 +66,11 @@ local UnAntiCrash = Instance.new("TextButton")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+LBBGui.Name = "LBBGui"
+LBBGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 DragFrame.Name = "DragFrame"
-DragFrame.Parent = ScreenGui
+DragFrame.Parent = LBBGui
 DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 DragFrame.BackgroundTransparency = 1.000
 DragFrame.Position = UDim2.new(0.0364431441, 0, 0.687144518, 0)
@@ -394,7 +395,7 @@ WalkSpeed.Position = UDim2.new(0.673758864, 0, 0.380368084, 0)
 WalkSpeed.Size = UDim2.new(0, 90, 0, 16)
 WalkSpeed.Font = Enum.Font.SourceSans
 WalkSpeed.PlaceholderText = "SpeedValue"
-WalkSpeed.Text = ""
+WalkSpeed.Text = "16"
 WalkSpeed.TextColor3 = Color3.fromRGB(0, 0, 0)
 WalkSpeed.TextSize = 14.000
 
@@ -406,7 +407,7 @@ JumpHeight.Size = UDim2.new(0, 90, 0, 16)
 JumpHeight.Font = Enum.Font.SourceSans
 JumpHeight.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
 JumpHeight.PlaceholderText = "JumpValue"
-JumpHeight.Text = ""
+JumpHeight.Text = "50"
 JumpHeight.TextColor3 = Color3.fromRGB(0, 0, 0)
 JumpHeight.TextSize = 14.000
 
@@ -724,11 +725,11 @@ UnAntiCrash.TextSize = 14.000
 
 -- Scripts:
 
-local function OLDDHQW_fake_script() -- ScreenGui.Script 
-	local script = Instance.new('Script', ScreenGui)
+local function OLDDHQW_fake_script() -- LBBGui.Script 
+	local script = Instance.new('Script', LBBGui)
 
-	--Hitlist
-	Hitlist = {"UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", ""}
+	--variables
+	local Char = game.Players.LocalPlayer.Character
 
 	--previoustable
 	local previous = {}
@@ -768,7 +769,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 			for i, v in pairs(game.Players:GetChildren()) do
 				if v ~= game.Players.LocalPlayer then
 					spawn(function()
-						local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+						local Handle = Char:FindFirstChildOfClass("Tool").Handle
 						if Handle then
 							for i,c in pairs(v.Character:GetChildren()) do
 								if c:IsA("BasePart") then
@@ -844,7 +845,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--TPtomid
 	TP.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
+		Char.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
 	end)
 	
 	--name
@@ -860,7 +861,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	--toplr
 	ToPlr.MouseButton1Down:connect(function()
 		local PlayerName = Target
-		local plr1 = game.Players.LocalPlayer.Character
+		local plr1 = Char
 		local plr2 = game.Workspace:FindFirstChild(PlayerName)
 		plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
 	end)
@@ -872,17 +873,17 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 			while _G.RocketTarget do
 				game:GetService("RunService").RenderStepped:wait()
-				for i,v in pairs(game.Players:GetChildren()) do
-					if table.find(Targets, v.Name) then
-						if game.Players:FindFirstChild(v.Name) then
-							pcall(function()
+				pcall(function()
+				    for i,v in pairs(game.Players:GetChildren()) do
+					    if table.find(Targets, v.Name) then
+						    if game.Players:FindFirstChild(v.Name) then
 								if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
+									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Torso.Position)
 								end
-							end)
+							end
 						end
 					end
-				end
+				end)
 			end
 		end
 	end)
@@ -912,7 +913,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 				for i,v in pairs(game.Players:GetChildren()) do
 					if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer then
 						spawn(function()
-							local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+							local Handle = Char:FindFirstChildOfClass("Tool").Handle
 							if Handle then
 								for i,c in pairs(v.Character:GetChildren()) do
 									if c:IsA("BasePart") then
@@ -948,8 +949,8 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
 		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname2)
 		wait()
-		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
-		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+		Char:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
+		local hum = Char:FindFirstChild("Humanoid")
 		mouse1click()
 		wait()
 		hum:UnequipTools()
@@ -967,7 +968,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	GodMode.MouseButton1Down:connect(function()
 		local gearname3 = "LockonLauncher"
 		local gearname4 = "ChartreusePeriastron"
-		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+		local hum = Char:FindFirstChild("Humanoid")
 	
 		repeat
 			game:GetService("RunService").RenderStepped:wait()
@@ -975,11 +976,11 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4)
 	
 		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = Char
 			game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
 			wait(0.5)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
+			Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = Char
 			game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
 		end
 	end)
@@ -996,7 +997,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--anchor
 	Anchor.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+		Char.HumanoidRootPart.Anchored = true
 	end)
 	Anchor.MouseButton1Down:connect(function()
 		Anchor.Visible = false
@@ -1005,7 +1006,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--unanchor
 	UnAnchor.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+		Char.HumanoidRootPart.Anchored = false
 	end)
 	UnAnchor.MouseButton1Down:connect(function()
 		Anchor.Visible = true
@@ -1014,23 +1015,23 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--speed
 	Speed.MouseButton1Down:connect(function()
-		while true do
-		game.RunService.RenderStepped:wait()
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed.Text
+	    while true do
+	    game.RunService.RenderStepped:wait()
+		Char.Humanoid.WalkSpeed = WalkSpeed.Text
 		end
 	end)
 	
 	--jump
 	Jump.MouseButton1Down:connect(function()
-		while true do
-		game.RunService.RenderStepped:wait()
-		game.Players.LocalPlayer.Character.Humanoid.JumpPower = JumpHeight.Text
+	    while true do
+	    game.RunService.RenderStepped:wait()
+		Char.Humanoid.JumpPower = JumpHeight.Text
 		end
 	end)
 	
 	--safespot
 	SafeSpot.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
+		Char.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
 	end)
 	
 	--next1
@@ -1073,7 +1074,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	--infjump
 	InfiniteJump.MouseButton1Down:connect(function()
 		local function Jump()
-			_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			_G.Jump = Char.Humanoid:ChangeState("Jumping")
 		end
 	
 		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
@@ -1088,11 +1089,14 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--invis
 	Invis.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
-		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-		wait(0.23)
+		Char:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
+		local hum = Char:FindFirstChild("Humanoid")
 		mouse1click()
-		wait(8.03)
+		wait(0.25)
+		repeat
+		    game.RunService.RenderStepped:wait()
+		until Char.Torso.Transparency ~= 1
+		    
 		hum:UnequipTools()
 	end)
 	
@@ -1149,7 +1153,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 			if input.UserInputType == Enum.UserInputType.Keyboard then
 				if input.KeyCode == Enum.KeyCode.U then
 					if game.Players.LocalPlayer:GetMouse().Target then 
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
+						Char.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
 					end 
 				end 
 			end
@@ -1158,24 +1162,26 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--Crash
 	Crash.MouseButton1Down:connect(function()
-		local hum = game.Players.LocalPlayer.Character.Humanoid
+		local hum = Char.Humanoid
 		local Timer = 50
 		local Crash = 0
 		local cam = workspace.CurrentCamera
 		
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9e6,9e6,-9e6)
-		wait()
-		game.Players.LocalPlayer.Character.Torso.Anchored = true
-		game.CoreGui.RobloxGui:Remove()
-		game.Players.LocalPlayer.PlayerGui.ScreenGui:Remove()
+		game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
 		
+		cam.CameraType = Enum.CameraType.Fixed
+		cam.Focus = CFrame.new(Vector3.new(0, -9e6, 0))
+		
+		Char.HumanoidRootPart.CFrame = CFrame.new(-9e6,9e6,-9e6)
+		wait(0.2)
+		Char.Torso.Anchored = true
+		game.CoreGui.RobloxGui:Remove()
+		game.Players.LocalPlayer.PlayerGui.LBBGui.DragFrame:Remove()
+	
 		repeat
 			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
 			game:GetService("RunService").RenderStepped:wait()
 		until game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow")
-		
-		cam.CameraType = Enum.CameraType.Fixed
-		cam.Focus = CFrame.new(Vector3.new(0, 0, 0))
 	
 		game.StarterGui:SetCore("ChatMakeSystemMessage", {
 			Text = "The Server will crash in 1 minute and 30 Seconds";
@@ -1186,10 +1192,17 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 		for i = 1, 5020 do
 			game:GetService("RunService").RenderStepped:wait()
-			game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+			Char.Head.Transparency = 0
+			game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = Char
 			hum:UnequipTools()
 		end
-		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = Char
+		
+		Char.HalloweenBowAndArrow.Handle.Mesh:Remove()
+        Char.HalloweenBowAndArrow.PumpkinHead.Mesh:Remove()
+        Char.HalloweenBowAndArrow.PumpkinHead:BreakJoints()
+        Char.HalloweenBowAndArrow.PumpkinHead.Position = Vector3.new(-9e6,9e6,-9e6)
+        Char.Head.Transparency = 0
 	
 		while Timer > Crash  do
 			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("In " .. (Timer) .. " Seconds this server will crash", "All")
@@ -1207,10 +1220,10 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--ToVoid
 	ToVoid.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.Torso.Anchored = false
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
+		Char.Torso.Anchored = false
+		Char.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
 		wait(0.1)
-		game.Players.LocalPlayer.Character.Torso.Anchored = true
+		Char.Torso.Anchored = true
 	end)
 	ToVoid.MouseButton1Down:connect(function()
 		ToVoid.Visible = false
@@ -1219,7 +1232,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--untovoid
 	UnToVoid.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.Torso.Anchored = false
+		Char.Torso.Anchored = false
 	end)
 	UnToVoid.MouseButton1Down:connect(function()
 		UnToVoid.Visible = false
@@ -1267,36 +1280,20 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	--KillHits
 	KillHits.MouseButton1Down:connect(function()
 		_G.KillHits = true
-		game.Players.PlayerAdded:Connect(function(hit)
-	        while _G.KillHits do
-				game:GetService("RunService").RenderStepped:wait()
-				if table.find(Hitlist, hit.Name) then
-					if game.Players:FindFirstChild(hit.Name) then
-					    spawn(function()
-						pcall(function()
-							if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
-								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),game.Players:FindFirstChild(hit.Name).Character.Head.Position)
-							end
-						end)
-						end)
-					end
-				end
-			end
-		end)
 		
 			while _G.KillHits do
 				game:GetService("RunService").RenderStepped:wait()
-				for i,hit in pairs(game.Players:GetChildren()) do
-				if table.find(Hitlist, hit.Name) then
-				    spawn(function()
-						pcall(function()
-							if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
-								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),workspace:FindFirstChild(hit.Name).Head.Position)
+				pcall(function()
+				    for i,hit in pairs(game.Players:GetChildren()) do
+					    if table.find(Targets, hit.Name) then
+						    if game.Players:FindFirstChild(hit.Name) then
+								if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
+									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(hit.Name).Character.Torso.Position)
+								end
 							end
-						end)
-				    end)
-				end
-				end
+						end
+					end
+				end)
 			end
 	end)
 	KillHits.MouseButton1Down:connect(function()
@@ -1328,22 +1325,22 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	            	})
 		            while _G.AntiCrash do
                         game:GetService("RunService").RenderStepped:wait()
-		                for i,v in pairs(game.Players:GetChildren()) do
-                			for i,gear in pairs(CrashGear) do
-				                if v.Backpack:FindFirstChild(gear) then
-					                print "2"
-						            pcall(function()
+                        pcall(function()
+		                    for i,v in pairs(game.Players:GetChildren()) do
+                			    for i,gear in pairs(CrashGear) do
+				                    if v.Backpack:FindFirstChild(gear) then
+					                    print "2"
 							            if v.Backpack:FindFirstChild(gear) then
 								            if game.Players:FindFirstChild(v.Name) then
-									            if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-										            game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,1,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
-									            end
+									           if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
+										          game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Torso.Position)
+									           end
 								            end
 							            end
-						            end)
+						            end
 					            end
 				            end
-			            end
+			            end)
 		            end
 		        end
 	        end
@@ -1365,12 +1362,12 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	
 	--Characterremove
     CharacterRemove.MouseButton1Down:connect(function()
-	   local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+	   local Position = Char.HumanoidRootPart.Position
 	   table.insert(previous, Position)
 	   _G.RemoveMe = true
 	   while _G.RemoveMe == true do
 	        game:GetService("RunService").RenderStepped:wait()
-    		game.Players.LocalPlayer.Character:Remove()
+    		Char:Remove()
     	end
 	end)
 	
@@ -1384,7 +1381,7 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 	    _G.RemoveMe = false
 		game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
 		wait(0.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(previous[1])
+		Char.HumanoidRootPart.CFrame = CFrame.new(previous[1])
 		table.remove(previous, 1)
 	end)
 	UnCharacterRemove.MouseButton1Down:connect(function()
@@ -1392,18 +1389,8 @@ local function OLDDHQW_fake_script() -- ScreenGui.Script
 		CharacterRemove.Visible = true
 	end)
 	
-	--removerockets
-	while 1 == 1 do
-    game:GetService("RunService").RenderStepped:wait()
-    spawn(function()
-        game.Workspace.Rocket:Destroy()
-        print "RocketRemoved"
-        spawn(function()
-            game.Workspace.Explosion:Destroy()
-            print "ExplosionRemoved"
-        end)
-    end)
-    end
+	--Hitlist
+	Hitlist = {"MrsMediocree", "UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", "CharlesPham1234", "kurrisu_kun"}
 	
 end
 coroutine.wrap(OLDDHQW_fake_script)()
