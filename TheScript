@@ -3,6 +3,24 @@
 
 -- Instances:
 
+_G.Cbring = false
+_G.Activate = false
+_G.OpenBlocks = false
+_G.RocketTarget = false
+_G.KillTarget = false
+_G.AirWalk = false
+_G.ClickTp = false
+_G.KillHits = false
+_G.AntiCrash = false
+_G.RemoveMe = false
+
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Part") and v.Anchored == true then
+        v.Anchored = false
+    end
+end
+
+local function Gui()
 local LBBGui = Instance.new("ScreenGui")
 local DragFrame = Instance.new("Frame")
 local MainFrame = Instance.new("Frame")
@@ -586,7 +604,7 @@ T.BackgroundTransparency = 1.000
 T.Position = UDim2.new(0.439716309, 0, 0.361963183, 0)
 T.Size = UDim2.new(0, 33, 0, 27)
 T.Font = Enum.Font.SourceSansLight
-T.Text = "Press 't' to TP"
+T.Text = "Ctrl + L to tp"
 T.TextColor3 = Color3.fromRGB(255, 255, 255)
 T.TextScaled = true
 T.TextSize = 14.000
@@ -728,9 +746,6 @@ UnAntiCrash.TextSize = 14.000
 local function OLDDHQW_fake_script() -- LBBGui.Script 
 	local script = Instance.new('Script', LBBGui)
 
-	--variables
-	local Char = game.Players.LocalPlayer.Character
-
 	--previoustable
 	local previous = {}
 	
@@ -755,7 +770,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	local Block = Instance.new("Part", workspace)
 	Block.Name = "PlatformBlock"
 	Block.Position = Vector3.new(300000, 300000, 300000)
-	Block.Size = Vector3.new(100, 3, 100)
+	Block.Size = Vector3.new(1000, 3, 1000)
 	Block.BrickColor = BrickColor.Random()
 	Block.CanCollide = true
 	Block.Anchored = true
@@ -769,7 +784,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 			for i, v in pairs(game.Players:GetChildren()) do
 				if v ~= game.Players.LocalPlayer then
 					spawn(function()
-						local Handle = Char:FindFirstChildOfClass("Tool").Handle
+						local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
 						if Handle then
 							for i,c in pairs(v.Character:GetChildren()) do
 								if c:IsA("BasePart") then
@@ -845,7 +860,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--TPtomid
 	TP.MouseButton1Down:connect(function()
-		Char.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
 	end)
 	
 	--name
@@ -861,9 +876,8 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	--toplr
 	ToPlr.MouseButton1Down:connect(function()
 		local PlayerName = Target
-		local plr1 = Char
-		local plr2 = game.Workspace:FindFirstChild(PlayerName)
-		plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
+		local plr = game.Workspace:FindFirstChild(PlayerName)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
 	end)
 	
 	--rockettarget
@@ -878,7 +892,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 					    if table.find(Targets, v.Name) then
 						    if game.Players:FindFirstChild(v.Name) then
 								if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Torso.Position)
+									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
 								end
 							end
 						end
@@ -913,7 +927,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 				for i,v in pairs(game.Players:GetChildren()) do
 					if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer then
 						spawn(function()
-							local Handle = Char:FindFirstChildOfClass("Tool").Handle
+							local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
 							if Handle then
 								for i,c in pairs(v.Character:GetChildren()) do
 									if c:IsA("BasePart") then
@@ -949,8 +963,8 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
 		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname2)
 		wait()
-		Char:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
-		local hum = Char:FindFirstChild("Humanoid")
+		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
+		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		mouse1click()
 		wait()
 		hum:UnequipTools()
@@ -968,7 +982,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	GodMode.MouseButton1Down:connect(function()
 		local gearname3 = "LockonLauncher"
 		local gearname4 = "ChartreusePeriastron"
-		local hum = Char:FindFirstChild("Humanoid")
+		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 	
 		repeat
 			game:GetService("RunService").RenderStepped:wait()
@@ -976,11 +990,11 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4)
 	
 		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = Char
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
 			game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
 			wait(0.5)
-			Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = Char
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
+			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
 			game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
 		end
 	end)
@@ -997,7 +1011,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--anchor
 	Anchor.MouseButton1Down:connect(function()
-		Char.HumanoidRootPart.Anchored = true
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
 	end)
 	Anchor.MouseButton1Down:connect(function()
 		Anchor.Visible = false
@@ -1006,7 +1020,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--unanchor
 	UnAnchor.MouseButton1Down:connect(function()
-		Char.HumanoidRootPart.Anchored = false
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
 	end)
 	UnAnchor.MouseButton1Down:connect(function()
 		Anchor.Visible = true
@@ -1015,23 +1029,27 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--speed
 	Speed.MouseButton1Down:connect(function()
+	    pcall(function()
 	    while true do
 	    game.RunService.RenderStepped:wait()
-		Char.Humanoid.WalkSpeed = WalkSpeed.Text
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed.Text
 		end
+		end)
 	end)
 	
 	--jump
 	Jump.MouseButton1Down:connect(function()
+	    pcall(function()
 	    while true do
 	    game.RunService.RenderStepped:wait()
 		Char.Humanoid.JumpPower = JumpHeight.Text
 		end
+		end)
 	end)
 	
 	--safespot
 	SafeSpot.MouseButton1Down:connect(function()
-		Char.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
 	end)
 	
 	--next1
@@ -1074,14 +1092,13 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	--infjump
 	InfiniteJump.MouseButton1Down:connect(function()
 		local function Jump()
-			_G.Jump = Char.Humanoid:ChangeState("Jumping")
+			_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
 		end
 	
 		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
 			if input.UserInputType == Enum.UserInputType.Keyboard then
 				if input.KeyCode == Enum.KeyCode.Space then
 					Jump()
-	
 				end
 			end
 		end)
@@ -1089,13 +1106,13 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--invis
 	Invis.MouseButton1Down:connect(function()
-		Char:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
-		local hum = Char:FindFirstChild("Humanoid")
+		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
+		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 		mouse1click()
 		wait(0.25)
 		repeat
 		    game.RunService.RenderStepped:wait()
-		until Char.Torso.Transparency ~= 1
+		until game.Players.LocalPlayer.Character.Torso.Transparency ~= 1
 		    
 		hum:UnequipTools()
 	end)
@@ -1149,20 +1166,18 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	--Clicktp
 	ClickTP.MouseButton1Down:connect(function()
 		_G.ClickTp = true
-		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-			if input.UserInputType == Enum.UserInputType.Keyboard then
-				if input.KeyCode == Enum.KeyCode.U then
-					if game.Players.LocalPlayer:GetMouse().Target then 
-						Char.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
-					end 
-				end 
-			end
-		end)
-	end)
+		game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
+	        if (input.KeyCode == Enum.KeyCode.L and game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl)) or (input.KeyCode == Enum.KeyCode.LeftControl and game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.L)) then
+		        if game.Players.LocalPlayer:GetMouse().Target then 
+		            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
+		        end
+	        end
+        end)
+    end)
 	
 	--Crash
 	Crash.MouseButton1Down:connect(function()
-		local hum = Char.Humanoid
+		local hum = game.Players.LocalPlayer.Character.Humanoid
 		local Timer = 50
 		local Crash = 0
 		local cam = workspace.CurrentCamera
@@ -1172,9 +1187,9 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 		cam.CameraType = Enum.CameraType.Fixed
 		cam.Focus = CFrame.new(Vector3.new(0, -9e6, 0))
 		
-		Char.HumanoidRootPart.CFrame = CFrame.new(-9e6,9e6,-9e6)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9e6,9e6,-9e6)
 		wait(0.2)
-		Char.Torso.Anchored = true
+		game.Players.LocalPlayer.Character.Torso.Anchored = true
 		game.CoreGui.RobloxGui:Remove()
 		game.Players.LocalPlayer.PlayerGui.LBBGui.DragFrame:Remove()
 	
@@ -1192,17 +1207,17 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 		for i = 1, 5020 do
 			game:GetService("RunService").RenderStepped:wait()
-			Char.Head.Transparency = 0
-			game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = Char
+			game.Players.LocalPlayer.Character.Head.Transparency = 0
+			game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
 			hum:UnequipTools()
 		end
-		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = Char
+		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
 		
-		Char.HalloweenBowAndArrow.Handle.Mesh:Remove()
-        Char.HalloweenBowAndArrow.PumpkinHead.Mesh:Remove()
-        Char.HalloweenBowAndArrow.PumpkinHead:BreakJoints()
-        Char.HalloweenBowAndArrow.PumpkinHead.Position = Vector3.new(-9e6,9e6,-9e6)
-        Char.Head.Transparency = 0
+		game.Players.LocalPlayer.Character.HalloweenBowAndArrow.Handle.Mesh:Remove()
+        game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead.Mesh:Remove()
+        game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead:BreakJoints()
+        game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead.Position = Vector3.new(-9e6,9e6,-9e6)
+        game.Players.LocalPlayer.Character.Head.Transparency = 0
 	
 		while Timer > Crash  do
 			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("In " .. (Timer) .. " Seconds this server will crash", "All")
@@ -1220,10 +1235,10 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--ToVoid
 	ToVoid.MouseButton1Down:connect(function()
-		Char.Torso.Anchored = false
-		Char.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
+		game.Players.LocalPlayer.Character.Torso.Anchored = false
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
 		wait(0.1)
-		Char.Torso.Anchored = true
+		game.Players.LocalPlayer.Character.Torso.Anchored = true
 	end)
 	ToVoid.MouseButton1Down:connect(function()
 		ToVoid.Visible = false
@@ -1232,7 +1247,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--untovoid
 	UnToVoid.MouseButton1Down:connect(function()
-		Char.Torso.Anchored = false
+		game.Players.LocalPlayer.Character.Torso.Anchored = false
 	end)
 	UnToVoid.MouseButton1Down:connect(function()
 		UnToVoid.Visible = false
@@ -1362,12 +1377,12 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	
 	--Characterremove
     CharacterRemove.MouseButton1Down:connect(function()
-	   local Position = Char.HumanoidRootPart.Position
+	   local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 	   table.insert(previous, Position)
 	   _G.RemoveMe = true
 	   while _G.RemoveMe == true do
 	        game:GetService("RunService").RenderStepped:wait()
-    		Char:Remove()
+    		game.Players.LocalPlayer.Character:Remove()
     	end
 	end)
 	
@@ -1381,7 +1396,7 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	    _G.RemoveMe = false
 		game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
 		wait(0.5)
-		Char.HumanoidRootPart.CFrame = CFrame.new(previous[1])
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(previous[1])
 		table.remove(previous, 1)
 	end)
 	UnCharacterRemove.MouseButton1Down:connect(function()
@@ -1392,5 +1407,13 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 	--Hitlist
 	Hitlist = {"MrsMediocree", "UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", "CharlesPham1234", "kurrisu_kun"}
 	
+    end
+    coroutine.wrap(OLDDHQW_fake_script)()
 end
-coroutine.wrap(OLDDHQW_fake_script)()
+
+for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
+    if v.Name == "LBBGui" then
+        v:Remove()
+    end
+end
+Gui()
