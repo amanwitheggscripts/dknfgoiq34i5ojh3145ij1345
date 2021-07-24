@@ -841,7 +841,7 @@ local function Gui()
 
 		--startmessage
 		game.StarterGui:SetCore("ChatMakeSystemMessage", {
-			Text = "Thank you for using my Gui\nAdded:\nNew Cbring for NonSynapse\n Credits:\nAnonTheEggpert#9353 and Cielle";
+			Text = "Thank you for using my Gui\nAdded:\nNew Cbring for NonSynapse\nFixed:\nWalkSpeed/JumpHieght Work after death\nHitlist is working now\n Credits:\nAnonTheEggpert#9353 and Cielle";
 			Color = Color3.fromRGB(255,143,223);
 			Font = Enum.Font.SourceSansBold;
 			FontSize = Enum.FontSize.Size96;
