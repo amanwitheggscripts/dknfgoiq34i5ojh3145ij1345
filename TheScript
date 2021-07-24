@@ -15,923 +15,861 @@ _G.AntiCrash = false
 _G.RemoveMe = false
 
 for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-    if v:IsA("Part") and v.Anchored == true then
-        v.Anchored = false
-    end
+	if v:IsA("Part") and v.Anchored == true then
+		v.Anchored = false
+	end
 end
 
 local function Gui()
-local LBBGui = Instance.new("ScreenGui")
-local DragFrame = Instance.new("Frame")
-local MainFrame = Instance.new("Frame")
-local Page1Frame = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local CBRING = Instance.new("TextButton")
-local Rocket = Instance.new("TextButton")
-local OFF = Instance.new("TextButton")
-local UnRocket = Instance.new("TextButton")
-local GetGear = Instance.new("TextButton")
-local TP = Instance.new("TextButton")
-local Name = Instance.new("TextBox")
-local ToPlr = Instance.new("TextButton")
-local Page1 = Instance.new("TextLabel")
-local TextLabel = Instance.new("TextLabel")
-local RocketTarget = Instance.new("TextButton")
-local UnRocketTarget = Instance.new("TextButton")
-local KillTarget = Instance.new("TextButton")
-local UnKillTarget = Instance.new("TextButton")
-local LockTarget = Instance.new("TextButton")
-local RemoveTarget = Instance.new("TextButton")
-local Page2Frame = Instance.new("Frame")
-local Regen = Instance.new("TextButton")
-local Page2 = Instance.new("TextLabel")
-local GodMode = Instance.new("TextButton")
-local AntiAFK = Instance.new("TextButton")
-local Anchor = Instance.new("TextButton")
-local UnAnchor = Instance.new("TextButton")
-local Speed = Instance.new("TextButton")
-local Jump = Instance.new("TextButton")
-local Info = Instance.new("TextLabel")
-local WalkSpeed = Instance.new("TextBox")
-local JumpHeight = Instance.new("TextBox")
-local SafeSpot = Instance.new("TextButton")
-local Next1 = Instance.new("TextButton")
-local Prev1 = Instance.new("TextButton")
-local Next2 = Instance.new("TextButton")
-local Prev2 = Instance.new("TextButton")
-local Page3Frame = Instance.new("Frame")
-local Page3 = Instance.new("TextLabel")
-local InfiniteJump = Instance.new("TextButton")
-local Invis = Instance.new("TextButton")
-local Requires = Instance.new("TextLabel")
-local AirWalk = Instance.new("TextButton")
-local UnAirWalk = Instance.new("TextButton")
-local ClickTP = Instance.new("TextButton")
-local Crash = Instance.new("TextButton")
-local Patience = Instance.new("TextLabel")
-local T = Instance.new("TextLabel")
-local Control = Instance.new("TextLabel")
-local Untoggleable = Instance.new("TextLabel")
-local ToVoid = Instance.new("TextButton")
-local Reset = Instance.new("TextLabel")
-local UnToVoid = Instance.new("TextButton")
-local KillHits = Instance.new("TextButton")
-local UnKillHits = Instance.new("TextButton")
-local CharacterRemove = Instance.new("TextButton")
-local UnCharacterRemove = Instance.new("TextButton")
-local AntiCrash = Instance.new("TextButton")
-local UnAntiCrash = Instance.new("TextButton")
-
---Properties:
-
-LBBGui.Name = "LBBGui"
-LBBGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-DragFrame.Name = "DragFrame"
-DragFrame.Parent = LBBGui
-DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DragFrame.BackgroundTransparency = 1.000
-DragFrame.Position = UDim2.new(0.0364431441, 0, 0.687144518, 0)
-DragFrame.Size = UDim2.new(0, 377, 0, 212)
-
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = DragFrame
-MainFrame.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
-MainFrame.Position = UDim2.new(0.0473273918, 0, 0.113333359, 0)
-MainFrame.Size = UDim2.new(0, 341, 0, 163)
-
-Page1Frame.Name = "Page1Frame"
-Page1Frame.Parent = MainFrame
-Page1Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-Page1Frame.Position = UDim2.new(0.0861592889, 0, 0, 0)
-Page1Frame.Size = UDim2.new(0, 282, 0, 163)
-
-Title.Name = "Title"
-Title.Parent = Page1Frame
-Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundTransparency = 1.000
-Title.Position = UDim2.new(0.14293468, 0, -0.0101454677, 0)
-Title.Size = UDim2.new(0, 200, 0, 50)
-Title.Font = Enum.Font.SourceSansLight
-Title.Text = "LBB Gui"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 30.000
-
-CBRING.Name = "CBRING"
-CBRING.Parent = Page1Frame
-CBRING.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-CBRING.LayoutOrder = 2
-CBRING.Position = UDim2.new(-5.40167093e-08, 0, 0.793980062, 0)
-CBRING.Size = UDim2.new(0, 32, 0, 31)
-CBRING.Style = Enum.ButtonStyle.RobloxRoundButton
-CBRING.Font = Enum.Font.SourceSansLight
-CBRING.Text = "On"
-CBRING.TextColor3 = Color3.fromRGB(0, 0, 0)
-CBRING.TextSize = 14.000
-
-Rocket.Name = "Rocket"
-Rocket.Parent = Page1Frame
-Rocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Rocket.Position = UDim2.new(-0.00354618579, 0, -0.0147240013, 0)
-Rocket.Size = UDim2.new(0, 86, 0, 45)
-Rocket.Style = Enum.ButtonStyle.RobloxRoundButton
-Rocket.Font = Enum.Font.SourceSansLight
-Rocket.Text = "Rocket"
-Rocket.TextColor3 = Color3.fromRGB(0, 0, 0)
-Rocket.TextSize = 14.000
-
-OFF.Name = "OFF"
-OFF.Parent = Page1Frame
-OFF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-OFF.LayoutOrder = 1
-OFF.Position = UDim2.new(-0.00709216297, 0, 0.793979943, 0)
-OFF.Size = UDim2.new(0, 32, 0, 31)
-OFF.Visible = false
-OFF.Style = Enum.ButtonStyle.RobloxRoundButton
-OFF.Font = Enum.Font.SourceSansLight
-OFF.Text = "Off"
-OFF.TextColor3 = Color3.fromRGB(0, 0, 0)
-OFF.TextSize = 14.000
-
-UnRocket.Name = "UnRocket"
-UnRocket.Parent = Page1Frame
-UnRocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnRocket.Position = UDim2.new(-6.14672899e-08, 0, -0.0147240702, 0)
-UnRocket.Size = UDim2.new(0, 85, 0, 44)
-UnRocket.Visible = false
-UnRocket.Style = Enum.ButtonStyle.RobloxRoundButton
-UnRocket.Font = Enum.Font.SourceSansLight
-UnRocket.Text = "UnRocket"
-UnRocket.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnRocket.TextSize = 14.000
-
-GetGear.Name = "GetGear"
-GetGear.Parent = Page1Frame
-GetGear.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-GetGear.Position = UDim2.new(0.773049653, 0, 0, 0)
-GetGear.Size = UDim2.new(0, 64, 0, 42)
-GetGear.Style = Enum.ButtonStyle.RobloxRoundButton
-GetGear.Font = Enum.Font.SourceSansLight
-GetGear.Text = "GetGear"
-GetGear.TextColor3 = Color3.fromRGB(0, 0, 0)
-GetGear.TextSize = 14.000
-
-TP.Name = "TP"
-TP.Parent = Page1Frame
-TP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TP.Position = UDim2.new(0.705673754, 0, 0.265928298, 0)
-TP.Size = UDim2.new(0, 81, 0, 53)
-TP.Style = Enum.ButtonStyle.RobloxRoundButton
-TP.Font = Enum.Font.SourceSansLight
-TP.Text = "ToMid"
-TP.TextColor3 = Color3.fromRGB(0, 0, 0)
-TP.TextSize = 14.000
-
-Name.Name = "Name"
-Name.Parent = Page1Frame
-Name.BackgroundColor3 = Color3.fromRGB(217, 217, 217)
-Name.Position = UDim2.new(0.599290788, 0, 0.898427904, 0)
-Name.Size = UDim2.new(0, 107, 0, 15)
-Name.Font = Enum.Font.SourceSans
-Name.PlaceholderText = "Input Name"
-Name.Text = ""
-Name.TextColor3 = Color3.fromRGB(0, 0, 0)
-Name.TextSize = 14.000
-
-ToPlr.Name = "ToPlr"
-ToPlr.Parent = Page1Frame
-ToPlr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ToPlr.Position = UDim2.new(-0.00354604423, 0, 0.259793341, 0)
-ToPlr.Size = UDim2.new(0, 88, 0, 54)
-ToPlr.Style = Enum.ButtonStyle.RobloxRoundButton
-ToPlr.Font = Enum.Font.SourceSansLight
-ToPlr.Text = "ToPlr"
-ToPlr.TextColor3 = Color3.fromRGB(0, 0, 0)
-ToPlr.TextSize = 14.000
-
-Page1.Name = "Page 1"
-Page1.Parent = Page1Frame
-Page1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Page1.BackgroundTransparency = 1.000
-Page1.Position = UDim2.new(0.273049712, 0, 0.801993728, 0)
-Page1.Size = UDim2.new(0, 128, 0, 37)
-Page1.Font = Enum.Font.SourceSansItalic
-Page1.Text = "Page 1"
-Page1.TextColor3 = Color3.fromRGB(255, 255, 255)
-Page1.TextSize = 14.000
-
-TextLabel.Parent = Page1Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(-1.67638063e-08, 0, 0.699386477, 0)
-TextLabel.Size = UDim2.new(0, 114, 0, 17)
-TextLabel.Font = Enum.Font.SourceSansLight
-TextLabel.Text = "Kill all players button"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 14.000
-
-RocketTarget.Name = "RocketTarget"
-RocketTarget.Parent = Page1Frame
-RocketTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-RocketTarget.Position = UDim2.new(0.620567322, 0, 0.653028965, 0)
-RocketTarget.Size = UDim2.new(0, 95, 0, 31)
-RocketTarget.Style = Enum.ButtonStyle.RobloxRoundButton
-RocketTarget.Font = Enum.Font.SourceSansLight
-RocketTarget.Text = "RocketTargetOn"
-RocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-RocketTarget.TextSize = 14.000
-
-UnRocketTarget.Name = "UnRocketTarget"
-UnRocketTarget.Parent = Page1Frame
-UnRocketTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnRocketTarget.Position = UDim2.new(0.620999992, 0, 0.652999997, 0)
-UnRocketTarget.Size = UDim2.new(0, 95, 0, 31)
-UnRocketTarget.Visible = false
-UnRocketTarget.Style = Enum.ButtonStyle.RobloxRoundButton
-UnRocketTarget.Font = Enum.Font.SourceSans
-UnRocketTarget.Text = "RocketTargetOff"
-UnRocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnRocketTarget.TextSize = 14.000
-
-KillTarget.Name = "KillTarget"
-KillTarget.Parent = Page1Frame
-KillTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-KillTarget.Position = UDim2.new(0.329787254, 0, 0.343558252, 0)
-KillTarget.Size = UDim2.new(0, 95, 0, 40)
-KillTarget.Style = Enum.ButtonStyle.RobloxRoundButton
-KillTarget.Font = Enum.Font.SourceSansLight
-KillTarget.Text = "KillTarget"
-KillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-KillTarget.TextSize = 14.000
-
-UnKillTarget.Name = "UnKillTarget"
-UnKillTarget.Parent = Page1Frame
-UnKillTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnKillTarget.Position = UDim2.new(0.329787254, 0, 0.343558252, 0)
-UnKillTarget.Size = UDim2.new(0, 95, 0, 40)
-UnKillTarget.Visible = false
-UnKillTarget.Style = Enum.ButtonStyle.RobloxRoundButton
-UnKillTarget.Font = Enum.Font.SourceSansLight
-UnKillTarget.Text = "UnKillTarget"
-UnKillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnKillTarget.TextSize = 14.000
-
-LockTarget.Name = "LockTarget"
-LockTarget.Parent = Page1Frame
-LockTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LockTarget.Position = UDim2.new(0.404255331, 0, 0.585544348, 0)
-LockTarget.Size = UDim2.new(0, 32, 0, 30)
-LockTarget.Style = Enum.ButtonStyle.RobloxRoundButton
-LockTarget.Font = Enum.Font.SourceSansLight
-LockTarget.Text = "I"
-LockTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-LockTarget.TextSize = 14.000
-
-RemoveTarget.Name = "RemoveTarget"
-RemoveTarget.Parent = Page1Frame
-RemoveTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-RemoveTarget.Position = UDim2.new(0.517730474, 0, 0.585544348, 0)
-RemoveTarget.Size = UDim2.new(0, 32, 0, 30)
-RemoveTarget.Style = Enum.ButtonStyle.RobloxRoundButton
-RemoveTarget.Font = Enum.Font.SourceSansLight
-RemoveTarget.Text = "R"
-RemoveTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-RemoveTarget.TextSize = 14.000
-
-Page2Frame.Name = "Page2Frame"
-Page2Frame.Parent = MainFrame
-Page2Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-Page2Frame.Position = UDim2.new(0.0861592889, 0, 0, 0)
-Page2Frame.Size = UDim2.new(0, 282, 0, 163)
-Page2Frame.Visible = false
-
-Regen.Name = "Regen"
-Regen.Parent = Page2Frame
-Regen.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Regen.Position = UDim2.new(0.37588653, 0, 0, 0)
-Regen.Size = UDim2.new(0, 69, 0, 50)
-Regen.Style = Enum.ButtonStyle.RobloxRoundButton
-Regen.Font = Enum.Font.SourceSansLight
-Regen.Text = "Regen"
-Regen.TextColor3 = Color3.fromRGB(0, 0, 0)
-Regen.TextSize = 14.000
-
-Page2.Name = "Page2"
-Page2.Parent = Page2Frame
-Page2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Page2.BackgroundTransparency = 1.000
-Page2.Position = UDim2.new(0.273000002, 0, 0.801999986, 0)
-Page2.Size = UDim2.new(0, 128, 0, 37)
-Page2.Font = Enum.Font.SourceSansItalic
-Page2.Text = "Page 2 "
-Page2.TextColor3 = Color3.fromRGB(255, 255, 255)
-Page2.TextSize = 14.000
-
-GodMode.Name = "GodMode"
-GodMode.Parent = Page2Frame
-GodMode.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-GodMode.Position = UDim2.new(0.3758865, 0, 0.30674845, 0)
-GodMode.Size = UDim2.new(0, 71, 0, 29)
-GodMode.Style = Enum.ButtonStyle.RobloxRoundButton
-GodMode.Font = Enum.Font.SourceSansLight
-GodMode.Text = "GodMode"
-GodMode.TextColor3 = Color3.fromRGB(0, 0, 0)
-GodMode.TextSize = 14.000
-
-AntiAFK.Name = "Anti-AFK"
-AntiAFK.Parent = Page2Frame
-AntiAFK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AntiAFK.Size = UDim2.new(0, 58, 0, 53)
-AntiAFK.Style = Enum.ButtonStyle.RobloxRoundButton
-AntiAFK.Font = Enum.Font.SourceSans
-AntiAFK.Text = "AntiAFK"
-AntiAFK.TextColor3 = Color3.fromRGB(0, 0, 0)
-AntiAFK.TextSize = 14.000
-
-Anchor.Name = "Anchor"
-Anchor.Parent = Page2Frame
-Anchor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Anchor.Position = UDim2.new(0.787234068, 0, 0, 0)
-Anchor.Size = UDim2.new(0, 58, 0, 53)
-Anchor.Style = Enum.ButtonStyle.RobloxRoundButton
-Anchor.Font = Enum.Font.SourceSans
-Anchor.Text = "Anchor"
-Anchor.TextColor3 = Color3.fromRGB(0, 0, 0)
-Anchor.TextSize = 14.000
-
-UnAnchor.Name = "UnAnchor"
-UnAnchor.Parent = Page2Frame
-UnAnchor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnAnchor.Position = UDim2.new(0.787234068, 0, 0, 0)
-UnAnchor.Size = UDim2.new(0, 58, 0, 53)
-UnAnchor.Visible = false
-UnAnchor.Style = Enum.ButtonStyle.RobloxRoundButton
-UnAnchor.Font = Enum.Font.SourceSans
-UnAnchor.Text = "UnAnchor"
-UnAnchor.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnAnchor.TextSize = 14.000
-
-Speed.Name = "Speed"
-Speed.Parent = Page2Frame
-Speed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Speed.Position = UDim2.new(0.0425531864, 0, 0.325153381, 0)
-Speed.Size = UDim2.new(0, 79, 0, 34)
-Speed.Style = Enum.ButtonStyle.RobloxRoundButton
-Speed.Font = Enum.Font.SourceSansLight
-Speed.Text = "WalkSpeed"
-Speed.TextColor3 = Color3.fromRGB(0, 0, 0)
-Speed.TextSize = 14.000
-
-Jump.Name = "Jump"
-Jump.Parent = Page2Frame
-Jump.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Jump.Position = UDim2.new(0.0425531864, 0, 0.533742309, 0)
-Jump.Size = UDim2.new(0, 79, 0, 34)
-Jump.Style = Enum.ButtonStyle.RobloxRoundButton
-Jump.Font = Enum.Font.SourceSansLight
-Jump.Text = "JumpHeight"
-Jump.TextColor3 = Color3.fromRGB(0, 0, 0)
-Jump.TextSize = 14.000
-
-Info.Name = "Info"
-Info.Parent = Page2Frame
-Info.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Info.BackgroundTransparency = 1.000
-Info.Position = UDim2.new(0.0460992754, 0, 0.742331266, 0)
-Info.Size = UDim2.new(0, 78, 0, 41)
-Info.Font = Enum.Font.SourceSans
-Info.Text = "Normal WalkSpeed is 16 and Normal JumpHeight is 50"
-Info.TextColor3 = Color3.fromRGB(255, 255, 255)
-Info.TextScaled = true
-Info.TextSize = 14.000
-Info.TextWrapped = true
-
-WalkSpeed.Name = "WalkSpeed"
-WalkSpeed.Parent = Page2Frame
-WalkSpeed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-WalkSpeed.Position = UDim2.new(0.673758864, 0, 0.380368084, 0)
-WalkSpeed.Size = UDim2.new(0, 90, 0, 16)
-WalkSpeed.Font = Enum.Font.SourceSans
-WalkSpeed.PlaceholderText = "SpeedValue"
-WalkSpeed.Text = "16"
-WalkSpeed.TextColor3 = Color3.fromRGB(0, 0, 0)
-WalkSpeed.TextSize = 14.000
-
-JumpHeight.Name = "JumpHeight"
-JumpHeight.Parent = Page2Frame
-JumpHeight.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-JumpHeight.Position = UDim2.new(0.673758864, 0, 0.582822084, 0)
-JumpHeight.Size = UDim2.new(0, 90, 0, 16)
-JumpHeight.Font = Enum.Font.SourceSans
-JumpHeight.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
-JumpHeight.PlaceholderText = "JumpValue"
-JumpHeight.Text = "50"
-JumpHeight.TextColor3 = Color3.fromRGB(0, 0, 0)
-JumpHeight.TextSize = 14.000
-
-SafeSpot.Name = "SafeSpot"
-SafeSpot.Parent = Page2Frame
-SafeSpot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SafeSpot.Position = UDim2.new(0.37588653, 0, 0.478527606, 0)
-SafeSpot.Size = UDim2.new(0, 71, 0, 43)
-SafeSpot.Style = Enum.ButtonStyle.RobloxRoundButton
-SafeSpot.Font = Enum.Font.SourceSans
-SafeSpot.Text = "SafeSpot"
-SafeSpot.TextColor3 = Color3.fromRGB(0, 0, 0)
-SafeSpot.TextSize = 14.000
-
-Next1.Name = "Next1"
-Next1.Parent = MainFrame
-Next1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Next1.Position = UDim2.new(0.909356713, 0, 0.364685416, 0)
-Next1.Size = UDim2.new(0, 31, 0, 52)
-Next1.Style = Enum.ButtonStyle.RobloxRoundButton
-Next1.Font = Enum.Font.SourceSansLight
-Next1.Text = "Next"
-Next1.TextColor3 = Color3.fromRGB(0, 0, 0)
-Next1.TextSize = 14.000
-
-Prev1.Name = "Prev1"
-Prev1.Parent = MainFrame
-Prev1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Prev1.Position = UDim2.new(-0.00584803894, 0, 0.340145528, 0)
-Prev1.Size = UDim2.new(0, 31, 0, 52)
-Prev1.Visible = false
-Prev1.Style = Enum.ButtonStyle.RobloxRoundButton
-Prev1.Font = Enum.Font.SourceSansLight
-Prev1.Text = "Prev"
-Prev1.TextColor3 = Color3.fromRGB(0, 0, 0)
-Prev1.TextSize = 14.000
-
-Next2.Name = "Next2"
-Next2.Parent = MainFrame
-Next2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Next2.Position = UDim2.new(0.908999979, 0, 0.36500001, 0)
-Next2.Size = UDim2.new(0, 31, 0, 52)
-Next2.Visible = false
-Next2.Style = Enum.ButtonStyle.RobloxRoundButton
-Next2.Font = Enum.Font.SourceSansLight
-Next2.Text = "Next"
-Next2.TextColor3 = Color3.fromRGB(0, 0, 0)
-Next2.TextSize = 14.000
-
-Prev2.Name = "Prev2"
-Prev2.Parent = MainFrame
-Prev2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Prev2.Position = UDim2.new(-0.00600000005, 0, 0.340000004, 0)
-Prev2.Size = UDim2.new(0, 31, 0, 52)
-Prev2.Visible = false
-Prev2.Style = Enum.ButtonStyle.RobloxRoundButton
-Prev2.Font = Enum.Font.SourceSansLight
-Prev2.Text = "Prev"
-Prev2.TextColor3 = Color3.fromRGB(0, 0, 0)
-Prev2.TextSize = 14.000
-
-Page3Frame.Name = "Page3Frame"
-Page3Frame.Parent = MainFrame
-Page3Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-Page3Frame.Position = UDim2.new(0.0860000029, 0, 0, 0)
-Page3Frame.Size = UDim2.new(0, 282, 0, 163)
-Page3Frame.Visible = false
-
-Page3.Name = "Page 3"
-Page3.Parent = Page3Frame
-Page3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Page3.BackgroundTransparency = 1.000
-Page3.Position = UDim2.new(0.273049712, 0, 0.801993728, 0)
-Page3.Size = UDim2.new(0, 128, 0, 37)
-Page3.Font = Enum.Font.SourceSansItalic
-Page3.Text = "Page 3"
-Page3.TextColor3 = Color3.fromRGB(255, 255, 255)
-Page3.TextSize = 14.000
-
-InfiniteJump.Name = "InfiniteJump"
-InfiniteJump.Parent = Page3Frame
-InfiniteJump.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-InfiniteJump.Size = UDim2.new(0, 57, 0, 57)
-InfiniteJump.Style = Enum.ButtonStyle.RobloxRoundButton
-InfiniteJump.Font = Enum.Font.SourceSansLight
-InfiniteJump.Text = "InfJump"
-InfiniteJump.TextColor3 = Color3.fromRGB(0, 0, 0)
-InfiniteJump.TextSize = 14.000
-
-Invis.Name = "Invis"
-Invis.Parent = Page3Frame
-Invis.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Invis.Position = UDim2.new(0.797872365, 0, 0, 0)
-Invis.Size = UDim2.new(0, 57, 0, 57)
-Invis.Style = Enum.ButtonStyle.RobloxRoundButton
-Invis.Font = Enum.Font.SourceSansLight
-Invis.Text = "Invis"
-Invis.TextColor3 = Color3.fromRGB(0, 0, 0)
-Invis.TextSize = 14.000
-
-Requires.Name = "Requires"
-Requires.Parent = Page3Frame
-Requires.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Requires.BackgroundTransparency = 1.000
-Requires.Position = UDim2.new(0.762411475, 0, 0.349693239, 0)
-Requires.Size = UDim2.new(0, 75, 0, 22)
-Requires.Font = Enum.Font.SourceSansLight
-Requires.Text = "Requires Invis Cape"
-Requires.TextColor3 = Color3.fromRGB(255, 255, 255)
-Requires.TextScaled = true
-Requires.TextSize = 14.000
-Requires.TextWrapped = true
-
-AirWalk.Name = "AirWalk"
-AirWalk.Parent = Page3Frame
-AirWalk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AirWalk.Position = UDim2.new(0.202127695, 0, 0, 0)
-AirWalk.Size = UDim2.new(0, 57, 0, 57)
-AirWalk.Style = Enum.ButtonStyle.RobloxRoundButton
-AirWalk.Font = Enum.Font.SourceSansLight
-AirWalk.Text = "AirWalk"
-AirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
-AirWalk.TextSize = 14.000
-
-UnAirWalk.Name = "UnAirWalk"
-UnAirWalk.Parent = Page3Frame
-UnAirWalk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnAirWalk.Position = UDim2.new(0.202127695, 0, 0, 0)
-UnAirWalk.Size = UDim2.new(0, 57, 0, 57)
-UnAirWalk.Visible = false
-UnAirWalk.Style = Enum.ButtonStyle.RobloxRoundButton
-UnAirWalk.Font = Enum.Font.SourceSansLight
-UnAirWalk.Text = "UnAirWalk"
-UnAirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnAirWalk.TextSize = 14.000
-
-ClickTP.Name = "ClickTP"
-ClickTP.Parent = Page3Frame
-ClickTP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ClickTP.Position = UDim2.new(0.40425536, 0, 0, 0)
-ClickTP.Size = UDim2.new(0, 57, 0, 57)
-ClickTP.Style = Enum.ButtonStyle.RobloxRoundButton
-ClickTP.Font = Enum.Font.SourceSansLight
-ClickTP.Text = "ClickTP"
-ClickTP.TextColor3 = Color3.fromRGB(0, 0, 0)
-ClickTP.TextSize = 14.000
-
-Crash.Name = "Crash"
-Crash.Parent = Page3Frame
-Crash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Crash.Position = UDim2.new(0.602836907, 0, 0, 0)
-Crash.Size = UDim2.new(0, 57, 0, 57)
-Crash.Style = Enum.ButtonStyle.RobloxRoundButton
-Crash.Font = Enum.Font.SourceSansLight
-Crash.Text = "Crash"
-Crash.TextColor3 = Color3.fromRGB(0, 0, 0)
-Crash.TextSize = 14.000
-
-Patience.Name = "Patience"
-Patience.Parent = Page3Frame
-Patience.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Patience.BackgroundTransparency = 1.000
-Patience.Position = UDim2.new(0.613475204, 0, 0.346280515, 0)
-Patience.Size = UDim2.new(0, 51, 0, 34)
-Patience.Font = Enum.Font.SourceSansLight
-Patience.Text = "This Script takes a while be patient"
-Patience.TextColor3 = Color3.fromRGB(255, 255, 255)
-Patience.TextScaled = true
-Patience.TextSize = 14.000
-Patience.TextWrapped = true
-
-T.Name = "T"
-T.Parent = Page3Frame
-T.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-T.BackgroundTransparency = 1.000
-T.Position = UDim2.new(0.439716309, 0, 0.361963183, 0)
-T.Size = UDim2.new(0, 33, 0, 27)
-T.Font = Enum.Font.SourceSansLight
-T.Text = "Ctrl + L to tp"
-T.TextColor3 = Color3.fromRGB(255, 255, 255)
-T.TextScaled = true
-T.TextSize = 14.000
-T.TextWrapped = true
-
-Control.Name = "Control"
-Control.Parent = Page3Frame
-Control.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Control.BackgroundTransparency = 1.000
-Control.Position = UDim2.new(0.202127665, 0, 0.361963212, 0)
-Control.Size = UDim2.new(0, 57, 0, 20)
-Control.Font = Enum.Font.SourceSansLight
-Control.Text = "Press Ctrl to go down"
-Control.TextColor3 = Color3.fromRGB(255, 255, 255)
-Control.TextScaled = true
-Control.TextSize = 14.000
-Control.TextWrapped = true
-
-Untoggleable.Name = "Untoggleable"
-Untoggleable.Parent = Page3Frame
-Untoggleable.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Untoggleable.BackgroundTransparency = 1.000
-Untoggleable.Position = UDim2.new(0.0212765969, 0, 0.346280515, 0)
-Untoggleable.Size = UDim2.new(0, 45, 0, 30)
-Untoggleable.Font = Enum.Font.SourceSansLight
-Untoggleable.Text = "This is not untoggleable"
-Untoggleable.TextColor3 = Color3.fromRGB(255, 255, 255)
-Untoggleable.TextScaled = true
-Untoggleable.TextSize = 14.000
-Untoggleable.TextWrapped = true
-
-ToVoid.Name = "ToVoid"
-ToVoid.Parent = Page3Frame
-ToVoid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ToVoid.Position = UDim2.new(0, 0, 0.527607381, 0)
-ToVoid.Size = UDim2.new(0, 57, 0, 57)
-ToVoid.Style = Enum.ButtonStyle.RobloxRoundButton
-ToVoid.Font = Enum.Font.SourceSansLight
-ToVoid.Text = "ToVoid"
-ToVoid.TextColor3 = Color3.fromRGB(0, 0, 0)
-ToVoid.TextSize = 14.000
-
-Reset.Name = "Reset"
-Reset.Parent = Page3Frame
-Reset.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Reset.BackgroundTransparency = 1.000
-Reset.Position = UDim2.new(0.0212766007, 0, 0.824808121, 0)
-Reset.Size = UDim2.new(0, 46, 0, 29)
-Reset.Font = Enum.Font.SourceSansLight
-Reset.Text = "Reset to go back to map"
-Reset.TextColor3 = Color3.fromRGB(255, 255, 255)
-Reset.TextScaled = true
-Reset.TextSize = 14.000
-Reset.TextWrapped = true
-
-UnToVoid.Name = "UnToVoid"
-UnToVoid.Parent = Page3Frame
-UnToVoid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnToVoid.Position = UDim2.new(0, 0, 0.527607381, 0)
-UnToVoid.Size = UDim2.new(0, 57, 0, 57)
-UnToVoid.Visible = false
-UnToVoid.Style = Enum.ButtonStyle.RobloxRoundButton
-UnToVoid.Font = Enum.Font.SourceSansLight
-UnToVoid.Text = "UnToVoid"
-UnToVoid.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnToVoid.TextSize = 14.000
-
-KillHits.Name = "KillHits"
-KillHits.Parent = Page3Frame
-KillHits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-KillHits.Position = UDim2.new(0.202127665, 0, 0.527607381, 0)
-KillHits.Size = UDim2.new(0, 57, 0, 57)
-KillHits.Style = Enum.ButtonStyle.RobloxRoundButton
-KillHits.Font = Enum.Font.SourceSansLight
-KillHits.Text = "KillHits"
-KillHits.TextColor3 = Color3.fromRGB(0, 0, 0)
-KillHits.TextSize = 14.000
-
-UnKillHits.Name = "UnKillHits"
-UnKillHits.Parent = Page3Frame
-UnKillHits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnKillHits.Position = UDim2.new(0.202127665, 0, 0.527607381, 0)
-UnKillHits.Size = UDim2.new(0, 57, 0, 57)
-UnKillHits.Visible = false
-UnKillHits.Style = Enum.ButtonStyle.RobloxRoundButton
-UnKillHits.Font = Enum.Font.SourceSansLight
-UnKillHits.Text = "UnKillHits"
-UnKillHits.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnKillHits.TextSize = 14.000
-
-CharacterRemove.Name = "CharacterRemove"
-CharacterRemove.Parent = Page3Frame
-CharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-CharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
-CharacterRemove.Size = UDim2.new(0, 57, 0, 57)
-CharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
-CharacterRemove.Font = Enum.Font.SourceSansLight
-CharacterRemove.Text = "DeleteMe"
-CharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
-CharacterRemove.TextSize = 14.000
-
-UnCharacterRemove.Name = "UnCharacterRemove"
-UnCharacterRemove.Parent = Page3Frame
-UnCharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnCharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
-UnCharacterRemove.Size = UDim2.new(0, 57, 0, 57)
-UnCharacterRemove.Visible = false
-UnCharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
-UnCharacterRemove.Font = Enum.Font.SourceSansLight
-UnCharacterRemove.Text = "Reset"
-UnCharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnCharacterRemove.TextSize = 14.000
-
-AntiCrash.Name = "AntiCrash"
-AntiCrash.Parent = Page3Frame
-AntiCrash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AntiCrash.Position = UDim2.new(0.602836847, 0, 0.527607381, 0)
-AntiCrash.Size = UDim2.new(0, 57, 0, 57)
-AntiCrash.Style = Enum.ButtonStyle.RobloxRoundButton
-AntiCrash.Font = Enum.Font.SourceSansLight
-AntiCrash.Text = "AntiCrash"
-AntiCrash.TextColor3 = Color3.fromRGB(0, 0, 0)
-AntiCrash.TextSize = 14.000
-
-UnAntiCrash.Name = "UnAntiCrash"
-UnAntiCrash.Parent = Page3Frame
-UnAntiCrash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-UnAntiCrash.Position = UDim2.new(0.602836847, 0, 0.527607381, 0)
-UnAntiCrash.Size = UDim2.new(0, 57, 0, 57)
-UnAntiCrash.Visible = false
-UnAntiCrash.Style = Enum.ButtonStyle.RobloxRoundButton
-UnAntiCrash.Font = Enum.Font.SourceSansLight
-UnAntiCrash.Text = "UnAntiCrash"
-UnAntiCrash.TextColor3 = Color3.fromRGB(0, 0, 0)
-UnAntiCrash.TextSize = 14.000
-
--- Scripts:
-
-local function OLDDHQW_fake_script() -- LBBGui.Script 
-	local script = Instance.new('Script', LBBGui)
-
-	--previoustable
-	local previous = {}
-	
-	--targetsTable
-	local Targets = {}
-	
-	--frame
-	frame = script.Parent.DragFrame
-	frame.Draggable = true
-	frame.Active = true
-	frame.Selectable = true
-	
-	--startmessage
-	game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		Text = "Thank you for using my Gui\nAdded:\nInsert/Remove Target Buttons, Joins, Hitlist(not customizeable) And DeleteMe\n Credits:\nAnonTheEggpert#9353 and Cielle";
-		Color = Color3.fromRGB(255,143,223);
-		Font = Enum.Font.SourceSansBold;
-		FontSize = Enum.FontSize.Size96;
-	})
-	
-	--block
-	local Block = Instance.new("Part", workspace)
-	Block.Name = "PlatformBlock"
-	Block.Position = Vector3.new(300000, 300000, 300000)
-	Block.Size = Vector3.new(1000, 3, 1000)
-	Block.BrickColor = BrickColor.Random()
-	Block.CanCollide = true
-	Block.Anchored = true
-	
-	--cbring
-	CBRING.MouseButton1Down:connect(function()
-		_G.Cbring = true
-	
-		while _G.Cbring == true do
-			game:GetService("RunService").RenderStepped:wait()
-			for i, v in pairs(game.Players:GetChildren()) do
-				if v ~= game.Players.LocalPlayer then
-					spawn(function()
-						local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
-						if Handle then
-							for i,c in pairs(v.Character:GetChildren()) do
-								if c:IsA("BasePart") then
-									c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1, (game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
-								end
-							end
-						end
-					end)
-				end
-			end
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local LBBGui = Instance.new("ScreenGui")
+	local DragFrame = Instance.new("Frame")
+	local MainFrame = Instance.new("Frame")
+	local Page1Frame = Instance.new("Frame")
+	local Title = Instance.new("TextLabel")
+	local CBRING = Instance.new("TextButton")
+	local Rocket = Instance.new("TextButton")
+	local OFF = Instance.new("TextButton")
+	local UnRocket = Instance.new("TextButton")
+	local GetGear = Instance.new("TextButton")
+	local TP = Instance.new("TextButton")
+	local Name = Instance.new("TextBox")
+	local ToPlr = Instance.new("TextButton")
+	local Page1 = Instance.new("TextLabel")
+	local TextLabel = Instance.new("TextLabel")
+	local RocketTarget = Instance.new("TextButton")
+	local UnRocketTarget = Instance.new("TextButton")
+	local KillTarget = Instance.new("TextButton")
+	local UnKillTarget = Instance.new("TextButton")
+	local LockTarget = Instance.new("TextButton")
+	local RemoveTarget = Instance.new("TextButton")
+	local Page2Frame = Instance.new("Frame")
+	local Regen = Instance.new("TextButton")
+	local Page2 = Instance.new("TextLabel")
+	local GodMode = Instance.new("TextButton")
+	local AntiAFK = Instance.new("TextButton")
+	local Anchor = Instance.new("TextButton")
+	local UnAnchor = Instance.new("TextButton")
+	local Speed = Instance.new("TextButton")
+	local Jump = Instance.new("TextButton")
+	local Info = Instance.new("TextLabel")
+	local WalkSpeed1 = Instance.new("TextBox")
+	local JumpHeight = Instance.new("TextBox")
+	local SafeSpot = Instance.new("TextButton")
+	local Next1 = Instance.new("TextButton")
+	local Prev1 = Instance.new("TextButton")
+	local Next2 = Instance.new("TextButton")
+	local Prev2 = Instance.new("TextButton")
+	local Page3Frame = Instance.new("Frame")
+	local Page3 = Instance.new("TextLabel")
+	local InfiniteJump = Instance.new("TextButton")
+	local Invis = Instance.new("TextButton")
+	local Requires = Instance.new("TextLabel")
+	local AirWalk = Instance.new("TextButton")
+	local UnAirWalk = Instance.new("TextButton")
+	local ClickTP = Instance.new("TextButton")
+	local Crash = Instance.new("TextButton")
+	local Patience = Instance.new("TextLabel")
+	local T = Instance.new("TextLabel")
+	local Control = Instance.new("TextLabel")
+	local Untoggleable = Instance.new("TextLabel")
+	local ToVoid = Instance.new("TextButton")
+	local Reset = Instance.new("TextLabel")
+	local UnToVoid = Instance.new("TextButton")
+	local KillHits = Instance.new("TextButton")
+	local UnKillHits = Instance.new("TextButton")
+	local CharacterRemove = Instance.new("TextButton")
+	local UnCharacterRemove = Instance.new("TextButton")
+	local AntiCrash = Instance.new("TextButton")
+	local UnAntiCrash = Instance.new("TextButton")
+	local KrnlCbring = Instance.new("TextButton")
+	local UnKrnlCbring = Instance.new("TextButton")
+	local ThanksRyan = Instance.new("Frame")
+	local TextLabel_2 = Instance.new("TextLabel")
+	local XButton = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local UICorner_2 = Instance.new("UICorner")
+
+	--Properties:
+
+	LBBGui.Name = "LBBGui"
+	LBBGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+	DragFrame.Name = "DragFrame"
+	DragFrame.Parent = LBBGui
+	DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	DragFrame.BackgroundTransparency = 1.000
+	DragFrame.Position = UDim2.new(0.0364431441, 0, 0.687144518, 0)
+	DragFrame.Size = UDim2.new(0, 377, 0, 212)
+
+	MainFrame.Name = "MainFrame"
+	MainFrame.Parent = DragFrame
+	MainFrame.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+	MainFrame.Position = UDim2.new(0.0473273918, 0, 0.113333359, 0)
+	MainFrame.Size = UDim2.new(0, 341, 0, 163)
+
+	Page1Frame.Name = "Page1Frame"
+	Page1Frame.Parent = MainFrame
+	Page1Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
+	Page1Frame.Position = UDim2.new(0.0861592889, 0, 0, 0)
+	Page1Frame.Size = UDim2.new(0, 282, 0, 163)
+
+	Title.Name = "Title"
+	Title.Parent = Page1Frame
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.Position = UDim2.new(0.14293468, 0, -0.0101454677, 0)
+	Title.Size = UDim2.new(0, 200, 0, 50)
+	Title.Font = Enum.Font.SourceSansLight
+	Title.Text = "LBB Gui"
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextSize = 30.000
+
+	CBRING.Name = "CBRING"
+	CBRING.Parent = Page1Frame
+	CBRING.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CBRING.LayoutOrder = 2
+	CBRING.Position = UDim2.new(-5.40167093e-08, 0, 0.793980062, 0)
+	CBRING.Size = UDim2.new(0, 32, 0, 31)
+	CBRING.Style = Enum.ButtonStyle.RobloxRoundButton
+	CBRING.Font = Enum.Font.SourceSansLight
+	CBRING.Text = "On"
+	CBRING.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CBRING.TextSize = 14.000
+
+	Rocket.Name = "Rocket"
+	Rocket.Parent = Page1Frame
+	Rocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Rocket.Position = UDim2.new(-0.00354618579, 0, -0.0147240013, 0)
+	Rocket.Size = UDim2.new(0, 86, 0, 45)
+	Rocket.Style = Enum.ButtonStyle.RobloxRoundButton
+	Rocket.Font = Enum.Font.SourceSansLight
+	Rocket.Text = "Rocket"
+	Rocket.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Rocket.TextSize = 14.000
+
+	OFF.Name = "OFF"
+	OFF.Parent = Page1Frame
+	OFF.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	OFF.LayoutOrder = 1
+	OFF.Position = UDim2.new(-0.00709216297, 0, 0.793979943, 0)
+	OFF.Size = UDim2.new(0, 32, 0, 31)
+	OFF.Visible = false
+	OFF.Style = Enum.ButtonStyle.RobloxRoundButton
+	OFF.Font = Enum.Font.SourceSansLight
+	OFF.Text = "Off"
+	OFF.TextColor3 = Color3.fromRGB(0, 0, 0)
+	OFF.TextSize = 14.000
+
+	UnRocket.Name = "UnRocket"
+	UnRocket.Parent = Page1Frame
+	UnRocket.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnRocket.Position = UDim2.new(-6.14672899e-08, 0, -0.0147240702, 0)
+	UnRocket.Size = UDim2.new(0, 85, 0, 44)
+	UnRocket.Visible = false
+	UnRocket.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnRocket.Font = Enum.Font.SourceSansLight
+	UnRocket.Text = "UnRocket"
+	UnRocket.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnRocket.TextSize = 14.000
+
+	GetGear.Name = "GetGear"
+	GetGear.Parent = Page1Frame
+	GetGear.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	GetGear.Position = UDim2.new(0.773049653, 0, 0, 0)
+	GetGear.Size = UDim2.new(0, 64, 0, 42)
+	GetGear.Style = Enum.ButtonStyle.RobloxRoundButton
+	GetGear.Font = Enum.Font.SourceSansLight
+	GetGear.Text = "GetGear"
+	GetGear.TextColor3 = Color3.fromRGB(0, 0, 0)
+	GetGear.TextSize = 14.000
+
+	TP.Name = "TP"
+	TP.Parent = Page1Frame
+	TP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TP.Position = UDim2.new(0.705673754, 0, 0.265928298, 0)
+	TP.Size = UDim2.new(0, 81, 0, 53)
+	TP.Style = Enum.ButtonStyle.RobloxRoundButton
+	TP.Font = Enum.Font.SourceSansLight
+	TP.Text = "ToMid"
+	TP.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TP.TextSize = 14.000
+
+	Name.Name = "Name"
+	Name.Parent = Page1Frame
+	Name.BackgroundColor3 = Color3.fromRGB(217, 217, 217)
+	Name.Position = UDim2.new(0.599290788, 0, 0.898427904, 0)
+	Name.Size = UDim2.new(0, 107, 0, 15)
+	Name.Font = Enum.Font.SourceSans
+	Name.PlaceholderText = "Input Name"
+	Name.Text = ""
+	Name.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Name.TextSize = 14.000
+
+	ToPlr.Name = "ToPlr"
+	ToPlr.Parent = Page1Frame
+	ToPlr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ToPlr.Position = UDim2.new(-0.00354604423, 0, 0.259793341, 0)
+	ToPlr.Size = UDim2.new(0, 88, 0, 54)
+	ToPlr.Style = Enum.ButtonStyle.RobloxRoundButton
+	ToPlr.Font = Enum.Font.SourceSansLight
+	ToPlr.Text = "ToPlr"
+	ToPlr.TextColor3 = Color3.fromRGB(0, 0, 0)
+	ToPlr.TextSize = 14.000
+
+	Page1.Name = "Page 1"
+	Page1.Parent = Page1Frame
+	Page1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Page1.BackgroundTransparency = 1.000
+	Page1.Position = UDim2.new(0.273049712, 0, 0.801993728, 0)
+	Page1.Size = UDim2.new(0, 128, 0, 37)
+	Page1.Font = Enum.Font.SourceSansItalic
+	Page1.Text = "Page 1"
+	Page1.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Page1.TextSize = 14.000
+
+	TextLabel.Parent = Page1Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.Position = UDim2.new(-1.67638063e-08, 0, 0.699386477, 0)
+	TextLabel.Size = UDim2.new(0, 114, 0, 17)
+	TextLabel.Font = Enum.Font.SourceSansLight
+	TextLabel.Text = "Kill all players button"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 14.000
+
+	RocketTarget.Name = "RocketTarget"
+	RocketTarget.Parent = Page1Frame
+	RocketTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	RocketTarget.Position = UDim2.new(0.620567322, 0, 0.653028965, 0)
+	RocketTarget.Size = UDim2.new(0, 95, 0, 31)
+	RocketTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+	RocketTarget.Font = Enum.Font.SourceSansLight
+	RocketTarget.Text = "RocketTargetOn"
+	RocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+	RocketTarget.TextSize = 14.000
+
+	UnRocketTarget.Name = "UnRocketTarget"
+	UnRocketTarget.Parent = Page1Frame
+	UnRocketTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnRocketTarget.Position = UDim2.new(0.620999992, 0, 0.652999997, 0)
+	UnRocketTarget.Size = UDim2.new(0, 95, 0, 31)
+	UnRocketTarget.Visible = false
+	UnRocketTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnRocketTarget.Font = Enum.Font.SourceSans
+	UnRocketTarget.Text = "RocketTargetOff"
+	UnRocketTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnRocketTarget.TextSize = 14.000
+
+	KillTarget.Name = "KillTarget"
+	KillTarget.Parent = Page1Frame
+	KillTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	KillTarget.Position = UDim2.new(0.329787254, 0, 0.343558252, 0)
+	KillTarget.Size = UDim2.new(0, 95, 0, 40)
+	KillTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+	KillTarget.Font = Enum.Font.SourceSansLight
+	KillTarget.Text = "KillTarget"
+	KillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+	KillTarget.TextSize = 14.000
+
+	UnKillTarget.Name = "UnKillTarget"
+	UnKillTarget.Parent = Page1Frame
+	UnKillTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnKillTarget.Position = UDim2.new(0.329787254, 0, 0.343558252, 0)
+	UnKillTarget.Size = UDim2.new(0, 95, 0, 40)
+	UnKillTarget.Visible = false
+	UnKillTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnKillTarget.Font = Enum.Font.SourceSansLight
+	UnKillTarget.Text = "UnKillTarget"
+	UnKillTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnKillTarget.TextSize = 14.000
+
+	LockTarget.Name = "LockTarget"
+	LockTarget.Parent = Page1Frame
+	LockTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	LockTarget.Position = UDim2.new(0.404255331, 0, 0.585544348, 0)
+	LockTarget.Size = UDim2.new(0, 32, 0, 30)
+	LockTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+	LockTarget.Font = Enum.Font.SourceSansLight
+	LockTarget.Text = "I"
+	LockTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+	LockTarget.TextSize = 14.000
+
+	RemoveTarget.Name = "RemoveTarget"
+	RemoveTarget.Parent = Page1Frame
+	RemoveTarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	RemoveTarget.Position = UDim2.new(0.517730474, 0, 0.585544348, 0)
+	RemoveTarget.Size = UDim2.new(0, 32, 0, 30)
+	RemoveTarget.Style = Enum.ButtonStyle.RobloxRoundButton
+	RemoveTarget.Font = Enum.Font.SourceSansLight
+	RemoveTarget.Text = "R"
+	RemoveTarget.TextColor3 = Color3.fromRGB(0, 0, 0)
+	RemoveTarget.TextSize = 14.000
+
+	Page2Frame.Name = "Page2Frame"
+	Page2Frame.Parent = MainFrame
+	Page2Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
+	Page2Frame.Position = UDim2.new(0.0861592889, 0, 0, 0)
+	Page2Frame.Size = UDim2.new(0, 282, 0, 163)
+	Page2Frame.Visible = false
+
+	Regen.Name = "Regen"
+	Regen.Parent = Page2Frame
+	Regen.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Regen.Position = UDim2.new(0.37588653, 0, 0, 0)
+	Regen.Size = UDim2.new(0, 69, 0, 50)
+	Regen.Style = Enum.ButtonStyle.RobloxRoundButton
+	Regen.Font = Enum.Font.SourceSansLight
+	Regen.Text = "Regen"
+	Regen.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Regen.TextSize = 14.000
+
+	Page2.Name = "Page2"
+	Page2.Parent = Page2Frame
+	Page2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Page2.BackgroundTransparency = 1.000
+	Page2.Position = UDim2.new(0.273000002, 0, 0.801999986, 0)
+	Page2.Size = UDim2.new(0, 128, 0, 37)
+	Page2.Font = Enum.Font.SourceSansItalic
+	Page2.Text = "Page 2 "
+	Page2.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Page2.TextSize = 14.000
+
+	GodMode.Name = "GodMode"
+	GodMode.Parent = Page2Frame
+	GodMode.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	GodMode.Position = UDim2.new(0.3758865, 0, 0.30674845, 0)
+	GodMode.Size = UDim2.new(0, 71, 0, 29)
+	GodMode.Style = Enum.ButtonStyle.RobloxRoundButton
+	GodMode.Font = Enum.Font.SourceSansLight
+	GodMode.Text = "GodMode"
+	GodMode.TextColor3 = Color3.fromRGB(0, 0, 0)
+	GodMode.TextSize = 14.000
+
+	AntiAFK.Name = "Anti-AFK"
+	AntiAFK.Parent = Page2Frame
+	AntiAFK.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	AntiAFK.Size = UDim2.new(0, 58, 0, 53)
+	AntiAFK.Style = Enum.ButtonStyle.RobloxRoundButton
+	AntiAFK.Font = Enum.Font.SourceSans
+	AntiAFK.Text = "AntiAFK"
+	AntiAFK.TextColor3 = Color3.fromRGB(0, 0, 0)
+	AntiAFK.TextSize = 14.000
+
+	Anchor.Name = "Anchor"
+	Anchor.Parent = Page2Frame
+	Anchor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Anchor.Position = UDim2.new(0.787234068, 0, 0, 0)
+	Anchor.Size = UDim2.new(0, 58, 0, 53)
+	Anchor.Style = Enum.ButtonStyle.RobloxRoundButton
+	Anchor.Font = Enum.Font.SourceSans
+	Anchor.Text = "Anchor"
+	Anchor.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Anchor.TextSize = 14.000
+
+	UnAnchor.Name = "UnAnchor"
+	UnAnchor.Parent = Page2Frame
+	UnAnchor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnAnchor.Position = UDim2.new(0.787234068, 0, 0, 0)
+	UnAnchor.Size = UDim2.new(0, 58, 0, 53)
+	UnAnchor.Visible = false
+	UnAnchor.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnAnchor.Font = Enum.Font.SourceSans
+	UnAnchor.Text = "UnAnchor"
+	UnAnchor.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnAnchor.TextSize = 14.000
+
+	Speed.Name = "Speed"
+	Speed.Parent = Page2Frame
+	Speed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Speed.Position = UDim2.new(0.0425531864, 0, 0.325153381, 0)
+	Speed.Size = UDim2.new(0, 79, 0, 34)
+	Speed.Style = Enum.ButtonStyle.RobloxRoundButton
+	Speed.Font = Enum.Font.SourceSansLight
+	Speed.Text = "WalkSpeed"
+	Speed.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Speed.TextSize = 14.000
+
+	Jump.Name = "Jump"
+	Jump.Parent = Page2Frame
+	Jump.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Jump.Position = UDim2.new(0.0425531864, 0, 0.533742309, 0)
+	Jump.Size = UDim2.new(0, 79, 0, 34)
+	Jump.Style = Enum.ButtonStyle.RobloxRoundButton
+	Jump.Font = Enum.Font.SourceSansLight
+	Jump.Text = "JumpHeight"
+	Jump.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Jump.TextSize = 14.000
+
+	Info.Name = "Info"
+	Info.Parent = Page2Frame
+	Info.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Info.BackgroundTransparency = 1.000
+	Info.Position = UDim2.new(0.0460992754, 0, 0.742331266, 0)
+	Info.Size = UDim2.new(0, 78, 0, 41)
+	Info.Font = Enum.Font.SourceSans
+	Info.Text = "Normal WalkSpeed is 16 and Normal JumpHeight is 50"
+	Info.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Info.TextScaled = true
+	Info.TextSize = 14.000
+	Info.TextWrapped = true
+
+	WalkSpeed1.Name = "WalkSpeed"
+	WalkSpeed1.Parent = Page2Frame
+	WalkSpeed1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	WalkSpeed1.Position = UDim2.new(0.673758864, 0, 0.380368084, 0)
+	WalkSpeed1.Size = UDim2.new(0, 90, 0, 16)
+	WalkSpeed1.Font = Enum.Font.SourceSans
+	WalkSpeed1.PlaceholderText = "SpeedValue"
+	WalkSpeed1.Text = "16"
+	WalkSpeed1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	WalkSpeed1.TextSize = 14.000
+
+	JumpHeight.Name = "JumpHeight"
+	JumpHeight.Parent = Page2Frame
+	JumpHeight.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	JumpHeight.Position = UDim2.new(0.673758864, 0, 0.582822084, 0)
+	JumpHeight.Size = UDim2.new(0, 90, 0, 16)
+	JumpHeight.Font = Enum.Font.SourceSans
+	JumpHeight.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
+	JumpHeight.PlaceholderText = "JumpValue"
+	JumpHeight.Text = "50"
+	JumpHeight.TextColor3 = Color3.fromRGB(0, 0, 0)
+	JumpHeight.TextSize = 14.000
+
+	SafeSpot.Name = "SafeSpot"
+	SafeSpot.Parent = Page2Frame
+	SafeSpot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SafeSpot.Position = UDim2.new(0.37588653, 0, 0.478527606, 0)
+	SafeSpot.Size = UDim2.new(0, 71, 0, 43)
+	SafeSpot.Style = Enum.ButtonStyle.RobloxRoundButton
+	SafeSpot.Font = Enum.Font.SourceSans
+	SafeSpot.Text = "SafeSpot"
+	SafeSpot.TextColor3 = Color3.fromRGB(0, 0, 0)
+	SafeSpot.TextSize = 14.000
+
+	Next1.Name = "Next1"
+	Next1.Parent = MainFrame
+	Next1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Next1.Position = UDim2.new(0.909356713, 0, 0.364685416, 0)
+	Next1.Size = UDim2.new(0, 31, 0, 52)
+	Next1.Style = Enum.ButtonStyle.RobloxRoundButton
+	Next1.Font = Enum.Font.SourceSansLight
+	Next1.Text = "Next"
+	Next1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Next1.TextSize = 14.000
+
+	Prev1.Name = "Prev1"
+	Prev1.Parent = MainFrame
+	Prev1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Prev1.Position = UDim2.new(-0.00584803894, 0, 0.340145528, 0)
+	Prev1.Size = UDim2.new(0, 31, 0, 52)
+	Prev1.Visible = false
+	Prev1.Style = Enum.ButtonStyle.RobloxRoundButton
+	Prev1.Font = Enum.Font.SourceSansLight
+	Prev1.Text = "Prev"
+	Prev1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Prev1.TextSize = 14.000
+
+	Next2.Name = "Next2"
+	Next2.Parent = MainFrame
+	Next2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Next2.Position = UDim2.new(0.908999979, 0, 0.36500001, 0)
+	Next2.Size = UDim2.new(0, 31, 0, 52)
+	Next2.Visible = false
+	Next2.Style = Enum.ButtonStyle.RobloxRoundButton
+	Next2.Font = Enum.Font.SourceSansLight
+	Next2.Text = "Next"
+	Next2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Next2.TextSize = 14.000
+
+	Prev2.Name = "Prev2"
+	Prev2.Parent = MainFrame
+	Prev2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Prev2.Position = UDim2.new(-0.00600000005, 0, 0.340000004, 0)
+	Prev2.Size = UDim2.new(0, 31, 0, 52)
+	Prev2.Visible = false
+	Prev2.Style = Enum.ButtonStyle.RobloxRoundButton
+	Prev2.Font = Enum.Font.SourceSansLight
+	Prev2.Text = "Prev"
+	Prev2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Prev2.TextSize = 14.000
+
+	Page3Frame.Name = "Page3Frame"
+	Page3Frame.Parent = MainFrame
+	Page3Frame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
+	Page3Frame.Position = UDim2.new(0.0860000029, 0, 0, 0)
+	Page3Frame.Size = UDim2.new(0, 282, 0, 163)
+	Page3Frame.Visible = false
+
+	Page3.Name = "Page 3"
+	Page3.Parent = Page3Frame
+	Page3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Page3.BackgroundTransparency = 1.000
+	Page3.Position = UDim2.new(0.273049712, 0, 0.801993728, 0)
+	Page3.Size = UDim2.new(0, 128, 0, 37)
+	Page3.Font = Enum.Font.SourceSansItalic
+	Page3.Text = "Page 3"
+	Page3.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Page3.TextSize = 14.000
+
+	InfiniteJump.Name = "InfiniteJump"
+	InfiniteJump.Parent = Page3Frame
+	InfiniteJump.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	InfiniteJump.Size = UDim2.new(0, 57, 0, 57)
+	InfiniteJump.Style = Enum.ButtonStyle.RobloxRoundButton
+	InfiniteJump.Font = Enum.Font.SourceSansLight
+	InfiniteJump.Text = "InfJump"
+	InfiniteJump.TextColor3 = Color3.fromRGB(0, 0, 0)
+	InfiniteJump.TextSize = 14.000
+
+	Invis.Name = "Invis"
+	Invis.Parent = Page3Frame
+	Invis.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Invis.Position = UDim2.new(0.797872365, 0, 0, 0)
+	Invis.Size = UDim2.new(0, 57, 0, 57)
+	Invis.Style = Enum.ButtonStyle.RobloxRoundButton
+	Invis.Font = Enum.Font.SourceSansLight
+	Invis.Text = "Invis"
+	Invis.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Invis.TextSize = 14.000
+
+	Requires.Name = "Requires"
+	Requires.Parent = Page3Frame
+	Requires.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Requires.BackgroundTransparency = 1.000
+	Requires.Position = UDim2.new(0.762411475, 0, 0.349693239, 0)
+	Requires.Size = UDim2.new(0, 75, 0, 22)
+	Requires.Font = Enum.Font.SourceSansLight
+	Requires.Text = "Requires Invis Cape"
+	Requires.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Requires.TextScaled = true
+	Requires.TextSize = 14.000
+	Requires.TextWrapped = true
+
+	AirWalk.Name = "AirWalk"
+	AirWalk.Parent = Page3Frame
+	AirWalk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	AirWalk.Position = UDim2.new(0.202127695, 0, 0, 0)
+	AirWalk.Size = UDim2.new(0, 57, 0, 57)
+	AirWalk.Style = Enum.ButtonStyle.RobloxRoundButton
+	AirWalk.Font = Enum.Font.SourceSansLight
+	AirWalk.Text = "AirWalk"
+	AirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+	AirWalk.TextSize = 14.000
+
+	UnAirWalk.Name = "UnAirWalk"
+	UnAirWalk.Parent = Page3Frame
+	UnAirWalk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnAirWalk.Position = UDim2.new(0.202127695, 0, 0, 0)
+	UnAirWalk.Size = UDim2.new(0, 57, 0, 57)
+	UnAirWalk.Visible = false
+	UnAirWalk.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnAirWalk.Font = Enum.Font.SourceSansLight
+	UnAirWalk.Text = "UnAirWalk"
+	UnAirWalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnAirWalk.TextSize = 14.000
+
+	ClickTP.Name = "ClickTP"
+	ClickTP.Parent = Page3Frame
+	ClickTP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ClickTP.Position = UDim2.new(0.40425536, 0, 0, 0)
+	ClickTP.Size = UDim2.new(0, 57, 0, 57)
+	ClickTP.Style = Enum.ButtonStyle.RobloxRoundButton
+	ClickTP.Font = Enum.Font.SourceSansLight
+	ClickTP.Text = "ClickTP"
+	ClickTP.TextColor3 = Color3.fromRGB(0, 0, 0)
+	ClickTP.TextSize = 14.000
+
+	Crash.Name = "Crash"
+	Crash.Parent = Page3Frame
+	Crash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Crash.Position = UDim2.new(0.602836907, 0, 0, 0)
+	Crash.Size = UDim2.new(0, 57, 0, 57)
+	Crash.Style = Enum.ButtonStyle.RobloxRoundButton
+	Crash.Font = Enum.Font.SourceSansLight
+	Crash.Text = "Crash"
+	Crash.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Crash.TextSize = 14.000
+
+	Patience.Name = "Patience"
+	Patience.Parent = Page3Frame
+	Patience.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Patience.BackgroundTransparency = 1.000
+	Patience.Position = UDim2.new(0.613475204, 0, 0.346280515, 0)
+	Patience.Size = UDim2.new(0, 51, 0, 34)
+	Patience.Font = Enum.Font.SourceSansLight
+	Patience.Text = "This Script takes a while be patient"
+	Patience.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Patience.TextScaled = true
+	Patience.TextSize = 14.000
+	Patience.TextWrapped = true
+
+	T.Name = "T"
+	T.Parent = Page3Frame
+	T.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	T.BackgroundTransparency = 1.000
+	T.Position = UDim2.new(0.439716309, 0, 0.361963183, 0)
+	T.Size = UDim2.new(0, 33, 0, 27)
+	T.Font = Enum.Font.SourceSansLight
+	T.Text = "Ctrl + L to TP"
+	T.TextColor3 = Color3.fromRGB(255, 255, 255)
+	T.TextScaled = true
+	T.TextSize = 14.000
+	T.TextWrapped = true
+
+	Control.Name = "Control"
+	Control.Parent = Page3Frame
+	Control.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Control.BackgroundTransparency = 1.000
+	Control.Position = UDim2.new(0.202127665, 0, 0.361963212, 0)
+	Control.Size = UDim2.new(0, 57, 0, 20)
+	Control.Font = Enum.Font.SourceSansLight
+	Control.Text = "Press Ctrl to go down"
+	Control.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Control.TextScaled = true
+	Control.TextSize = 14.000
+	Control.TextWrapped = true
+
+	Untoggleable.Name = "Untoggleable"
+	Untoggleable.Parent = Page3Frame
+	Untoggleable.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Untoggleable.BackgroundTransparency = 1.000
+	Untoggleable.Position = UDim2.new(0.0212765969, 0, 0.346280515, 0)
+	Untoggleable.Size = UDim2.new(0, 45, 0, 30)
+	Untoggleable.Font = Enum.Font.SourceSansLight
+	Untoggleable.Text = "This is not untoggleable"
+	Untoggleable.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Untoggleable.TextScaled = true
+	Untoggleable.TextSize = 14.000
+	Untoggleable.TextWrapped = true
+
+	ToVoid.Name = "ToVoid"
+	ToVoid.Parent = Page3Frame
+	ToVoid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ToVoid.Position = UDim2.new(0, 0, 0.527607381, 0)
+	ToVoid.Size = UDim2.new(0, 57, 0, 57)
+	ToVoid.Style = Enum.ButtonStyle.RobloxRoundButton
+	ToVoid.Font = Enum.Font.SourceSansLight
+	ToVoid.Text = "ToVoid"
+	ToVoid.TextColor3 = Color3.fromRGB(0, 0, 0)
+	ToVoid.TextSize = 14.000
+
+	Reset.Name = "Reset"
+	Reset.Parent = Page3Frame
+	Reset.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Reset.BackgroundTransparency = 1.000
+	Reset.Position = UDim2.new(0.0212766007, 0, 0.824808121, 0)
+	Reset.Size = UDim2.new(0, 46, 0, 29)
+	Reset.Font = Enum.Font.SourceSansLight
+	Reset.Text = "Reset to go back to map"
+	Reset.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Reset.TextScaled = true
+	Reset.TextSize = 14.000
+	Reset.TextWrapped = true
+
+	UnToVoid.Name = "UnToVoid"
+	UnToVoid.Parent = Page3Frame
+	UnToVoid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnToVoid.Position = UDim2.new(0, 0, 0.527607381, 0)
+	UnToVoid.Size = UDim2.new(0, 57, 0, 57)
+	UnToVoid.Visible = false
+	UnToVoid.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnToVoid.Font = Enum.Font.SourceSansLight
+	UnToVoid.Text = "UnToVoid"
+	UnToVoid.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnToVoid.TextSize = 14.000
+
+	KillHits.Name = "KillHits"
+	KillHits.Parent = Page3Frame
+	KillHits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	KillHits.Position = UDim2.new(0.202127665, 0, 0.527607381, 0)
+	KillHits.Size = UDim2.new(0, 57, 0, 57)
+	KillHits.Style = Enum.ButtonStyle.RobloxRoundButton
+	KillHits.Font = Enum.Font.SourceSansLight
+	KillHits.Text = "KillHits"
+	KillHits.TextColor3 = Color3.fromRGB(0, 0, 0)
+	KillHits.TextSize = 14.000
+
+	UnKillHits.Name = "UnKillHits"
+	UnKillHits.Parent = Page3Frame
+	UnKillHits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnKillHits.Position = UDim2.new(0.202127665, 0, 0.527607381, 0)
+	UnKillHits.Size = UDim2.new(0, 57, 0, 57)
+	UnKillHits.Visible = false
+	UnKillHits.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnKillHits.Font = Enum.Font.SourceSansLight
+	UnKillHits.Text = "UnKillHits"
+	UnKillHits.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnKillHits.TextSize = 14.000
+
+	CharacterRemove.Name = "CharacterRemove"
+	CharacterRemove.Parent = Page3Frame
+	CharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
+	CharacterRemove.Size = UDim2.new(0, 57, 0, 57)
+	CharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
+	CharacterRemove.Font = Enum.Font.SourceSansLight
+	CharacterRemove.Text = "DeleteMe"
+	CharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CharacterRemove.TextSize = 14.000
+
+	UnCharacterRemove.Name = "UnCharacterRemove"
+	UnCharacterRemove.Parent = Page3Frame
+	UnCharacterRemove.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnCharacterRemove.Position = UDim2.new(0.404255331, 0, 0.527607381, 0)
+	UnCharacterRemove.Size = UDim2.new(0, 57, 0, 57)
+	UnCharacterRemove.Visible = false
+	UnCharacterRemove.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnCharacterRemove.Font = Enum.Font.SourceSansLight
+	UnCharacterRemove.Text = "Reset"
+	UnCharacterRemove.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnCharacterRemove.TextSize = 14.000
+
+	AntiCrash.Name = "AntiCrash"
+	AntiCrash.Parent = Page3Frame
+	AntiCrash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	AntiCrash.Position = UDim2.new(0.602836847, 0, 0.527607381, 0)
+	AntiCrash.Size = UDim2.new(0, 57, 0, 57)
+	AntiCrash.Style = Enum.ButtonStyle.RobloxRoundButton
+	AntiCrash.Font = Enum.Font.SourceSansLight
+	AntiCrash.Text = "AntiCrash"
+	AntiCrash.TextColor3 = Color3.fromRGB(0, 0, 0)
+	AntiCrash.TextSize = 14.000
+
+	UnAntiCrash.Name = "UnAntiCrash"
+	UnAntiCrash.Parent = Page3Frame
+	UnAntiCrash.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnAntiCrash.Position = UDim2.new(0.602836847, 0, 0.527607381, 0)
+	UnAntiCrash.Size = UDim2.new(0, 57, 0, 57)
+	UnAntiCrash.Visible = false
+	UnAntiCrash.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnAntiCrash.Font = Enum.Font.SourceSansLight
+	UnAntiCrash.Text = "UnAntiCrash"
+	UnAntiCrash.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnAntiCrash.TextSize = 14.000
+
+	KrnlCbring.Name = "KrnlCbring"
+	KrnlCbring.Parent = Page3Frame
+	KrnlCbring.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	KrnlCbring.Position = UDim2.new(0.797872305, 0, 0.527607381, 0)
+	KrnlCbring.Size = UDim2.new(0, 57, 0, 57)
+	KrnlCbring.Style = Enum.ButtonStyle.RobloxRoundButton
+	KrnlCbring.Font = Enum.Font.SourceSansLight
+	KrnlCbring.Text = "Cbring"
+	KrnlCbring.TextColor3 = Color3.fromRGB(0, 0, 0)
+	KrnlCbring.TextSize = 14.000
+
+	UnKrnlCbring.Name = "UnKrnlCbring"
+	UnKrnlCbring.Parent = Page3Frame
+	UnKrnlCbring.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	UnKrnlCbring.Position = UDim2.new(0.797872305, 0, 0.527607381, 0)
+	UnKrnlCbring.Size = UDim2.new(0, 57, 0, 57)
+	UnKrnlCbring.Visible = false
+	UnKrnlCbring.Style = Enum.ButtonStyle.RobloxRoundButton
+	UnKrnlCbring.Font = Enum.Font.SourceSansLight
+	UnKrnlCbring.Text = "UnCbring"
+	UnKrnlCbring.TextColor3 = Color3.fromRGB(0, 0, 0)
+	UnKrnlCbring.TextSize = 14.000
+
+	ThanksRyan.Name = "ThanksRyan"
+	ThanksRyan.Parent = LBBGui
+	ThanksRyan.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	ThanksRyan.Position = UDim2.new(0.243362829, 0, 0.337883949, 0)
+	ThanksRyan.Size = UDim2.new(0, 695, 0, 284)
+	ThanksRyan.Visible = false
+
+	TextLabel_2.Parent = ThanksRyan
+	TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel_2.BackgroundTransparency = 1.000
+	TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel_2.Position = UDim2.new(0.178417265, 0, 0.225352108, 0)
+	TextLabel_2.Size = UDim2.new(0, 447, 0, 156)
+	TextLabel_2.Font = Enum.Font.FredokaOne
+	TextLabel_2.Text = "Thank you Ryan For Contributing on my Gui and using it. If You ever want me to make you a script just ask and I will do what I can :)"
+	TextLabel_2.TextColor3 = Color3.fromRGB(218, 48, 80)
+	TextLabel_2.TextScaled = true
+	TextLabel_2.TextSize = 14.000
+	TextLabel_2.TextWrapped = true
+
+	XButton.Name = "XButton"
+	XButton.Parent = ThanksRyan
+	XButton.BackgroundColor3 = Color3.fromRGB(140, 27, 44)
+	XButton.Position = UDim2.new(0.952517986, 0, 0, 0)
+	XButton.Size = UDim2.new(0, 33, 0, 24)
+	XButton.Font = Enum.Font.SourceSans
+	XButton.Text = "X"
+	XButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	XButton.TextScaled = true
+	XButton.TextSize = 14.000
+	XButton.TextWrapped = true
+
+	UICorner.Parent = XButton
+
+	UICorner_2.Parent = ThanksRyan
+
+	-- Scripts:
+
+	local function CNJMHJX_fake_script() -- LBBGui.Script 
+		local script = Instance.new('Script', LBBGui)
+
+		--previoustable
+		local previous = {}
+
+		--targetsTable
+		local Targets = {}
+
+		--Special for Ryan
+		if game.Players.LocalPlayer.Name == "Ryan09791" then
+			ThanksRyan.Visible = true
 		end
-	end)
-	CBRING.MouseButton1Down:connect(function()
-		OFF.Visible = true
-		CBRING.Visible = false
-	end)
-	
-	--rocket
-	Rocket.MouseButton1Down:connect(function()
-		_G.Activate = true
-	
-		repeat 
-			game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
-			game:GetService("RunService").RenderStepped:wait()
-		until game.Players.LocalPlayer.Backpack:FindFirstChild("RocketJumper")
-	
-		while _G.Activate do
-			wait()
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
-			game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1040.6811523438, 205.67813110352, 92.01229095459),Vector3.new(-1038.3994140625, 283.61309814453, 90.832092285156))
-		end
-	end)
-	Rocket.MouseButton1Down:connect(function()
-		UnRocket.Visible = true
-		Rocket.Visible = false
-	end)
-	
-	--uncbring
-	OFF.MouseButton1Down:connect(function()
-		OFF.Visible = false
-		CBRING.Visible = true
-		_G.Cbring = false
-	end)
-	
-	--unrocket
-	UnRocket.MouseButton1Down:connect(function()
-		UnRocket.Visible = false
-		Rocket.Visible = true
-		_G.Activate = false
-	end)
-	
-	--getgear
-	GetGear.MouseButton1Down:connect(function()
-		_G.OpenBlocks = true
-	
-		while _G.OpenBlocks == true do
-			wait()
-			game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
-			game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
-			game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
-			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
-			game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
-		end
-	end)
-	
-	--TPtomid
-	TP.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
-	end)
-	
-	--name
-	Name:GetPropertyChangedSignal("Text"):Connect(function()
-		for i = 1, #game.Players:GetPlayers() do
-			if string.lower(string.sub(game.Players:GetPlayers()[i].Name, 1, string.len(Name.Text))) == string.lower(Name.Text) then
-				Target = game.Players:GetPlayers()[i].Name
-				break
-			end
-		end
-	end)
-	
-	--toplr
-	ToPlr.MouseButton1Down:connect(function()
-		local PlayerName = Target
-		local plr = game.Workspace:FindFirstChild(PlayerName)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
-	end)
-	
-	--rockettarget
-	RocketTarget.MouseButton1Down:connect(function()
-		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
-			_G.RocketTarget = true
-	
-			while _G.RocketTarget do
+
+		--XButton
+		XButton.MouseButton1Down:connect(function()
+			ThanksRyan.Visible = false
+		end)
+
+		--frame
+		frame = script.Parent.DragFrame
+		frame.Draggable = true
+		frame.Active = true
+		frame.Selectable = true
+
+		--startmessage
+		game.StarterGui:SetCore("ChatMakeSystemMessage", {
+			Text = "Thank you for using my Gui\nAdded:\nNew Cbring for NonSynapse\n Credits:\nAnonTheEggpert#9353 and Cielle";
+			Color = Color3.fromRGB(255,143,223);
+			Font = Enum.Font.SourceSansBold;
+			FontSize = Enum.FontSize.Size96;
+		})
+
+		--block
+		local Block = Instance.new("Part", workspace)
+		Block.Name = "PlatformBlock"
+		Block.Position = Vector3.new(300000, 300000, 300000)
+		Block.Size = Vector3.new(10000, 3, 10000)
+		Block.BrickColor = BrickColor.Random()
+		Block.CanCollide = true
+		Block.Anchored = true
+
+		--cbring
+		CBRING.MouseButton1Down:connect(function()
+			_G.Cbring = true
+
+			while _G.Cbring == true do
 				game:GetService("RunService").RenderStepped:wait()
-				pcall(function()
-				    for i,v in pairs(game.Players:GetChildren()) do
-					    if table.find(Targets, v.Name) then
-						    if game.Players:FindFirstChild(v.Name) then
-								if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
-								end
-							end
-						end
-					end
-				end)
-			end
-		end
-	end)
-	
-	
-	
-	RocketTarget.MouseButton1Down:connect(function()
-		RocketTarget.Visible = false
-		UnRocketTarget.Visible = true
-	end)
-	
-	--unrockettarget
-	UnRocketTarget.MouseButton1Down:connect(function()
-		_G.RocketTarget = false
-	end)
-	UnRocketTarget.MouseButton1Down:connect(function()
-		RocketTarget.Visible = true
-		UnRocketTarget.Visible = false
-	end)
-	
-	--killtarget
-	KillTarget.MouseButton1Down:connect(function()
-		_G.KillTarget = true
-		if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
-			while _G.KillTarget == true do
-				game:GetService("RunService").RenderStepped:wait()
-				for i,v in pairs(game.Players:GetChildren()) do
-					if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer then
+				for i, v in pairs(game.Players:GetChildren()) do
+					if v ~= game.Players.LocalPlayer and v.Name ~= "Ryan09791" and v.Name ~= "HoIIow_Dreams" and v.Name ~= "Zanonner" and v.Name ~= "BubbaGumpWasTaken" then
 						spawn(function()
 							local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
 							if Handle then
 								for i,c in pairs(v.Character:GetChildren()) do
 									if c:IsA("BasePart") then
-										c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+										c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1, (game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
 									end
 								end
 							end
@@ -939,481 +877,668 @@ local function OLDDHQW_fake_script() -- LBBGui.Script
 					end
 				end
 			end
-		end
-	end)
-	KillTarget.MouseButton1Down:connect(function()
-		KillTarget.Visible = false
-		UnKillTarget.Visible = true
-	end)
-	
-	--unkilltarget
-	UnKillTarget.MouseButton1Down:connect(function()
-		_G.KillTarget = false
-	end)
-	UnKillTarget.MouseButton1Down:connect(function()
-		UnKillTarget.Visible = false
-		KillTarget.Visible = true
-	end)
-	
-	--regen
-	Regen.MouseButton1Down:connect(function()
-		local gearname2 = "TigerSkin"    
-		repeat
-			game:GetService("RunService").RenderStepped:wait()
-			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
-		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname2)
-		wait()
-		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
-		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-		mouse1click()
-		wait()
-		hum:UnequipTools()
-		while game.RunService.RenderStepped:wait() do
-			if hum and hum.Health <= 99 and hum.Health ~= 0 then
-				if game.Players.LocalPlayer.Backpack:FindFirstChild("TigerSkin") then
-					hum:EquipTool(game.Players.LocalPlayer.Backpack.TigerSkin)
-					hum:UnequipTools()
-				end
+		end)
+		CBRING.MouseButton1Down:connect(function()
+			OFF.Visible = true
+			CBRING.Visible = false
+		end)
+
+		--rocket
+		Rocket.MouseButton1Down:connect(function()
+			_G.Activate = true
+
+			repeat 
+				game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+				game:GetService("RunService").RenderStepped:wait()
+			until game.Players.LocalPlayer.Backpack:FindFirstChild("RocketJumper")
+
+			while _G.Activate do
+				wait()
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1044.4216308594, 198.79154968262, 89.946083068848),Vector3.new(-1040.181640625, 195.48890686035, 87.904838562012))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1039.8072509766, 190.79998779297, 105.87699127197),Vector3.new(-1036.1735839844, 194.85285949707, 108.00347900391))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.7956542969, 190.79998779297, 90.416458129883),Vector3.new(-1027.2537841797, 194.84408569336, 89.605979919434))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1041.8571777344, 190.79998779297, 77.719947814941),Vector3.new(-1042.2116699219, 194.85249328613, 78.891395568848))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1055.5615234375, 190.79998779297, 91.060272216797),Vector3.new(-1059.5725097656, 194.84844970703, 93.062309265137))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1054.6041259766, 190.79998779297, 104.53019714355),Vector3.new(-1054.4831542969, 194.85214233398, 105.6867980957))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1056.3013916016, 190.79998779297, 76.15518951416),Vector3.new(-1054.9007568359, 194.84005737305, 71.608116149902))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.4010009766, 190.79998779297, 76.440216064453),Vector3.new(-1025.8334960938, 194.8422088623, 74.23299407959))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1026.0682373047, 190.79998779297, 106.22905731201),Vector3.new(-1025.2619628906, 194.83930969238, 104.41701507568))
+				game:GetService("Players").LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(-1040.6811523438, 205.67813110352, 92.01229095459),Vector3.new(-1038.3994140625, 283.61309814453, 90.832092285156))
 			end
-		end
-	end)
-	
-	--godmode
-	GodMode.MouseButton1Down:connect(function()
-		local gearname3 = "LockonLauncher"
-		local gearname4 = "ChartreusePeriastron"
-		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-	
-		repeat
-			game:GetService("RunService").RenderStepped:wait()
-			game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
-		until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4)
-	
-		if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
-			game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
-			wait(0.5)
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
-			game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
-			game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
-		end
-	end)
-	
-	--antiafk
-	AntiAFK.MouseButton1Down:connect(function()
-		local vu = game:GetService("VirtualUser")
-		game:GetService("Players").LocalPlayer.Idled:connect(function()
-			vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-			wait(1)
-			vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 		end)
-	end)
-	
-	--anchor
-	Anchor.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-	end)
-	Anchor.MouseButton1Down:connect(function()
-		Anchor.Visible = false
-		UnAnchor.Visible = true
-	end)
-	
-	--unanchor
-	UnAnchor.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-	end)
-	UnAnchor.MouseButton1Down:connect(function()
-		Anchor.Visible = true
-		UnAnchor.Visible = false
-	end)
-	
-	--speed
-	Speed.MouseButton1Down:connect(function()
-	    pcall(function()
-	    while true do
-	    game.RunService.RenderStepped:wait()
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed.Text
-		end
+		Rocket.MouseButton1Down:connect(function()
+			UnRocket.Visible = true
+			Rocket.Visible = false
 		end)
-	end)
-	
-	--jump
-	Jump.MouseButton1Down:connect(function()
-	    pcall(function()
-	    while true do
-	    game.RunService.RenderStepped:wait()
-		Char.Humanoid.JumpPower = JumpHeight.Text
-		end
+
+		--uncbring
+		OFF.MouseButton1Down:connect(function()
+			OFF.Visible = false
+			CBRING.Visible = true
+			_G.Cbring = false
 		end)
-	end)
-	
-	--safespot
-	SafeSpot.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
-	end)
-	
-	--next1
-	Next1.MouseButton1Down:connect(function()
-		Page2Frame.Visible = true
-		Page1Frame.Visible = false
-		Prev1.Visible = true
-		Next1.Visible = false
-		Next2.Visible = true
-	end)
-	
-	--prev1
-	Prev1.MouseButton1Down:connect(function()
-		Page2Frame.Visible = false
-		Page1Frame.Visible = true
-		Next1.Visible = true
-		Prev1.Visible = false
-		Next2.Visible = false
-	end)
-	
-	--next2
-	Next2.MouseButton1Down:connect(function()
-		Page3Frame.Visible = true
-		Page2Frame.Visible = false
-		Prev2.Visible = true
-		Next1.Visible = false
-		Next2.Visible = false
-		Prev1.Visible = false
-	end)
-	
-	--prev2
-	Prev2.MouseButton1Down:connect(function()
-		Page3Frame.Visible = false
-		Page2Frame.Visible = true
-		Next2.Visible = true
-		Prev2.Visible = false
-		Prev1.Visible = true
-	end)
-	
-	--infjump
-	InfiniteJump.MouseButton1Down:connect(function()
-		local function Jump()
-			_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
-		end
-	
-		game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-			if input.UserInputType == Enum.UserInputType.Keyboard then
-				if input.KeyCode == Enum.KeyCode.Space then
-					Jump()
+
+		--unrocket
+		UnRocket.MouseButton1Down:connect(function()
+			UnRocket.Visible = false
+			Rocket.Visible = true
+			_G.Activate = false
+		end)
+
+		--getgear
+		GetGear.MouseButton1Down:connect(function()
+			_G.OpenBlocks = true
+
+			while _G.OpenBlocks == true do
+				game.RunService.RenderStepped:wait()
+				game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+				game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
+				game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
+				game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+				game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+			end
+		end)
+
+		--TPtomid
+		TP.MouseButton1Down:connect(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1041, 194, 90)
+		end)
+
+		--name
+		Name:GetPropertyChangedSignal("Text"):Connect(function()
+			for i = 1, #game.Players:GetPlayers() do
+				if string.lower(string.sub(game.Players:GetPlayers()[i].Name, 1, string.len(Name.Text))) == string.lower(Name.Text) then
+					Target = game.Players:GetPlayers()[i].Name
+					break
 				end
 			end
 		end)
-	end)
-	
-	--invis
-	Invis.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
-		local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-		mouse1click()
-		wait(0.25)
-		repeat
-		    game.RunService.RenderStepped:wait()
-		until game.Players.LocalPlayer.Character.Torso.Transparency ~= 1
-		    
-		hum:UnequipTools()
-	end)
-	
-	--airwalk
-	AirWalk.MouseButton1Down:connect(function()
-		mouse = game.Players.LocalPlayer:GetMouse()
-		_G.AirWalk = true
-	
-	
-		local WalkPart = Instance.new("Part", workspace)
-		WalkPart.Size = Vector3.new(7, 2, 3)
-		WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
-		WalkPart.Transparency = 1
-		WalkPart.Anchored = true
-		WalkPart.Name = "Airwalk"
-	
-	
-		mouse.KeyDown:Connect(function(key)
-			if key == "2" then
-				WalkPart.Size = Vector3.new(4, -0.5, 3)
+
+		--toplr
+		ToPlr.MouseButton1Down:connect(function()
+			local PlayerName = Target
+			local plr = game.Workspace:FindFirstChild(PlayerName)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = plr.HumanoidRootPart.CFrame * CFrame.new(-1,0,1)
+		end)
+
+		--rockettarget
+		RocketTarget.MouseButton1Down:connect(function()
+			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
+				_G.RocketTarget = true
+
+				while _G.RocketTarget do
+					game:GetService("RunService").RenderStepped:wait()
+					pcall(function()
+						for i,v in pairs(game.Players:GetChildren()) do
+							if table.find(Targets, v.Name) then
+								if game.Players:FindFirstChild(v.Name) then
+									if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
+										game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
+									end
+								end
+							end
+						end
+					end)
+				end
 			end
 		end)
-	
-		mouse.KeyUp:Connect(function(key)
-			if key == "2" then
-				WalkPart.Size = Vector3.new(7, 2, 3)
+
+
+
+		RocketTarget.MouseButton1Down:connect(function()
+			RocketTarget.Visible = false
+			UnRocketTarget.Visible = true
+		end)
+
+		--unrockettarget
+		UnRocketTarget.MouseButton1Down:connect(function()
+			_G.RocketTarget = false
+		end)
+		UnRocketTarget.MouseButton1Down:connect(function()
+			RocketTarget.Visible = true
+			UnRocketTarget.Visible = false
+		end)
+
+		--killtarget
+		KillTarget.MouseButton1Down:connect(function()
+			_G.KillTarget = true
+			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
+				while _G.KillTarget == true do
+					game:GetService("RunService").RenderStepped:wait()
+					for i,v in pairs(game.Players:GetChildren()) do
+						if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer then
+							spawn(function()
+								local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+								if Handle then
+									for i,c in pairs(v.Character:GetChildren()) do
+										if c:IsA("BasePart") then
+											c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
+										end
+									end
+								end
+							end)
+						end
+					end
+				end
 			end
 		end)
-	
-		repeat
-			WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+		KillTarget.MouseButton1Down:connect(function()
+			KillTarget.Visible = false
+			UnKillTarget.Visible = true
+		end)
+
+		--unkilltarget
+		UnKillTarget.MouseButton1Down:connect(function()
+			_G.KillTarget = false
+		end)
+		UnKillTarget.MouseButton1Down:connect(function()
+			UnKillTarget.Visible = false
+			KillTarget.Visible = true
+		end)
+
+		--regen
+		Regen.MouseButton1Down:connect(function()
+			local gearname2 = "TigerSkin"    
+			repeat
+				game:GetService("RunService").RenderStepped:wait()
+				game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+			until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname2)
 			wait()
-		until _G.AirWalk == false
-		WalkPart:Destroy()
-	end)
-	AirWalk.MouseButton1Down:connect(function()
-		AirWalk.Visible = false
-		UnAirWalk.Visible = true
-	end)
-	
-	--unairwalk
-	UnAirWalk.MouseButton1Down:connect(function()
-		_G.AirWalk = false
-	end)
-	UnAirWalk.MouseButton1Down:connect(function()
-		UnAirWalk.Visible = false
-		AirWalk.Visible = true
-	end)
-	
-	--Clicktp
-	ClickTP.MouseButton1Down:connect(function()
-		_G.ClickTp = true
-		game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
-	        if (input.KeyCode == Enum.KeyCode.L and game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl)) or (input.KeyCode == Enum.KeyCode.LeftControl and game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.L)) then
-		        if game.Players.LocalPlayer:GetMouse().Target then 
-		            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
-		        end
-	        end
-        end)
-    end)
-	
-	--Crash
-	Crash.MouseButton1Down:connect(function()
-		local hum = game.Players.LocalPlayer.Character.Humanoid
-		local Timer = 50
-		local Crash = 0
-		local cam = workspace.CurrentCamera
-		
-		game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
-		
-		cam.CameraType = Enum.CameraType.Fixed
-		cam.Focus = CFrame.new(Vector3.new(0, -9e6, 0))
-		
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9e6,9e6,-9e6)
-		wait(0.2)
-		game.Players.LocalPlayer.Character.Torso.Anchored = true
-		game.CoreGui.RobloxGui:Remove()
-		game.Players.LocalPlayer.PlayerGui.LBBGui.DragFrame:Remove()
-	
-		repeat
-			game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
-			game:GetService("RunService").RenderStepped:wait()
-		until game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow")
-	
-		game.StarterGui:SetCore("ChatMakeSystemMessage", {
-			Text = "The Server will crash in 1 minute and 30 Seconds";
-			Color = Color3.fromRGB(94,176,0);
-			Font = Enum.Font.SourceSansBold;
-			FontSize = Enum.FontSize.Size96;
-		})
-	
-		for i = 1, 5020 do
-			game:GetService("RunService").RenderStepped:wait()
-			game.Players.LocalPlayer.Character.Head.Transparency = 0
-			game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+			game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TigerSkin"))
+			local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+			mouse1click()
+			wait()
 			hum:UnequipTools()
-		end
-		game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
-		
-		game.Players.LocalPlayer.Character.HalloweenBowAndArrow.Handle.Mesh:Remove()
-        game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead.Mesh:Remove()
-        game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead:BreakJoints()
-        game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead.Position = Vector3.new(-9e6,9e6,-9e6)
-        game.Players.LocalPlayer.Character.Head.Transparency = 0
-	
-		while Timer > Crash  do
-			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("In " .. (Timer) .. " Seconds this server will crash", "All")
-			Timer = Timer - 5
-			wait(5)
-		end
-		wait(3)
-		game.StarterGui:SetCore("ChatMakeSystemMessage", {
-			Text = "Server Crashed";
-			Color = Color3.fromRGB(176,0,0);
-			Font = Enum.Font.SourceSansBold;
-			FontSize = Enum.FontSize.Size96;
-		})
-	end)
-	
-	--ToVoid
-	ToVoid.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.Torso.Anchored = false
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
-		wait(0.1)
-		game.Players.LocalPlayer.Character.Torso.Anchored = true
-	end)
-	ToVoid.MouseButton1Down:connect(function()
-		ToVoid.Visible = false
-		UnToVoid.Visible = true
-	end)
-	
-	--untovoid
-	UnToVoid.MouseButton1Down:connect(function()
-		game.Players.LocalPlayer.Character.Torso.Anchored = false
-	end)
-	UnToVoid.MouseButton1Down:connect(function()
-		UnToVoid.Visible = false
-		ToVoid.Visible = true
-	end)
-	
-	--InsertTarget
-	LockTarget.MouseButton1Down:connect(function()
-		table.insert(Targets, Target)
-		for i, val in pairs(Targets) do
-			print(val)
-		end
-	end)
-	
-	--RemoveTarget
-	RemoveTarget.MouseButton1Down:connect(function()
-		local thingy = table.find(Targets, Target)
-		table.remove(Targets, thingy)
-		for i, val in pairs(Targets) do
-			print(val)
-		end
-	end)
-	
-	--printjoins 
-	game.Players.PlayerAdded:connect(function(plr)
-		local name = plr.Name
-		game.StarterGui:SetCore("ChatMakeSystemMessage", {
-			Text = name .. " Has Joined The Server";
-			Color = Color3.fromRGB(0,255,0);
-			Font = Enum.Font.SourceSansBold;
-			FontSize = Enum.FontSize.Size96;
-		})
-	end)
-	
-	game.Players.PlayerRemoving:Connect(function(plr)
-		local name = plr.Name
-		game.StarterGui:SetCore("ChatMakeSystemMessage", {
-			Text = name .. " Has Left The Server";
-			Color = Color3.fromRGB(255,0,0);
-			Font = Enum.Font.SourceSansBold;
-			FontSize = Enum.FontSize.Size96;
-		})
-	end)
-	
-	--KillHits
-	KillHits.MouseButton1Down:connect(function()
-		_G.KillHits = true
-		
+			while game.RunService.RenderStepped:wait() do
+				if hum and hum.Health <= 99 and hum.Health ~= 0 then
+					if game.Players.LocalPlayer.Backpack:FindFirstChild("TigerSkin") then
+						hum:EquipTool(game.Players.LocalPlayer.Backpack.TigerSkin)
+						hum:UnequipTools()
+					end
+				end
+			end
+		end)
+
+		--godmode
+		GodMode.MouseButton1Down:connect(function()
+			local gearname3 = "LockonLauncher"
+			local gearname4 = "ChartreusePeriastron"
+			local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+
+			repeat
+				game:GetService("RunService").RenderStepped:wait()
+				game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+			until game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4)
+
+			if game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3) and game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4) then
+				game.Players.LocalPlayer.Backpack:FindFirstChild(gearname4).Parent = game.Players.LocalPlayer.Character
+				game:GetService("Players").LocalPlayer.Character.ChartreusePeriastron.Remote:FireServer(Enum.KeyCode.Q)
+				wait(0.5)
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
+				game.Players.LocalPlayer.Backpack:FindFirstChild(gearname3).Parent = game.Players.LocalPlayer.Character
+				game:GetService("Players").LocalPlayer.Character.LockonLauncher.Remote:FireServer(Vector3.new(-1172, 190, 201),Vector3.new(-1040, 195, 87))
+			end
+		end)
+
+		--antiafk
+		AntiAFK.MouseButton1Down:connect(function()
+			local vu = game:GetService("VirtualUser")
+			game:GetService("Players").LocalPlayer.Idled:connect(function()
+				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				wait(1)
+				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			end)
+		end)
+
+		--anchor
+		Anchor.MouseButton1Down:connect(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+		end)
+		Anchor.MouseButton1Down:connect(function()
+			Anchor.Visible = false
+			UnAnchor.Visible = true
+		end)
+
+		--unanchor
+		UnAnchor.MouseButton1Down:connect(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+		end)
+		UnAnchor.MouseButton1Down:connect(function()
+			Anchor.Visible = true
+			UnAnchor.Visible = false
+		end)
+
+		--speed
+		Speed.MouseButton1Down:connect(function()
+			pcall(function()
+				while true do
+				    game.RunService.RenderStepped:wait()
+                    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                        if v.Name == "Humanoid" then
+                            v.WalkSpeed = WalkSpeed1.Text
+                        end
+                    end
+				end
+			end)
+		end)
+
+		--jump
+		Jump.MouseButton1Down:connect(function()
+			pcall(function()
+				while true do
+				    game.RunService.RenderStepped:wait()
+					for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                        if v.Name == "Humanoid" then
+                            v.JumpPower = JumpHeight.Text
+                        end
+                    end
+				end
+			end)
+		end)
+
+		--safespot
+		SafeSpot.MouseButton1Down:connect(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(300000, 300001, 300000)
+		end)
+
+		--next1
+		Next1.MouseButton1Down:connect(function()
+			Page2Frame.Visible = true
+			Page1Frame.Visible = false
+			Prev1.Visible = true
+			Next1.Visible = false
+			Next2.Visible = true
+		end)
+
+		--prev1
+		Prev1.MouseButton1Down:connect(function()
+			Page2Frame.Visible = false
+			Page1Frame.Visible = true
+			Next1.Visible = true
+			Prev1.Visible = false
+			Next2.Visible = false
+		end)
+
+		--next2
+		Next2.MouseButton1Down:connect(function()
+			Page3Frame.Visible = true
+			Page2Frame.Visible = false
+			Prev2.Visible = true
+			Next1.Visible = false
+			Next2.Visible = false
+			Prev1.Visible = false
+		end)
+
+		--prev2
+		Prev2.MouseButton1Down:connect(function()
+			Page3Frame.Visible = false
+			Page2Frame.Visible = true
+			Next2.Visible = true
+			Prev2.Visible = false
+			Prev1.Visible = true
+		end)
+
+		--infjump
+		InfiniteJump.MouseButton1Down:connect(function()
+			local function Jump()
+				_G.Jump = game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+			end
+
+			game.UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+				if input.UserInputType == Enum.UserInputType.Keyboard then
+					if input.KeyCode == Enum.KeyCode.Space then
+						Jump()
+					end
+				end
+			end)
+		end)
+
+		--invis
+		Invis.MouseButton1Down:connect(function()
+			game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("TrololoCapeOfInvisibility"))
+			local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+			mouse1click()
+			wait(0.25)
+			repeat
+				game.RunService.RenderStepped:wait()
+			until game.Players.LocalPlayer.Character.Torso.Transparency ~= 1
+
+			hum:UnequipTools()
+		end)
+
+		--airwalk
+		AirWalk.MouseButton1Down:connect(function()
+			mouse = game.Players.LocalPlayer:GetMouse()
+			_G.AirWalk = true
+
+
+			local WalkPart = Instance.new("Part", workspace)
+			WalkPart.Size = Vector3.new(7, 2, 3)
+			WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+			WalkPart.Transparency = 1
+			WalkPart.Anchored = true
+			WalkPart.Name = "Airwalk"
+
+
+			mouse.KeyDown:Connect(function(key)
+				if key == "2" then
+					WalkPart.Size = Vector3.new(4, -0.5, 3)
+				end
+			end)
+
+			mouse.KeyUp:Connect(function(key)
+				if key == "2" then
+					WalkPart.Size = Vector3.new(7, 2, 3)
+				end
+			end)
+
+			repeat
+				WalkPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+				wait()
+			until _G.AirWalk == false
+			WalkPart:Destroy()
+		end)
+		AirWalk.MouseButton1Down:connect(function()
+			AirWalk.Visible = false
+			UnAirWalk.Visible = true
+		end)
+
+		--unairwalk
+		UnAirWalk.MouseButton1Down:connect(function()
+			_G.AirWalk = false
+		end)
+		UnAirWalk.MouseButton1Down:connect(function()
+			UnAirWalk.Visible = false
+			AirWalk.Visible = true
+		end)
+
+		--Clicktp
+		ClickTP.MouseButton1Down:connect(function()
+			_G.ClickTp = true
+			game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
+				if (input.KeyCode == Enum.KeyCode.L and game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl)) or (input.KeyCode == Enum.KeyCode.LeftControl and game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.L)) then
+					if game.Players.LocalPlayer:GetMouse().Target then 
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.x, game.Players.LocalPlayer:GetMouse().Hit.y + 5, game.Players.LocalPlayer:GetMouse().Hit.z)
+					end
+				end
+			end)
+		end)
+
+		--Crash
+		Crash.MouseButton1Down:connect(function()
+			local hum = game.Players.LocalPlayer.Character.Humanoid
+			local Timer = 50
+			local Crash = 0
+			local cam = workspace.CurrentCamera
+
+			game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+
+			cam.CameraType = Enum.CameraType.Fixed
+			cam.Focus = CFrame.new(Vector3.new(0, -9e6, 0))
+
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9e6,9e6,-9e6)
+			wait(0.2)
+			game.Players.LocalPlayer.Character.Torso.Anchored = true
+			game.CoreGui.RobloxGui:Remove()
+			game.Players.LocalPlayer.PlayerGui.LBBGui.DragFrame:Remove()
+
+			repeat
+				game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+				game:GetService("RunService").RenderStepped:wait()
+			until game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow")
+
+			game.StarterGui:SetCore("ChatMakeSystemMessage", {
+				Text = "The Server will crash in 1 minute and 30 Seconds";
+				Color = Color3.fromRGB(94,176,0);
+				Font = Enum.Font.SourceSansBold;
+				FontSize = Enum.FontSize.Size96;
+			})
+
+			for i = 1, 5020 do
+				game:GetService("RunService").RenderStepped:wait()
+				game.Players.LocalPlayer.Character.Head.Transparency = 0
+				game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+				hum:UnequipTools()
+			end
+			game.Players.LocalPlayer.Backpack:FindFirstChild("HalloweenBowAndArrow").Parent = game.Players.LocalPlayer.Character
+
+			game.Players.LocalPlayer.Character.HalloweenBowAndArrow.Handle.Mesh:Remove()
+			game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead.Mesh:Remove()
+			game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead:BreakJoints()
+			game.Players.LocalPlayer.Character.HalloweenBowAndArrow.PumpkinHead.Position = Vector3.new(-9e6,9e6,-9e6)
+			game.Players.LocalPlayer.Character.Head.Transparency = 0
+
+			while Timer > Crash  do
+				game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("In " .. (Timer) .. " Seconds this server will crash", "All")
+				Timer = Timer - 5
+				wait(5)
+			end
+			wait(3)
+			game.StarterGui:SetCore("ChatMakeSystemMessage", {
+				Text = "Server Crashed";
+				Color = Color3.fromRGB(176,0,0);
+				Font = Enum.Font.SourceSansBold;
+				FontSize = Enum.FontSize.Size96;
+			})
+		end)
+
+		--ToVoid
+		ToVoid.MouseButton1Down:connect(function()
+			game.Players.LocalPlayer.Character.Torso.Anchored = false
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1040100, -1000400, -100290)
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Torso.Anchored = true
+		end)
+		ToVoid.MouseButton1Down:connect(function()
+			ToVoid.Visible = false
+			UnToVoid.Visible = true
+		end)
+
+		--untovoid
+		UnToVoid.MouseButton1Down:connect(function()
+			game.Players.LocalPlayer.Character.Torso.Anchored = false
+		end)
+		UnToVoid.MouseButton1Down:connect(function()
+			UnToVoid.Visible = false
+			ToVoid.Visible = true
+		end)
+
+		--InsertTarget
+		LockTarget.MouseButton1Down:connect(function()
+			table.insert(Targets, Target)
+			for i, val in pairs(Targets) do
+				print(val)
+			end
+		end)
+
+		--RemoveTarget
+		RemoveTarget.MouseButton1Down:connect(function()
+			local thingy = table.find(Targets, Target)
+			table.remove(Targets, thingy)
+			for i, val in pairs(Targets) do
+				print(val)
+			end
+		end)
+
+		--printjoins 
+		game.Players.PlayerAdded:connect(function(plr)
+			local name = plr.Name
+			game.StarterGui:SetCore("ChatMakeSystemMessage", {
+				Text = name .. " Has Joined The Server";
+				Color = Color3.fromRGB(0,255,0);
+				Font = Enum.Font.SourceSansBold;
+				FontSize = Enum.FontSize.Size96;
+			})
+		end)
+
+		game.Players.PlayerRemoving:Connect(function(plr)
+			local name = plr.Name
+			game.StarterGui:SetCore("ChatMakeSystemMessage", {
+				Text = name .. " Has Left The Server";
+				Color = Color3.fromRGB(255,0,0);
+				Font = Enum.Font.SourceSansBold;
+				FontSize = Enum.FontSize.Size96;
+			})
+		end)
+
+		--KillHits
+		KillHits.MouseButton1Down:connect(function()
+			_G.KillHits = true
+
 			while _G.KillHits do
 				game:GetService("RunService").RenderStepped:wait()
 				pcall(function()
-				    for i,hit in pairs(game.Players:GetChildren()) do
-					    if table.find(Targets, hit.Name) then
-						    if game.Players:FindFirstChild(hit.Name) then
-								if game.Players:FindFirstChild(hit.Name).Character.Humanoid.Health >= 1 then
-									game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(hit.Name).Character.Torso.Position)
-								end
+					for i,hit in pairs(game.Players:GetChildren()) do
+						if table.find(Hitlist, hit.Name) then
+							if hit.Character.Humanoid.Health >= 1 then
+								game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),hit.Character.Torso.Position)
 							end
 						end
 					end
 				end)
 			end
-	end)
-	KillHits.MouseButton1Down:connect(function()
-		KillHits.Visible = false
-		UnKillHits.Visible = true
-	end)
-	
-	--unkillhits
-	UnKillHits.MouseButton1Down:connect(function()
-		_G.KillHits = false
-	end)
-	UnKillHits.MouseButton1Down:connect(function()
-		UnKillHits.Visible = false
-		KillHits.Visible = true
-	end)
-	
-	--anticrash
-	AntiCrash.MouseButton1Down:connect(function()
-		_G.AntiCrash = true
-		local CrashGear = {"DragonCompanion", "SillyGuitar", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
-		for i,v in pairs(game.Players:GetChildren()) do
-	        for i,gear in pairs(CrashGear) do
-		        if v.Backpack:FindFirstChild(gear) then
-		            game.StarterGui:SetCore("ChatMakeSystemMessage", {
-		            Text = v.Name .. " Has A Crash Gear";
-		            Color = Color3.fromRGB(0,0,0);
-		            Font = Enum.Font.SourceSansBold;
-		            FontSize = Enum.FontSize.Size96;
-	            	})
-		            while _G.AntiCrash do
-                        game:GetService("RunService").RenderStepped:wait()
-                        pcall(function()
-		                    for i,v in pairs(game.Players:GetChildren()) do
-                			    for i,gear in pairs(CrashGear) do
-				                    if v.Backpack:FindFirstChild(gear) then
-					                    print "2"
-							            if v.Backpack:FindFirstChild(gear) then
-								            if game.Players:FindFirstChild(v.Name) then
-									           if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
-										          game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Torso.Position)
-									           end
-								            end
-							            end
-						            end
-					            end
-				            end
-			            end)
-		            end
-		        end
-	        end
-	    end
-	end)
-	AntiCrash.MouseButton1Down:connect(function()
-		AntiCrash.Visible = false
-		UnAntiCrash.Visible = true
-	end)
-	
-	--unanticrash
-	UnAntiCrash.MouseButton1Down:connect(function()
-		_G.AntiCrash = false
-	end)
-	UnAntiCrash.MouseButton1Down:connect(function()
-		UnAntiCrash.Visible = false
-		AntiCrash.Visible = true
-	end)
-	
-	--Characterremove
-    CharacterRemove.MouseButton1Down:connect(function()
-	   local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-	   table.insert(previous, Position)
-	   _G.RemoveMe = true
-	   while _G.RemoveMe == true do
-	        game:GetService("RunService").RenderStepped:wait()
-    		game.Players.LocalPlayer.Character:Remove()
-    	end
-	end)
-	
-	CharacterRemove.MouseButton1Down:connect(function()
-		UnCharacterRemove.Visible = true
-		CharacterRemove.Visible = false
-	end)
-	
-	--UnCharacterremove
-	UnCharacterRemove.MouseButton1Down:connect(function()
-	    _G.RemoveMe = false
-		game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
-		wait(0.5)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(previous[1])
-		table.remove(previous, 1)
-	end)
-	UnCharacterRemove.MouseButton1Down:connect(function()
-		UnCharacterRemove.Visible = false
-		CharacterRemove.Visible = true
-	end)
-	
-	--Hitlist
-	Hitlist = {"MrsMediocree", "UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", "CharlesPham1234", "kurrisu_kun"}
-	
-    end
-    coroutine.wrap(OLDDHQW_fake_script)()
+		end)
+		KillHits.MouseButton1Down:connect(function()
+			KillHits.Visible = false
+			UnKillHits.Visible = true
+		end)
+
+		--unkillhits
+		UnKillHits.MouseButton1Down:connect(function()
+			_G.KillHits = false
+		end)
+		UnKillHits.MouseButton1Down:connect(function()
+			UnKillHits.Visible = false
+			KillHits.Visible = true
+		end)
+
+		--anticrash
+		AntiCrash.MouseButton1Down:connect(function()
+			_G.AntiCrash = true
+			local CrashGear = {"DragonCompanion", "SillyGuitar", "Ferdinand", "BabyNessieMount", "Wasp", "SharkMount", "RamMount", "WhiteGoldBlueFlowerSword", "SpaceSword", "FestiveMooseMount", "ElkMount", "HalloweenBowAndArrow", "PinataMount"}
+			for i,v in pairs(game.Players:GetChildren()) do
+				for i,gear in pairs(CrashGear) do
+					if v.Backpack:FindFirstChild(gear) then
+						game.StarterGui:SetCore("ChatMakeSystemMessage", {
+							Text = v.Name .. " Has A Crash Gear";
+							Color = Color3.fromRGB(0,0,0);
+							Font = Enum.Font.SourceSansBold;
+							FontSize = Enum.FontSize.Size96;
+						})
+						while _G.AntiCrash do
+							game:GetService("RunService").RenderStepped:wait()
+							pcall(function()
+								for i,v in pairs(game.Players:GetChildren()) do
+									for i,gear in pairs(CrashGear) do
+										if v.Backpack:FindFirstChild(gear) then
+											print "2"
+											if v.Backpack:FindFirstChild(gear) then
+												if game.Players:FindFirstChild(v.Name) then
+													if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
+														game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Torso.Position)
+													end
+												end
+											end
+										end
+									end
+								end
+							end)
+						end
+					end
+				end
+			end
+		end)
+		AntiCrash.MouseButton1Down:connect(function()
+			AntiCrash.Visible = false
+			UnAntiCrash.Visible = true
+		end)
+
+		--unanticrash
+		UnAntiCrash.MouseButton1Down:connect(function()
+			_G.AntiCrash = false
+		end)
+		UnAntiCrash.MouseButton1Down:connect(function()
+			UnAntiCrash.Visible = false
+			AntiCrash.Visible = true
+		end)
+
+		--Characterremove
+		CharacterRemove.MouseButton1Down:connect(function()
+			local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+			table.insert(previous, Position)
+			_G.RemoveMe = true
+			while _G.RemoveMe == true do
+				game:GetService("RunService").RenderStepped:wait()
+				game.Players.LocalPlayer.Character:Remove()
+			end
+		end)
+
+		CharacterRemove.MouseButton1Down:connect(function()
+			UnCharacterRemove.Visible = true
+			CharacterRemove.Visible = false
+		end)
+
+		--UnCharacterremove
+		UnCharacterRemove.MouseButton1Down:connect(function()
+			_G.RemoveMe = false
+			game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
+			wait(0.5)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(previous[1])
+			table.remove(previous, 1)
+		end)
+		UnCharacterRemove.MouseButton1Down:connect(function()
+			UnCharacterRemove.Visible = false
+			CharacterRemove.Visible = true
+		end)
+
+		--KrnlCbring
+		KrnlCbring.MouseButton1Down:connect(function()
+			_G.TorsoCbring = true
+			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
+				print '1'
+				while _G.TorsoCbring do
+					game.RunService.RenderStepped:wait()
+					for i,v in pairs(game.Players:GetChildren()) do
+						for i,value in pairs(Targets) do
+							if v.Name == value and v ~= game.Players.LocalPlayer then
+								for i,val in pairs(v.Character:GetChildren()) do
+									if val:IsA("BasePart") then
+										val.Anchored = true
+										val.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame * CFrame.new(Vector3.new(1.5, 1, -1.8))
+									elseif val:IsA("Tool") then
+										val:Remove()
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end)
+		KrnlCbring.MouseButton1Down:connect(function()
+			KrnlCbring.Visible = false
+			UnKrnlCbring.Visible = true
+		end)
+
+		--UnKrnlCbring
+		UnKrnlCbring.MouseButton1Down:connect(function()
+			_G.TorsoCbring = false
+		end)
+		UnKrnlCbring.MouseButton1Down:connect(function()
+			UnKrnlCbring.Visible = false
+			KrnlCbring.Visible = true
+		end)
+
+		--Hitlist
+		Hitlist = {"MrsMediocree", "UnidentifiedGlitcher", "kingdinoreal2", "kingdinoreal3", "kaydopepin76", "HoIIow_Dreams", "Orangeabilityy", "New_Gen3", "New_Gen2", "New_Gen4", "Shhreekk", "othersIlIIlllIlIlIIl", "bielsamorim1", "bielsamorim2", "MrMediocree", "Vencizlav", "Ryan09791", "TheBIoodG0D", "MyxCauazin7", "CharlesPham1234", "kurrisu_kun"}
+
+	end
+	coroutine.wrap(CNJMHJX_fake_script)()
 end
 
 for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
-    if v.Name == "LBBGui" then
-        v:Remove()
-    end
+	if v.Name == "LBBGui" then
+		v:Remove()
+	end
 end
 Gui()
