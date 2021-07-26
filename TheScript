@@ -955,25 +955,24 @@ local function Gui()
 
 		--rockettarget
 		RocketTarget.MouseButton1Down:connect(function()
-			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
 				_G.RocketTarget = true
-
 				while _G.RocketTarget do
 					game:GetService("RunService").RenderStepped:wait()
 					game:GetService("RunService").RenderStepped:wait()
 					pcall(function()
 						for i,v in pairs(game.Players:GetChildren()) do
-							if table.find(Targets, v.Name) then
+							if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer and v.Name ~= "Zanonner" and v.Name ~= "BubbaGumpWasTaken" then
 								if game.Players:FindFirstChild(v.Name) then
 									if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
 										game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
 									end
 								end
+							elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
+							    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 							end
 						end
 					end)
 				end
-			end
 		end)
 
 
@@ -995,22 +994,22 @@ local function Gui()
 		--killtarget
 		KillTarget.MouseButton1Down:connect(function()
 			_G.KillTarget = true
-			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
-				while _G.KillTarget == true do
-					game:GetService("RunService").RenderStepped:wait()
-					for i,v in pairs(game.Players:GetChildren()) do
-						if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer then
-							spawn(function()
-								local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
-								if Handle then
-									for i,c in pairs(v.Character:GetChildren()) do
-										if c:IsA("BasePart") then
-											c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
-										end
+			while _G.KillTarget == true do
+				game:GetService("RunService").RenderStepped:wait()
+				for i,v in pairs(game.Players:GetChildren()) do
+					if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer and v.Name ~= "Zanonner" and v.Name ~= "BubbaGumpWasTaken" then
+						spawn(function()
+							local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+							if Handle then
+								for i,c in pairs(v.Character:GetChildren()) do
+									if c:IsA("BasePart") then
+										c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
 									end
 								end
-							end)
-						end
+							end
+						end)
+					elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
+					    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 					end
 				end
 			end
@@ -1487,22 +1486,21 @@ local function Gui()
 		--KrnlCbring
 		KrnlCbring.MouseButton1Down:connect(function()
 			_G.TorsoCbring = true
-			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
-				print '1'
-				while _G.TorsoCbring do
-					game.RunService.RenderStepped:wait()
-					for i,v in pairs(game.Players:GetChildren()) do
-						for i,value in pairs(Targets) do
-							if v.Name == value and v ~= game.Players.LocalPlayer then
-								for i,val in pairs(v.Character:GetChildren()) do
-									if val:IsA("BasePart") then
-										val.Anchored = true
-										val.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame * CFrame.new(Vector3.new(1.5, 1, -1.8))
-									elseif val:IsA("Tool") then
-										val:Remove()
-									end
+			while _G.TorsoCbring do
+				game.RunService.RenderStepped:wait()
+				for i,v in pairs(game.Players:GetChildren()) do
+					for i,value in pairs(Targets) do
+						if v.Name == value and v ~= game.Players.LocalPlayer and v.Name ~= "Zanonner" and v.Name ~= "BubbaGumpWasTaken" then
+							for i,val in pairs(v.Character:GetChildren()) do
+								if val:IsA("BasePart") then
+									val.Anchored = true
+									val.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame * CFrame.new(Vector3.new(1.5, 1, -1.8))
+								elseif val:IsA("Tool") then
+									val:Remove()
 								end
 							end
+						elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
+						    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 						end
 					end
 				end
@@ -2463,25 +2461,24 @@ local function Gui2()
 
 		--rockettarget
 		RocketTarget.MouseButton1Down:connect(function()
-			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
 				_G.RocketTarget = true
-
 				while _G.RocketTarget do
 					game:GetService("RunService").RenderStepped:wait()
 					game:GetService("RunService").RenderStepped:wait()
 					pcall(function()
 						for i,v in pairs(game.Players:GetChildren()) do
-							if table.find(Targets, v.Name) then
+							if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer and v.Name ~= "Zanonner" and v.Name ~= "BubbaGumpWasTaken" then
 								if game.Players:FindFirstChild(v.Name) then
 									if game.Players:FindFirstChild(v.Name).Character.Humanoid.Health >= 1 then
 										game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
 									end
 								end
+							elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
+							    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 							end
 						end
 					end)
 				end
-			end
 		end)
 
 
@@ -2503,22 +2500,22 @@ local function Gui2()
 		--killtarget
 		KillTarget.MouseButton1Down:connect(function()
 			_G.KillTarget = true
-			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
-				while _G.KillTarget == true do
-					game:GetService("RunService").RenderStepped:wait()
-					for i,v in pairs(game.Players:GetChildren()) do
-						if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer then
-							spawn(function()
-								local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
-								if Handle then
-									for i,c in pairs(v.Character:GetChildren()) do
-										if c:IsA("BasePart") then
-											c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
-										end
+			while _G.KillTarget == true do
+				game:GetService("RunService").RenderStepped:wait()
+				for i,v in pairs(game.Players:GetChildren()) do
+					if table.find(Targets, v.Name) and v ~= game.Players.LocalPlayer and v.Name ~= "Zanonner" and v.Name ~= "BubbaGumpWasTaken" then
+						spawn(function()
+							local Handle = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Handle
+							if Handle then
+								for i,c in pairs(v.Character:GetChildren()) do
+									if c:IsA("BasePart") then
+										c = ((c.IsA(c, "BasePart") and firetouchinterest(Handle, c, 1,(game:GetService("RunService").RenderStepped.Wait(game:GetService("RunService").RenderStepped) and nil) or firetouchinterest(Handle, c, 0)) and nil) or c) or c
 									end
 								end
-							end)
-						end
+							end
+						end)
+					elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
+					    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 					end
 				end
 			end
@@ -2974,22 +2971,21 @@ local function Gui2()
 		--KrnlCbring
 		KrnlCbring.MouseButton1Down:connect(function()
 			_G.TorsoCbring = true
-			if Target ~= "Zanonner" or "Butter_2453" or "Fallen_Vin" or "BubbaGumpWasTaken" then
-				print '1'
-				while _G.TorsoCbring do
-					game.RunService.RenderStepped:wait()
-					for i,v in pairs(game.Players:GetChildren()) do
-						for i,value in pairs(Targets) do
-							if v.Name == value and v ~= game.Players.LocalPlayer then
-								for i,val in pairs(v.Character:GetChildren()) do
-									if val:IsA("BasePart") then
-										val.Anchored = true
-										val.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame * CFrame.new(Vector3.new(1.5, 1, -1.8))
-									elseif val:IsA("Tool") then
-										val:Remove()
-									end
+			while _G.TorsoCbring do
+				game.RunService.RenderStepped:wait()
+				for i,v in pairs(game.Players:GetChildren()) do
+					for i,value in pairs(Targets) do
+						if v.Name == value and v ~= game.Players.LocalPlayer and v.Name ~= "Zanonner" and v.Name ~= "BubbaGumpWasTaken" then
+							for i,val in pairs(v.Character:GetChildren()) do
+								if val:IsA("BasePart") then
+									val.Anchored = true
+									val.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame * CFrame.new(Vector3.new(1.5, 1, -1.8))
+								elseif val:IsA("Tool") then
+									val:Remove()
 								end
 							end
+						elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
+						    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 						end
 					end
 				end
