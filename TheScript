@@ -820,6 +820,9 @@ local function Gui()
 
 		--previoustable
 		local previous = {}
+		
+		--safetable
+		local Safe = {"Zanonner", "BubbaGumpWasTaken"}
 
 		--targetsTable
 		local Targets = {}
@@ -967,8 +970,6 @@ local function Gui()
 										game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
 									end
 								end
-							elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
-							    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 							end
 						end
 					end)
@@ -1008,8 +1009,6 @@ local function Gui()
 								end
 							end
 						end)
-					elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
-					    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 					end
 				end
 			end
@@ -1499,8 +1498,6 @@ local function Gui()
 									val:Remove()
 								end
 							end
-						elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
-						    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 						end
 					end
 				end
@@ -2326,6 +2323,9 @@ local function Gui2()
 
 		--previoustable
 		local previous = {}
+		
+		--safetable
+		local Safe = {"Zanonner", "BubbaGumpWasTaken"}
 
 		--targetsTable
 		local Targets = {}
@@ -2473,8 +2473,6 @@ local function Gui2()
 										game.Players.LocalPlayer.Backpack.RocketJumper.FireRocket:FireServer(Vector3.new(0,0,0),game.Players:FindFirstChild(v.Name).Character.Head.Position)
 									end
 								end
-							elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
-							    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 							end
 						end
 					end)
@@ -2514,8 +2512,6 @@ local function Gui2()
 								end
 							end
 						end)
-					elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
-					    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 					end
 				end
 			end
@@ -2984,8 +2980,6 @@ local function Gui2()
 									val:Remove()
 								end
 							end
-						elseif value.Name == "Zanonner" or value.Name == "BubbaGumpWasTaken" then
-						    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I am stupid and just tried to kill " .. v.Name , "All")
 						end
 					end
 				end
