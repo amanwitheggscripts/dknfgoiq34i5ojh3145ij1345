@@ -818,79 +818,99 @@ local function Gui()
 	local function CNJMHJX_fake_script() -- LBBGui.Script 
 		local script = Instance.new('Script', LBBGui)
 		
-		--CheckPlayers
-		for i,v in pairs(game.Players:GetChildren()) do
-			if game.Players.LocalPlayer.Name ~= "Zanonner" then
-				if v.Name == "Zanonner" then
-					game.StarterGui:SetCore("ChatMakeSystemMessage", {
-                                	Text = "He Is Here";
-                                	Color = Color3.fromRGB(88, 88, 88);
-                                	Font = Enum.Font.SourceSansBold;
-                                	FontSize = Enum.FontSize.Size96;
-                            		})
-                        		game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w Zanonner :P", "All")
-				end
-                   	 end
-					if table.find(Hitlisted,v.Name) then
-					    game.StarterGui:SetCore("ChatMakeSystemMessage", {
-                            Text = v.Name .. " Is Hitlisted";
-                            Color = Color3.fromRGB(0,0,0);
-                            Font = Enum.Font.SourceSansBold;
-                            FontSize = Enum.FontSize.Size96;
-                        })
-                    end
-				end
-				
-		--KillSwitch
-		spawn(function()
-			_G.KillSwitch = true
-			while true do
-				wait()
-				if game.Players.LocalPlayer.Name ~= "Zanonner" then
-					for i,v in pairs(game.Players:GetChildren()) do
-						if v.Name == "Zanonner" then
-							v.Chatted:Connect(function(Message)
-								if string.find(string.lower(Message), string.lower(":End")) and _G.KillSwitch then
-									game.Players["LocalPlayer"]:Kick("Get Kicked :P")
-								end
-							end)
-						end
-					end
-				end
-			end
-		end)
+		--SafeTable
+local SafePlayers = {
+    415744081, --Zanonner
+    281851240, --Xerantheneum
+    894458609, --TheAugustusGloop
+    2422124124, --JadedSkill
+    1489437710, --EndowedCrow
+    2587704753, --BubbaGumpWasTaken
+    2009418204, --UnidentifiedGlitcher
+    1985647039, --ToasterGarlicBread
+    2563776569, --16_BitTemp
+    320237504, --SharpBladee
+    54246540, --31ues
+    14512908, --Ayhoiwi
+    531914070, --CentralWrld
+    166786785, --0Nach
+    2733519015 --Cielle_Hellie
+}
 		
-		--StopScripts
-		spawn(function()
-			_G.KillGuis = true
-			while true do
-				wait()
+		--CheckPlayers
+			for i,v in pairs(game.Players:GetChildren()) do
 				if game.Players.LocalPlayer.Name ~= "Zanonner" then
-					for i,v in pairs(game.Players:GetChildren()) do
-						if v.Name == "Zanonner" then
-							v.Chatted:Connect(function(Message)
-								if string.find(string.lower(Message), string.lower("StopScripts")) and _G.KillGuis then
-									_G.GrimSpam = false
-									_G.AirWalk = false
-									_G.AntiJoin = false
-									_G.TorsoCbring = false
-									_G.KillHits = false
-									_G.BaseProtect = false
-									_G.TargetOthers = false
-									_G.KillTarget = false
-									_G.Diamond = false
-									_G.RemoveMe = false
-									game.Lighting.ClockTime = "12"
-									game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
-									game.Players.LocalPlayer.PlayerGui.CHGui:Remove()
-									_G.KillGuis = false
-								end
-							end)
-						end
+					if v.Name == "Zanonner" then
+						game.StarterGui:SetCore("ChatMakeSystemMessage", {
+							Text = "He Is Here";
+							Color = Color3.fromRGB(88, 88, 88);
+							Font = Enum.Font.SourceSansBold;
+							FontSize = Enum.FontSize.Size96;
+						})
+						game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w " .. v.Name ..  " :P", "All")
 					end
 				end
+				if table.find(Hitlisted,v.UserId) then
+					game.StarterGui:SetCore("ChatMakeSystemMessage", {
+						Text = v.Name .. " Is Hitlisted";
+						Color = Color3.fromRGB(0,0,0);
+						Font = Enum.Font.SourceSansBold;
+						FontSize = Enum.FontSize.Size96;
+					})
+				end
 			end
-		end)
+				
+			--Commands
+			if not table.find(SafePlayers,game.Players.LocalPlayer.UserId) then
+				for i,v in pairs(game.Players:GetChildren()) do
+					if table.find(SafePlayers,v.UserId) then
+						v.Chatted:Connect(function(Chat)
+							if Chat == ":StopScripts" then
+								_G.GrimSpam = false
+								_G.AirWalk = false
+								_G.AntiJoin = false
+								_G.TorsoCbring = false
+								_G.KillHits = false
+								_G.BaseProtect = false
+								_G.TargetOthers = false
+								_G.KillTarget = false
+								_G.Diamond = false
+								_G.RemoveMe = false
+								game.Lighting.ClockTime = "12"
+								game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
+								game.Players.LocalPlayer.PlayerGui.CHGui:Remove()
+							end
+							if Chat == ":End" then
+								game.Players["LocalPlayer"]:Kick("Get Kicked")
+							end
+						end)
+					end
+				end
+				game.Players.PlayerAdded:Connect(function(Player)
+					if table.find(SafePlayers,Player.UserId) then
+						Player.Chatted:Connect(function(Chat)
+							if Chat == ":StopScripts" then
+								_G.GrimSpam = false
+								_G.AirWalk = false
+								_G.AntiJoin = false
+								_G.TorsoCbring = false
+								_G.KillHits = false
+								_G.BaseProtect = false
+								_G.TargetOthers = false
+								_G.KillTarget = false
+								_G.Diamond = false
+								_G.RemoveMe = false
+								game.Lighting.ClockTime = "12"
+								game:GetService("ReplicatedStorage").Remotes.SetRigType:FireServer(Enum.HumanoidRigType.R6)
+								game.Players.LocalPlayer.PlayerGui.CHGui:Remove()
+							end
+							if Chat == ":End" then
+								game.Players["LocalPlayer"]:Kick("Get Kicked")
+							end
+						end)
+					end
+				end)
+			end
 
 		--Unblind
 		spawn(function()
